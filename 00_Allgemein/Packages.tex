@@ -8,10 +8,12 @@
 %
 % HINWEIS: Die Reihenfolge, in der Packages geladen werden ist wichtig. Hinweise aus den Dokumentationen der einzelnen Packages sind daher unbedingt zur berücksichtigen, wenn weitere Packages aufgenommen werden sollen.
 % -----------------------------------------------------------------------------------------
+% \usepackage[a4paper, top=2.5cm]{geometry}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-\usepackage{babel}
+\usepackage[UKenglish]{babel}
 \usepackage{lmodern}
+\usepackage{fancyhdr}
 \usepackage{xspace} % Leerzeichen hinter parameterlosen Makros nicht als Endzeichen interpretieren
 \usepackage{graphicx} %Abbildungen
 \usepackage{pdfpages} %Einfügen von PDF-Seiten
@@ -106,7 +108,7 @@
 % Erstellung neuer Verzeichnisse; Code weitgehend von Markus Kohm und komascript.de 
 \DeclareNewTOC[%
   owner=anhang,
-  listname={Anhangsverzeichnis},% Titel des Verzeichnisses
+  listname={Appendix Listing},% Titel des Verzeichnisses
 ]{atoc}
 
 \DeclareNewTOC[%
@@ -162,9 +164,9 @@
 \usepackage{xpatch}
 \xapptocmd\appendix{%
   \useappendixtocs
-  \pdfbookmark{Anhangsverzeichnis}{anhangsverzeichnis}
+  \pdfbookmark{Appendix}{appendix}
   \listofatocs
-  \addcontentsline{toc}{chapter}{Anhangsverzeichnis}
+  \addcontentsline{toc}{chapter}{Appendix}
   \bookmarksetupnext{level=-1}
 }{}{}
 

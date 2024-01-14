@@ -6,14 +6,14 @@
 % Erklärender Text zu dieser Datei --------------------------------------------------------
 % Die Datei Arbeit.tex ist die Hauptdatei, die dem LaTeX-Kompiler übergeben wird.
 % Diese Datei ist zu verwenden, wenn die eigentliche Haus/Bachelor/Masterarbeit erstellt werden soll.
-% In dieser Datei wird 
+% In dieser Datei wird
 %  - das Dokument erstellt und alle anderen tex-Dateien werden geladen.
 %  - die .bib-Datei eingebunden zur Bereitstellung der Quellen
 %  - die Struktur des Dokuments wird definiert
 % -----------------------------------------------------------------------------------------
 
 \documentclass[
-ngerman, % neue Deutsche Rechtschreibung
+% ngerman, % neue Deutsche Rechtschreibung
 headings=normal, % normale Headings
 captions=tableheading, % Positioniert Captions über Tabellen
 listof=totoc,
@@ -21,10 +21,11 @@ bibliography=totoc,
 %usegeometry, % Auskommentieren wenn Package geometery verwendet wird
 overfullrule, % entfernen nach abschluss der bearbeitung
 % Default Values, die scrreprt nutzt
-%oneside, % Einseitige Seitengenerierung
-%11pt, % Font size
-% a4paper, % paper
+oneside, % Einseitige Seitengenerierung
+12pt, % Font size
+a4paper, % paper
 ]{scrreprt}
+\linespread{1.5}
 \KOMAoptions{%
   DIV=12,
   parskip=half*,
@@ -42,23 +43,28 @@ overfullrule, % entfernen nach abschluss der bearbeitung
 
 
 \addbibresource{sample.bib}
-% Wegen dem folgenden Befehl werden im Literaturverzeichnis alle Quellen gelistet, die in der .bib Datei enthalten sind. 
+% Wegen dem folgenden Befehl werden im Literaturverzeichnis alle Quellen gelistet, die in der .bib Datei enthalten sind.
 % Wird der Befehl entfernt, werden nur die Quellen gelistet, die auch zitiert werden.
 % Der Befehl sollte bei Abgabe der Bachelorarbeit entfernt werden.
-\nocite{*} 
+\nocite{*}
 \newcounter{romanConsecutive}
+
+% Set ToC depth to subsubsection
+\setcounter{tocdepth}{4}
+\setcounter{secnumdepth}{4}
 
 \begin{document}
 \include{00_Allgemein/ToDo}
 
 \pagestyle{empty}
 \renewcommand*{\chapterpagestyle}{empty}
-\include{01_Vortext/01_Sperrvermerk}
 \include{01_Vortext/02_Titelseite}
 \include{01_Vortext/03_Erklaerung}
-\include{01_Vortext/04_ManagementSummary}
+\include{01_Vortext/04_Abstract}
 
-\pagestyle{plain}
+%\pagestyle{fancy}
+%\fancyhf{}
+%\fancyhead[R]{\thepage}
 \renewcommand*{\chapterpagestyle}{plain}
 \pagenumbering{Roman}
 \include{01_Vortext/05_Verzeichnisse}
@@ -66,13 +72,19 @@ overfullrule, % entfernen nach abschluss der bearbeitung
 
 \setcounter{romanConsecutive}{\value{page}}
 \pagenumbering{arabic}
-\include{02_Textteil/00_Inhalt_Arbeit}
+\include{02_Textteil/01_introduction}
+\include{02_Textteil/02_concepts}
+\include{02_Textteil/03_tools}
+\include{02_Textteil/04_methodology}
+\include{02_Textteil/05_implementation}
+\include{02_Textteil/06_conclusion}
+
 
 \pagenumbering{Roman}
 
 \setcounter{page}{\value{romanConsecutive}}
-\printbibliography[title={Literaturverzeichnis}]
-\include{03_Nachtext/01_Anhang}
+\printbibliography[title={Bibliography}]
+\include{03_Nachtext/01_appendix}
 
 \usestandardtocs
 \bookmarksetup{startatroot}% siehe bookmark-Anleitung
