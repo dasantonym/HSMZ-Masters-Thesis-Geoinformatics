@@ -50,8 +50,8 @@ a4paper, % paper
 \newcounter{romanConsecutive}
 
 % Set ToC depth to subsubsection
-\setcounter{tocdepth}{4}
-\setcounter{secnumdepth}{4}
+% \setcounter{tocdepth}{4}
+% \setcounter{secnumdepth}{4}
 
 \begin{document}
 \include{00_Allgemein/ToDo}
@@ -82,7 +82,7 @@ a4paper, % paper
 
 \pagenumbering{Roman}
 
-\setcounter{page}{\value{romanConsecutive}}
+\setcounter{page}{\value{romanConsecutive}-1} % decrease counter by one 
 \printbibliography[title={Bibliography}]
 \include{03_Nachtext/01_appendix}
 
