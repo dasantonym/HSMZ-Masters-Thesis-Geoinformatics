@@ -8,38 +8,38 @@
 
 \subsection{JavaScript}
 
-A scripting language created by Brendan Eich in 1995 as part of the release of the \emph{Netscape 2} browser \parencite{javascriptRelease}, then was officially standardised by the swiss standards body \emph{Ecma} in 1997 as \emph{ECMA-262} or \emph{ECMAScript}, as it is known today. This standard later was the basis for \emph{JScript} by \emph{Microsoft} and \emph{ActionScript} as part of \emph{Macromedia Flash}. The version currently being supported by all browsers (except Internet Explorer 11) is \ac{ES6} \parencite{javascriptHistory}.
+A scripting language created by Brendan Eich in 1995 as part of the release of the \emph{Netscape 2} browser \parencite{javascriptRelease}, then was officially standardised by the Swiss standards body \emph{Ecma} in 1997 as \emph{ECMA-262} or \emph{ECMAScript}, as it is known today. This standard later was the basis for \emph{JScript} by \emph{Microsoft} and \emph{ActionScript} as part of \emph{Macromedia Flash}. The version currently being supported by all browsers (except Internet Explorer 11) is \ac{ES6} \parencite{javascriptHistory}.
 
 \ac{JS} is an object-oriented, weakly-typed programming language that allows multiple programming paradigms to be applied. It is primarily used in the browser to add extra functionality to web pages. The underlying \emph{ECMAScript} standard does not define any input or output methods, which means that this is provided by the specific environment it is being used in (e.g. desktop or mobile browsers).
 
 \subsection{TypeScript}
 
-\ac{TS} was released by Microsoft in 2012 \textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser, rather than on the desktop.} It is compliant with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing. It uses a compiler to generate regular \ac{JS} code.
+\ac{TS} was released by Microsoft in 2012 \textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser rather than on the desktop.} It complies with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing. It uses a compiler to generate regular \ac{JS} code.
 
 
 \section{Native Application Development}
 
 \subsection{Node JS}
 
-Originally released by developer Ryan Dahl in 2009 a server-side \ac{JS} environment, Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration.
+Released initially by developer Ryan Dahl in 2009, a server-side \ac{JS} environment, Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration.
 
-Node.js uses the \ac{NPM} to package code as modules, which can be used as dependencies. These modules can also integrate native C++ code, enabling bindings to most existing open-source libraries in the linux ecosystem.
+Node.js uses the \ac{NPM} to package code as modules, which can be used as dependencies. These modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem.
 
-It can be used to develop \ac{API}s or other server-side applications, but is also used to support local web development processes like preprocessing or packaging and deployment. 
+It can be used to develop \ac{API}s or other server-side applications and support local web development processes like preprocessing, packaging, and deployment. 
 
 \subsection{Python}
 
-The Python programming language was created by Guido van Rossum in 1990 \parencite{pythonHistory}. It is a multi-paradigm language that is both dynamically and strongly typed \parencite{pythonTyping}. It relies heavily on indentation and whitespace to structure the code.
+Guido van Rossum created the Python programming language in 1990 \parencite{pythonHistory}. It is a multi-paradigm language that is both dynamically and strongly typed \parencite{pythonTyping}. It relies heavily on indentation and whitespace to structure the code.
 
-The language uses a standard library and the surrounding ecosystem of available modules and applications based on Python makes it a good choice for data processing and science.
+The language uses a standard library, and the surrounding ecosystem of available modules and applications based on Python makes it a good choice for data processing and science.
 
-There is a native code interface that allows extending python with bindings to native code like with Node.js.
+There is a native code interface that allows extending Python with bindings to native code, like with Node.js.
 
 \subsection{C/C++}
 
-C++ originated as an extension to C in 1985. It is a multi-paradigm, statically typed and object oriented programming language.
+C++ originated as an extension to C in 1985. It is a multi-paradigm, statically typed and object-oriented programming language.
 
-It can be used to develop code for embedded platforms like Arduino, is used to extend both Node.js and Python and more generally provides access to direct interaction with the operating system and its APIs.
+It can be used to develop code for embedded platforms like Arduino, extend both Node.js and Python and, more generally, provide direct interaction with the operating system and its APIs.
 
 
 \section{Frontend Frameworks and Libraries}
@@ -60,7 +60,7 @@ There is a wide range of available \ac{JS} frameworks to build dynamic frontends
 
 \subsection{Vue.js}
 
-\emph{Vue.js} (\url{https://vuejs.org/}) was developed by Evan You and is maintained by an international team of individuals. It had a relatively marginal presence in the first years after its inception. This can be partially attributed to its origin in China, and most of its supporting modules were localised in Chinese. Over the years, it grew in popularity and received much more international support, eventually overcoming the language barrier. Unlike \emph{React}, it is billed as a "progressive framework" that provides fundamental functionality for building reactive components but also accommodates more complex use-cases \parencite{vueProgressiveFramework}. \emph{Vue.js} builds on standard \ac{JS} or \ac{TS}, \ac{HTML} and \ac{CSS} to build components, recommending a simple template mechanism mixed with reactive substitutions. However, it also supports using \ac{JSX} for specifying inline \ac{HTML} within \ac{JS}. As with \emph{React}, there are extensions and frameworks like \emph{Quasar} (\url{https://quasar.dev/}) and \emph{Nuxt} (\url{https://nuxt.com/}) that enable even more sophisticated workflows for application development and deployment.
+\emph{Vue.js} (\url{https://vuejs.org/}) was developed by Evan You and is maintained by an international team of individuals. It had a relatively marginal presence in the US and Europe in the first years after its inception. This can be partially attributed to its origin in China, as most of its supporting modules were localised in Chinese. Over the years, it grew in popularity and received much more international support, eventually overcoming the language barrier. Unlike \emph{React}, it is billed as a "progressive framework" that provides fundamental functionality for building reactive components but also accommodates more complex use-cases \parencite{vueProgressiveFramework}. \emph{Vue.js} builds on standard \ac{JS} or \ac{TS}, \ac{HTML} and \ac{CSS} to build components, recommending a simple template mechanism mixed with reactive substitutions. However, it also supports using \ac{JSX} for specifying inline \ac{HTML} within \ac{JS}. As with \emph{React}, there are extensions and frameworks like \emph{Quasar} (\url{https://quasar.dev/}) and \emph{Nuxt} (\url{https://nuxt.com/}) that enable even more sophisticated workflows for application development and deployment.
 
 \subsection{Angular}
 
