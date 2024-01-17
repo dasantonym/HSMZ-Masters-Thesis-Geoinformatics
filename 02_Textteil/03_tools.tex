@@ -21,11 +21,9 @@ A scripting language created by Brendan Eich in 1995 as part of the release of t
 
 \subsection{Node JS}
 
-Released initially by developer Ryan Dahl in 2009, a server-side \ac{JS} environment, Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration.
+Released initially by developer Ryan Dahl in 2009, a server-side \ac{JS} environment, Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration. Its development was sponsored by the company Joyent. After some dissatisfaction in the community about Joyent's stewardship and a fork of Node.js called io.js. These difference were eventually resolved and everything was merged under the umbrella of the OpenJS Foundation. 
 
-Node.js uses the \ac{NPM} to package code as modules, which can be used as dependencies. These modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem.
-
-It can be used to develop \ac{API}s or other server-side applications and support local web development processes like preprocessing, packaging, and deployment. 
+Node.js uses the \ac{NPM} to package code as modules, which can be used as dependencies. These modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem. It can be used to develop \ac{API}s or other server-side applications and support local web development processes like preprocessing, packaging, and deployment. 
 
 \subsection{Python}
 
@@ -73,16 +71,33 @@ There is a wide range of available \ac{JS} frameworks to build dynamic frontends
 
 \subsection{Express}
 
+The Express JS framework provides the basic functionality to create web servers including routing and middleware functionality. It was developed by TJ Holowaychuk, then sold to StrongLoop, which was subsequently acquired by IBM. It is currently under the stewardship of the OpenJS Foundation.
+
+Express has become the de facto standard for building web services in JS, leading the ranking in the State of JS survey \parencite{mostUsedBackendFrameworks22}. Although it contains the necessary parts to build a web service, it does not enforce a specific architecture, which can be a problem for maintaining a robust application structure. For developers who prefer a more explicit structure, there are various other frameworks building on top of it and adding more opinionated structure or extensions.
+
 \subsection{Koa}
 
-\subsection{Fastify}
+Billed as a successor to Express, Koa is developed by the team behind Express. It aims to provide a more robust and minimalistic iteration on the middleware-based architecture of Express. Like Express, it allows for building a service from scratch in completely free form, but is also the basis for other, more explicitly structured frameworks.
 
 
 \section{Backend Frameworks}
 
+For more complex applications a more stringent and structured application structure, other frameworks might be more desirable. There are numerous \ac{JS} frameworks, some based on Express or Koa, others provide their own basis for routing. To review all possible options is beyond the scope of this study. In the following, three frameworks are selected for their specific nature related to popularity, stability but also with an explicit focus on real-time applications.
+
+\input{04_Artefakte/02_Tabellen/backend_frameworks_ranking_soj}
+
 \subsection{Nest JS}
 
-\subsection{Meteor}
+Nest JS is a backend framework for developers who look for a more strictly opinionated and robust setup than Express, e.g. for enterprise applications. It follows a modular concept, making dependencies available to the services via injection, there are multiple database options and transports can be both HTTP and WebSockets. There are \ac{CLI} scripts that enable automatic generation of boilerplate application code and the language used to build Nest applications is TypeScript. It scores the second rank among the most-used backend frameworks in the State of JS survey \parencite{mostUsedBackendFrameworks22}.
 
 \subsection{Feathers}
 
+This framework takes a very different approach in that it makes very little assumptions about the specific application structure. It uses aspect-oriented programming and uses a service-centric architecture. The usage of before-, after- and around-hooks (so called \textquote{cross-cutting concerns}) for the services that modify basic behaviour or add functionality. There are adapters for a wide range of databases and authentication methods. The framework has a dedicated concept of channels that enable real-time functionality and messaging to clients. Real-time transports are also abstracted and can be deployed using various different WebSockets libraries. It also provides a \ac{CLI} to generate application code that can be written in \ac{JS} or \ac{TS}.
+
+Feathers started as a hobby project by David Luecke and Eric Kryski in 2013 \parencite{feathersFrameworkHistory} and is currently maintained by David Luecke and a community of individual contributors. In the State of JS survey, it is still in the lower percentages, but almost doubled that percentage from the previous survey in 2021 \parencite{mostUsedBackendFrameworks21}.
+
+\subsection{Meteor}
+
+Meteor focuses explicitly on real-time applications using WebSockets. The framework is a bit of an outlier in that its core is open-source, but other parts are proprietary code. Nonetheless, it should be mentioned, because it has been around for over ten years and it uses WebSockets exclusively. It was released in 2012 by a startup company, immediately received venture capital funding by Andreesen Horowitz and was eventually sold again in 2019.
+
+The framework primarily uses MongoDB as a database system, provides its own package manager and ecosystem, its own build system and template system based on Mustache.
