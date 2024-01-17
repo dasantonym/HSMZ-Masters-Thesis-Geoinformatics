@@ -1,11 +1,34 @@
 \chapter{Methodology}
+\label{chapter:methodology}
+
+This feasibility study is based on three basic parts. The first is a reference implementation, providing insights on the work that is necessary to arrive at the base functionality. After the implementation is finished, a quantitative analysis of the application's functionality is made as well as a statistical overview of the time spent on development. Additionally, there is a qualitative review of the resulting codebase and a reflection on the work process.
+
+\section{Reference Implementation}
+
+\subsection{Choice of concepts and tools}
+
+In order to produce a valid test subject for the proposal, the reference implementation is created according to a prior selection of tools and methods deemed appropriate for the task at hand. The selection is made from the range presented in \autoref{chapter:concepts} and \autoref{chapter:tools}.
+
+\subsection{Application development and deployment}
+
+The application is implemented in its entirety, documented and packaged. Appropriate test coverage is provided and the overall time spent is logged in timesheets, categorised by the general areas of work. The application's server components are deployed to university hardware and made available over the internet. The client application is then run on a variety of different consumer computer systems.
 
 \section{Quantitative Analysis}
 
 \subsection{Performance Testing}
+
+The application's performance is only tested in regard to the load put on the \ac{CPU} (server and client) as well as the network throughput and latency. It is verified that all signal processing performs as planned both through unit testing and simple testing tasks performed on the application itself. A practical test using real performers and dance interaction is beyond the scope of this feasibility study.
+
 \subsection{Time spent}
+
+A statistical analysis of the timesheets provides insight on the time spent on various aspects of the software. It should differentiate between basic boilerplate code that can be reused as is and custom code that is used for the actual use-case.
 
 \section{Qualitative Analysis}
 
 \subsection{Code Quality}
+
+The code quality is mainly assessed in terms of volume (lines of code), complexity (number of classes and functions, cognitive complexity) and stylistic coherence.
+
 \subsection{Critical reflection}
+
+A critical analysis of the development process should weigh the expectations against the experiences made during implementation of the decisions made in planning the application. It should provide a critical evaluation of the feasibility and a discussion of benefits and drawbacks of establishing a task-specific application from scratch.
