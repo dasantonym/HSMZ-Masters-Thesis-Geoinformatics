@@ -27,6 +27,27 @@ The sonification of movement data is used in health and therapeutic research to 
 
 The basic principle for movement sonification is the same as for any data sonification. It requires specific data points to be tied to acoustic properties. This can be a direct value connection from one property to another (e.g. velocity to loudness, altitude to pitch). Still, it can also be achieved using indirect logical constraints (e.g. if multiple thresholds are crossed, a single signal is triggered). 
 
+\section{Web Standards}
+
+The \ac{W3C} has created the context of web standards to formulate certain general definitions for interaction with particular \ac{OS} or hardware functionality via the browser. As \ac{JS} does not define any specific \ac{I/O} functionality, it is the task of the browser environment to supply this. As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \ac{API}s was devised and implemented.
+
+\subsection{WebRTC}
+
+The standard for real-time communication in browsers was initially proposed and mainly developed by Google. It is an official standard since 2019(?). It provides functionality for transmitting video and audio streams over \ac{UDP} or \ac{TCP}. Additionally, data streams with arbitrary message packets can be used to transmit binary encoded or text data. WebRTC handles all low-level flow control or other transmission aspects. It can be used in direct peer-to-peer communication, but also as a \ac{SFU} enabling one-to-many or many-to-many communication setups.
+
+\subsection{WebAudio}
+
+This standard for handling audio in the browser takes care of basic mixing of channels and different sources (e.g. media streams, audio files). It can also be used for generating sound via several synthesis nodes. Another feature that is commonly used in context of games or virtual reality experiences is the possiblity of placing sound sources in virtual soundstages that are then rendered as ambisonics for psychoacoustics in headphones.
+
+\subsection{WebXR}
+
+The various virtual and augmented reality devices available are made accessible via the WebXR \ac{API}. The browser manages the communication with the headset and a \ac{3D} scene created in a web-based graphics framework like THREE.js or A-Frame can be instantly experienced on a \ac{VR} headset like the HTC Vive or Oculus Quest.
+
+\subsection{WebBluetooth}
+
+This rather simple \ac{API} provides access to the computer's Bluetooth functionality. It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics sending and receiving messages to and from the browser.
+
+
 \section{Application Design Paradigms}
 
 \subsection{Single Page Applications}
