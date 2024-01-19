@@ -108,25 +108,41 @@ The framework primarily uses MongoDB as a database system and initially provided
 
 \subsection{THREE.js}
 
-
+A \ac{3D} graphics framework that has a large community with over 1800 contributors and has been around since it was publicly released by Ricardo Cabello in 2010. It features an extensive toolset for graphics generation, rendering and effects and relies on the \emph{WebGL} standard to allow performant rendering via local graphics hardware.
 
 \subsection{A-Frame}
 
-\subsection{Babylon.js}
+Based on THREE.js, this framework allows the developer to create \ac{3D} scenes by composing custom HTML-elements that provide geometric primitives, lights, cameras, etc. This way it is has a very low entry barrier for people coming from web development with limited scripting experience. It has an explicit focus on mixed reality applications and implements the WebXR standard and controls for various headsets and controllers.
 
 \subsection{Resonance}
+
+Resonance was developed by Google based Omnitone, another Google project focusing on ambisonic rendering of spatial audio. It received only one release and seems dormant since then, but still works without breaking changes. It uses a default \ac{HRTF} to model the spatialisation of audio and allows for a virtual room to be created with different materials for walls, floor and ceiling that provide different reflection types. Other than that it provides sources to be defined and connected to web audio nodes and then positioned around the virtual space. It hooks into any existing audio context, thus allowing a combination with any WebAudio compliant audio framework.
+
+\subsection{Howler.js}
+
+Howler is a more complete audio framework that builds on the WebAudio \ac{API} and providing more ease of use in accessing audio functionality. It provides spatial audio as a plugin, but as of the time of writing only supports connecting live audio sources through a yet unmerged pull request on GitHub (see: \href{https://github.com/goldfire/howler.js/pull/1634}{https://github.com/goldfire/howler.js/pull/1634}).
 
 
 \section{WebRTC}
 
+There a quite a number of software solutions for streaming media that also support the WebRTC standard. However, in this case, a focus on the concept of a \ac{SFU} is important so the selection is reduced to the packages that have an explicit focus on this type of topology.
+
+\input{04_Artefakte/02_Tabellen/webrtc_server_stars_ranking}
+
 \subsection{LiveKit}
+
+A dedicated \ac{SFU} server including \ac{SDK}s for web, native mobile and desktop and server applications in a variety of languages. It is developed and maintained by a relatively young company, as it was publicly released in 2021 and was \textquote{started amid and in response to the pandemic} with the idea of providing \textquote{free and open infrastructure capable of connecting anyone} \parencite{livekitAbout}. While the software itself is free and open-source, there is also a paid hosted service being offered for those who want to experiment with real-time communication, but don't want to set up an infrastructure of their own. There are lots of examples for integration into existing frameworks and extensions for recording sessions on the server, as well as extended handling of streams.
 
 \subsection{Mediasoup}
 
+Mediasoup can be placed at an opposite end of the spectrum in terms of high-level versus low-level frameworks. It provides a versatile collection of Node.js, Rust and C++ libraries, that allow for building a custom server application from the ground up. While it takes care of the low-level \ac{RTC} functionality, it provides rather granular building blocks to set up the actual implementation. This allows for building entirely decentralised peer-to-peer applications as well as server-centric setups. It was developed by a small team of contributors around its main developers Iñaki Baz Castillo and José Luis Millán.
 
 \section{Databases}
 
 \subsection{MongoDB}
 
+A document store database that is designed to hold large amounts of unstructured data. It has its own query language and features aggregation functionality, that allows map/reduce and transformation operations or resolving of relations on the data before being sent to the client. Its focus on storing documents of any kind and can be problematic since it can lead to inconsistent data very easily if appropriate care isn't applied in the application development (it supports schema validation, but that is not mandatory). However, this loose schematic handling can be beneficial if the application data can't be properly modeled from the get-go and is subject to more frequent changes.
+
 \subsection{PostgreSQL}
 
+This very widely used database is using a table-based data topology and implementing \ac{SQL} for interaction with the database and its contents. The rather rigid database schema provides a more solid structure for data storage and retrieval, but on the other hand requires migrations to be written to transition from one database structure version to another. This can become tedious if the data is very unstable.
