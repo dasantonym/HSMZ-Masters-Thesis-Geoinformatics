@@ -11,22 +11,22 @@
 
 \subsection{Hardware}
 
-The underlying hardware infrastructure is a bare-metal system running on-premises at the university. Due to the containerised packaging and deployment, it could also easily deployed in a cloud environment or other hosting platform. There is no special hardware required and the system could run in any environment that provides network access, storage space and standard computing resources.
+The underlying hardware infrastructure is a bare-metal system running on-premises at the university. Due to the containerised packaging and deployment, it could also easily be deployed in a cloud environment or other hosting platform. No special hardware is required, and the system can run in any environment that provides network access, storage space and standard computing resources.
 
-In an otherwise containerised application environment, the underlying software infrastructure is minimal. The components required are a Linux \ac{OS}, in this case Ubuntu, with installations of Docker (with ContainerD) and Kubernetes.
+In an otherwise containerised application environment, the underlying software infrastructure is minimal. The components required are a Linux \ac{OS}, in this case, Ubuntu, with installations of Docker (with ContainerD) and Kubernetes.
 
 
 \section{Application infrastructure}
 
-While all the frameworks represented in \autoref{fig:mostUsedFrameworks} could be used to build an application as envisioned in this study, Vue is selected as the tool of choice, both due to the relatively high acceptance and the comparably easy learning curve. While it might not be the choice for large-scale or enterprise apps, in this case the low entry barrier and the very simple structure make it ideal to quickly get an app running, experiment with it and pass it on to others for hacking and custom modifications. In order to accelerate and simplify the initial development, the Quasar framework is used as it extends the basic functionality provided by Vue by a \ac{UI} library with layout tools and preset interface elements and a comfortable development and deployment environment.
+While all the frameworks represented in \autoref{fig:mostUsedFrameworks} could be used to build an application as envisioned in this study, Vue is selected as the tool of choice due to the relatively high acceptance and the comparably easy learning curve. While it might not be the choice for large-scale or enterprise apps, the low entry barrier and the simple structure make it ideal to get an app up and running quickly, experiment with it and pass it on to others for hacking and custom modifications. To accelerate and simplify the initial development, the Quasar framework is used as it extends the basic functionality Vue provides by a \ac{UI} library with layout tools, preset interface elements and a comfortable development and deployment environment.
 
-The choice for a backend framework lands on Feathers and, by extension, Koa. The simple structure and code generators allow for a very quick setup and deployment of a simple WebSockets \ac{API} that provides authentication and resource management. It is connected to a MongoDB database, because there is no stable idea required of how the various resources being stored and retrieved from the database are explicitly structured and typed. With a document store, the data can be easily overwritten with updated data and then wiped before the schema is fixed in place.
+The choice for a backend framework lands on Feathers and, by extension, Koa. The simple structure and code generators allow for a speedy setup and deployment of a simple WebSockets \ac{API} that provides authentication and resource management. It is connected to a MongoDB database because there is no definitive initial plan of how the stored and retrieved resources are explicitly structured and typed. With a document store, the data can be easily overwritten with updated data and then wiped before the schema is fixed.
 
-LiveKit is chosen as the WebRTC server implementation because it is extremely easy to set up as a container running along the Redis database in Kubernetes. It is extendable, scalable and there is even a hosted variant for people who do not want to run their own server. While Mediasoup would allow a more precise implementation and probably more efficient, the workload overhead for building everything already offered by LiveKit is too much effort for this kind of application. However, it might be interesting to see how components based on Mediasoup could be dropped into this application structure.
+LiveKit is chosen as the WebRTC server implementation because it is effortless to set up as a container running along the Redis database in Kubernetes. It is extendable and scalable, and there is even a hosted variant for people who do not want to run their own server. While Mediasoup would allow a more precise implementation and probably more efficiency, the workload overhead for building everything already offered by LiveKit is too much effort for this kind of application. However, it might be interesting to see how components based on Mediasoup could be dropped into this application structure.
 
 \section{Design Paradigms}
 
-The basic design paradigm used for the Sensorama application is that of an \ac{SPA}. As there is already a remote API involved in managing access to shared resources, the \ac{PWA} paradigm is not immediately of use, but could be implemented with the existing application as well. It is an exclusively real-time application in that it uses WebSockets for all transmission between app components and uses the WebRTC standard for communication among the users. It is set up as a monorepo, where all components are developed together across languages in one repository.
+The basic design paradigm used for the Sensorama application is that of an \ac{SPA}. As there is already a remote API involved in managing access to shared resources, the \ac{PWA} paradigm is not immediately of use. Still, it could be implemented with the existing application as well. It is an exclusively real-time application that uses WebSockets for all transmission between app components and uses the WebRTC standard for user communication. It is set up as a Monorepo, where all components are developed across languages in one repository.
 
 \subsection{Application Partitioning}
 
@@ -34,31 +34,31 @@ The application's custom part is partitioned into the user interface, which is a
 
 \subsection{Coding Style}
 
-While the primarily favoured coding paradigm is object-oriented programming, this is only strictly applied to the core functionality. As some of the frameworks favour different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it is beneficial not to enforce a singular style of coding. This might be considered bad practice in a streamlined development environment, but serves the purpose of a modular and rather unstable \textquote{single-use} application environment.
+While the primarily favoured coding paradigm is object-oriented programming, this is only strictly applied to the core functionality. As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it is beneficial not to enforce a singular coding style. This might be considered bad practice in a streamlined development environment, but it serves the purpose of a modular and somewhat unstable \textquote{single-use} application environment.
 
 \subsection{Testing}
 
-Only the core functionality that is deemed stable and reusable is unit-tested to provide a solid base functionality. The general user interface, as well as the data producers are considered ephemeral in that they serve a singular use-case. These application components should be hackable and replaceable, so they are not tested in the scope of this study. However, there could still be more stable and general tools and extension being developed in the future that warrant a unit testing setup.
+Only the core functionality deemed stable and reusable is unit-tested to provide a solid base functionality. The general user interface and data producers are considered transient because they serve a singular use case. These application components should be hackable and replaceable, so they are not tested in the scope of this study. However, more stable and general tools and extensions that warrant a unit testing setup could still be developed in the future.
 
 \section{Application Components}
 
-The application is made up of several third-party components that are merely deployed as-is (WebRTC, databases, static web-server), and the custom developed parts described here.
+The application comprises several third-party components merely deployed as-is (WebRTC, databases, static web server) and the custom-developed parts described here.
 
 \subsection{Web Frontend}
 
-The web frontend provides the main entry point for the users. It allows authentication via a local username and password combination and then provides objects modeled as virtual \textquote{Spaces} that are the central anchor to organise all communications. A space object then maps to the the concept of a \textquote{chat room} in LiveKit or other real-time communications environments. Users can create spaces, name them and then either join them, becoming an active producer of data, or choose to view them as passive spectators.
+The web frontend provides the main entry point for the users. It allows authentication via a local username and password combination and then provides objects modelled as virtual \textquote{Spaces} that are the central anchor to organise all communications. A space object then maps to the the concept of a \textquote{chat room} in LiveKit or other real-time communications environments. Users can create spaces, name them and then join them, becoming active data producers, or choose to view them as passive spectators.
 
-A space is rendered as a different set of components, depending on the participant's role. Participants that actively join have access to a LocalProducer and a HeadTracker component. These components provide a direct link via WebSockets to the external data-producer utilities and a WebBluetooth connection to the custom head tracking device built on Arduino. Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
+Depending on the participant's role, a space is rendered as a different set of components. Participants who actively join have access to a LocalProducer and a HeadTracker component. These components provide a direct link via WebSockets to the external data-producer utilities and a WebBluetooth connection to the custom head-tracking device built on Arduino. Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
 
-The frontend coordinates connections between the WebRTC server, the backend \ac{API} and the local utilities. It also implements the various web standard \ac{API}s that are needed for sound, graphics and communication.
+The frontend coordinates connections between the WebRTC server, the backend \ac{API} and the local utilities. It also implements the various web standard \ac{API}s needed for sound, graphics and communication.
 
 \subsection{API Backend}
 
-In the backend, the \ac{API} server is only tasked with managing the basic connecting objects (spaces and users) and handling general authentication and generation of access tokens for the LiveKit server. Through its real-time implementation it is able to notify connected clients of changes like other connecting users or updates to data. The Feathers framework exports its own client library that is specifically generated for the current server configuration and can be directly integrated into Vue by using a specific client adapter module (\textquote{feathers-pinia}) that handles authentication and basic \ac{CRUD} operations.
+In the backend, the \ac{API} server is only tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server. Through its real-time implementation, it can notify connected clients of changes like other connecting users or updates to data. The Feathers framework exports its own client library that is specifically generated for the current server configuration and can be directly integrated into Vue by using a specific client adapter module (\textquote{feathers-pinia}) that handles authentication and basic \ac{CRUD} operations.
 
 \subsection{Native Utilities}
 
-There are three different native utilities that are additionally implemented.
+Three different native utilities are additionally implemented.
 
 \subsubsection{Data-Producer}
 
