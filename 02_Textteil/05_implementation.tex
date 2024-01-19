@@ -26,18 +26,48 @@ LiveKit is chosen as the WebRTC server implementation because it is extremely ea
 
 \section{Design Paradigms}
 
-The basic design paradigm for the Sensorama application is an \ac{SPA}, 
+The basic design paradigm used for the Sensorama application is that of an \ac{SPA}. As there is already a remote API involved in managing access to shared resources, the \ac{PWA} paradigm is not immediately of use, but could be implemented with the existing application as well. It is an exclusively real-time application in that it uses WebSockets for all transmission between app components and uses the WebRTC standard for communication among the users. It is set up as a monorepo, where all components are developed together across languages in one repository.
 
 \subsection{Application Partitioning}
 
+The application's custom part is partitioned into the user interface, which is a static built \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which is a single-process Node.js application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
+
 \subsection{Coding Style}
+
+While the primarily favoured coding paradigm is object-oriented programming, this is only strictly applied to the core functionality. As some of the frameworks favour different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it is beneficial not to enforce a singular style of coding. This might be considered bad practice in a streamlined development environment, but serves the purpose of a modular and rather unstable \textquote{single-use} application environment.
 
 \subsection{Testing}
 
+Only the core functionality that is deemed stable and reusable is unit-tested to provide a solid base functionality. The general user interface, as well as the data producers are considered ephemeral in that they serve a singular use-case. These application components should be hackable and replaceable, so they are not tested in the scope of this study. However, there could still be more stable and general tools and extension being developed in the future that warrant a unit testing setup.
+
 \section{Application Components}
+
+The application is made up of several third-party components that are merely deployed as-is (WebRTC, databases, static web-server), and the custom developed parts described here.
 
 \subsection{Web Frontend}
 
+The web frontend provides the main entry point for the users. It allows authentication via a local username and password combination and then provides objects modeled as virtual \textquote{Spaces} that are the central anchor to organise all communications. A space object then maps to the the concept of a \textquote{chat room} in LiveKit or other real-time communications environments. Users can create spaces, name them and then either join them, becoming an active producer of data, or choose to view them as passive spectators.
+
+A space is rendered as a different set of components, depending on the participant's role. Participants that actively join have access to a LocalProducer and a HeadTracker component. These components provide a direct link via WebSockets to the external data-producer utilities and a WebBluetooth connection to the custom head tracking device built on Arduino. Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
+
+The frontend coordinates connections between the WebRTC server, the backend \ac{API} and the local utilities. It also implements the various web standard \ac{API}s that are needed for sound, graphics and communication.
+
 \subsection{API Backend}
 
+In the backend, the \ac{API} server is only tasked with managing the basic connecting objects (spaces and users) and handling general authentication and generation of access tokens for the LiveKit server. Through its real-time implementation it is able to notify connected clients of changes like other connecting users or updates to data. The Feathers framework exports its own client library that is specifically generated for the current server configuration and can be directly integrated into Vue by using a specific client adapter module (\textquote{feathers-pinia}) that handles authentication and basic \ac{CRUD} operations.
+
 \subsection{Native Utilities}
+
+There are three different native utilities that are additionally implemented.
+
+\subsubsection{Data-Producer}
+
+This component is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or pointcloud extraction, Open3D for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files. Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction.
+
+\subsubsection{Captury-Producer}
+
+For real-time streaming of live motion capture data from the Captury Live system, there currently only exists a C++ client library provided by the system's manufacturer. Thus, this producer component has to be implemented separately and uses a C++-based WebSockets server streaming the library's received data.
+
+\subsubsection{Head-Tracker}
+
+As there was no easily accessible and platform-independent head-tracking equipment, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} bus. The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service. This device can be directly integrated using the browser's WebBluetooth web standard.
