@@ -9,11 +9,11 @@ The current spectrum of Telepresence is much more diverse. While there are appli
 	
 In this study, the term telepresence is used to explicitly describe a form of virtual or augmented reality that allows multiple people to experience a form of presence and immersion.
 
-\section{Motion Capture}
+\section{Motion capture}
 
 The positional tracking of specific key points on a moving body over time is referred to as motion capture.
 
-Motion capture technology is often used in CGI, enabling puppeteering of 3D avatars for motion picture productions and game character animation. High accuracy is required for these purposes, and the technological and financial entry barriers are relatively high. These applications use systems by \emph{Vicon} or \emph{OptiTrack}, which use visual markers to track movement in space and require a studio environment to be deployed. Another markerless optical system is Captury Live, which tracks humanoid moving actors with a 360° camera setup.
+Motion capture technology is often used in CGI, enabling puppeteering of 3D avatars for motion picture productions and game character animation. High accuracy is required for these purposes, and the technological and financial entry barriers are relatively high. These applications use systems by \emph{Vicon} or \emph{OptiTrack}, which use visual markers to track movement in space and require a studio environment to be deployed. Another markerless optical system is \emph{Captury Live}, which tracks humanoid moving actors with a 360° camera setup.
 
 In the performance field, the preferred methods are IMU-based tracking systems like the \emph{SmartSuit} by Rokoko or the Perception Neuron sensor kit. These operate over the radio and are independent of the lighting conditions but tend to produce less accurate data or are subject to interference.
 
@@ -21,13 +21,13 @@ The grassroots setup for motion capture is the Kinect, developed by Microsoft in
 
 Deep learning models for motion capture like PoseNet or BlazePose have also become available and, while primarily used on 2D (surveillance) footage, can be extended into 3D if combined with the proper calibration data (e.g. depth images). These models are fast and can be run on a regular webcam, but they also tend to produce relatively coarse movement data.
 
-\section{Movement Data Sonification}
+\section{Movement data sonification}
 
 The sonification of movement data is used in health and therapeutic research to offer an acoustic interface to experience dynamics in movement properties. This can be used for rehabilitation and stabilising movement practice or as a guiding signal within an exercise.
 
 The basic principle for movement sonification is the same as for any data sonification. It requires specific data points to be tied to acoustic properties. This can be a direct value connection from one property to another (e.g. velocity to loudness, altitude to pitch). Still, it can also be achieved using indirect logical constraints (e.g. if multiple thresholds are crossed, a single signal is triggered). 
 
-\section{Web Standards}
+\section{Web standards}
 
 The \ac{W3C} has created the context of web standards to formulate certain general definitions for interaction with particular \ac{OS} or hardware functionality via the browser. As \ac{JS} does not define any specific \ac{I/O} functionality, it is the task of the browser environment to supply this. As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \ac{API}s was devised and implemented.
 
@@ -48,28 +48,28 @@ The various virtual and augmented reality devices available are made accessible 
 This rather simple \ac{API} provides access to the computer's Bluetooth functionality. It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics sending and receiving messages to and from the browser.
 
 
-\section{Application Design Paradigms}
+\section{Application design paradigms}
 
-\subsection{Single Page Applications}
+\subsection{Single page applications}
 
 The idea of a \ac{SPA} originated around the beginning of the 2000s with the concepts \textquote{Inner-Browsing} \parencite{innerBrowsing} and \ac{AJAX} \parencite{ajaxNewApproach}. It breaks with the traditional way of moving from one page to another in favour of asynchronous loading and replacing parts of the current page. This allows for a website to evoke the look and feel of a regular desktop application.
 
-\subsection{Progressive Web Applications}
+\subsection{Progressive web applications}
 
 The term \ac{PWA} was initially coined in 2015 by two \emph{Google} employees in an online Article \parencite{progressiveWebApplications}. At its core, it describes the process of a website "progressively" evolving into a proper device application by adding offline functionality and blending with the operating system functionality. It is often built atop the concept of an \ac{SPA} and can be perceived by the user as an application they own instead of just accessed at a remote location.
 
-\subsection{Real-time Web Applications}
+\subsection{Real-time web applications}
 
 A real-time web application enhances the user experience by relaying relevant changes on the server to the server as they happen. This can be a simple chat application or a more complex collaborative multi-user environment. While real-time updates can happen on any multi-page website, they can also be a beneficial feature of an \ac{SPA} or a \ac{PWA}. Instantaneous updates are commonly realised using WebSockets, a transmission protocol that was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011 \parencite{webSocketsProtocolRfc}. It allows full-duplex communication between client and server, running on the same ports and transport layer as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure. It allows for updates to be pushed to the client whenever a resource on the server changes.
 
 
 
-\section{Application Deployment}
+\section{Application deployment}
 
 \subsection{Containerisation}
 
 Containerisation, in the context of computing infrastructure, refers to the \textquote[\cite{containerisationDefinition}]{packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable—called a container—that runs consistently on any infrastructure.} It was popularised through the release of the \emph{Docker Engine}, an open-source project devoted to creating an industry standard for application containerisation \parencite{dockerRelease}. The \emph{Docker} team eventually launched the \ac{OCI} in 2015, which serves as \textquote{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes.} It subsequently received \emph{Docker}'s container runtime and format as a donation, which was released as \emph{runC} version 1.0 in 2020 \parencite{openContainerInitiative}. Recently, it has become the de facto standard for packaging and delivering applications in the web development field and beyond. \emph{GitHub} reports that \textquote[\cite{stateOfTheOctoverse23}]{in 2023, 4.3 million public and private repositories used Dockerfiles --- and more than 1 million public repositories used Dockerfiles for creating containers.}
 
-\subsection{Container Orchestration}
+\subsection{Container orchestration}
 
 \textquote[\cite{orchestrationDefinition}]{Container orchestration automates the provisioning, deployment, networking, scaling, availability, and lifecycle management of containers.} The concept first gained popularity as \emph{Docker Swarm}, which is a functionality of the \emph{Docker} software, but its most successful instance so far is as the software package \emph{Kubernetes}, which originated at \emph{Google} in late 2013 \parencite{kubernetesHistory} and went on to be included in the \ac{CNCF}, a project by the \emph{Linux Foundation}, that \textquote[\cite{cloudNativeComputingFoundation}]{aims to advance the state-of-the-art for building cloud-native applications and services}. It can be extended, highly customised and deployed on anything from an embedded device to a large-scale cloud infrastructure, providing a versatile deployment and management tool for many application infrastructures.
