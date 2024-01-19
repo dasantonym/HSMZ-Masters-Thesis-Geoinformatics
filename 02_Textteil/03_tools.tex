@@ -8,9 +8,9 @@
 
 \subsection{JavaScript}
 
-A scripting language created by Brendan Eich in 1995 as part of the release of the \emph{Netscape 2} browser \parencite{javascriptRelease}, then was officially standardised by the Swiss standards body \emph{Ecma} in 1997 as \emph{ECMA-262} or \emph{ECMAScript}, as it is known today. This standard later was the basis for \emph{JScript} by \emph{Microsoft} and \emph{ActionScript} as part of \emph{Macromedia Flash}. The version currently being supported by all browsers (except Internet Explorer 11) is \ac{ES6} \parencite{javascriptHistory}.
+A scripting language created by Brendan Eich in 1995 as part of the release of the Netscape 2 browser \parencite{javascriptRelease}, then was officially standardised by the Swiss standards body Ecma in 1997 as ECMA-262 or ECMAScript, as it is known today. This standard later was the basis for JScript by Microsoft and ActionScript as part of Macromedia Flash. The version currently being supported by all browsers (except Internet Explorer 11) is \ac{ES6} \parencite{javascriptHistory}.
 
-\ac{JS} is an object-oriented, weakly-typed programming language that applies multiple programming paradigms. It is primarily used in the browser to add extra functionality to web pages. The underlying \emph{ECMAScript} standard does not define any input or output methods, which means that this is provided by the specific environment it is being used in (e.g. desktop or mobile browsers).
+\ac{JS} is an object-oriented, weakly-typed programming language that applies multiple programming paradigms. It is primarily used in the browser to add extra functionality to web pages. The underlying ECMAScript standard does not define any input or output methods, which means that this is provided by the specific environment it is being used in (e.g. desktop or mobile browsers).
 
 \subsection{TypeScript}
 
@@ -19,11 +19,11 @@ A scripting language created by Brendan Eich in 1995 as part of the release of t
 
 \section{Native application development}
 
-\subsection{Node JS}
+\subsection{Node}
 
-Released initially by developer Ryan Dahl in 2009, a server-side \ac{JS} environment, Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration. Its development was sponsored by the company Joyent after some dissatisfaction in the community about Joyent's stewardship and a fork of Node.js called io.js. These differences were eventually resolved, and everything was merged under the umbrella of the OpenJS Foundation. 
+Released initially by developer Ryan Dahl in 2009, a server-side \ac{JS} environment, Node runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration. Its development was sponsored by the company Joyent after some dissatisfaction in the community about Joyent's stewardship and a fork of Node called io.js. These differences were eventually resolved, and everything was merged under the umbrella of the OpenJS Foundation.
 
-Node.js uses the \ac{NPM} to package code as modules, which can be used as dependencies. These modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem. It can be used to develop \ac{API}s or other server-side applications and support local web development processes like preprocessing, packaging, and deployment. 
+Node uses the \ac{NPM} to package code as modules, which can be used as dependencies. These modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem. It can be used to develop \ac{API}s or other server-side applications and support local web development processes like preprocessing, packaging, and deployment.
 
 \subsection{Python}
 
@@ -31,18 +31,18 @@ Guido van Rossum created the Python programming language in 1990 \parencite{pyth
 
 The language uses a standard library, and the surrounding ecosystem of available modules and applications based on Python makes it a good choice for data processing and science.
 
-There is a native code interface that allows extending Python with bindings to native code, like with Node.js.
+There is a native code interface that allows extending Python with bindings to native code, like with Node.
 
 \subsection{C/C++}
 
 C++ originated as an extension to C in 1985. It is a multi-paradigm, statically typed and object-oriented programming language.
 
-It can be used to develop code for embedded platforms like Arduino, extend both Node.js and Python and, more generally, provide direct interaction with the operating system and its APIs.
+It can be used to develop code for embedded platforms like Arduino, extend both Node and Python and, more generally, provide direct interaction with the operating system and its APIs.
 
 
 \section{Frontend frameworks and libraries}
 
-There is a wide range of available \ac{JS} frameworks to build dynamic frontends for \ac{SPA}s and \ac{PWA}s. The three libraries currently dominating the landscape are \emph{React}, developed by \emph{Facebook} in 2013, and \emph{Vue.js}, created by Evan You in 2014. These libraries can be used with frameworks to offer complete routing and state management solutions. Another popular framework is \emph{Angular}, initially released by \emph{Google} in 2010 and re-released in 2016.
+There is a wide range of available \ac{JS} frameworks to build dynamic frontends for \ac{SPA}s and \ac{PWA}s. The three libraries currently dominating the landscape are React, developed by Facebook in 2013, and Vue, created by Evan You in 2014. These libraries can be used with frameworks to offer complete routing and state management solutions. Another popular framework is Angular, initially released by Google in 2010 and re-released in 2016.
 
 \begin{figure}[h]
     \centering
@@ -54,15 +54,15 @@ There is a wide range of available \ac{JS} frameworks to build dynamic frontends
 
 \subsection{React}
 
-\emph{React} (\url{https://react.dev/}), developed by \emph{Facebook} and maintained by its successor \emph{Meta}, has become the most widely used tool for building \ac{SPA}s and is steadily leading the rankings for most used frontend frameworks both in the \emph{StackOverflow} \parencite{stackOverflowPollWebFrameworks23} and the \emph{State Of JS} \parencite{mostUsedFrontendFrameworks22} polls. By definition, it is not a framework but a \ac{UI} library that builds on other extensions to support state management, routing and deployment functionality. Although it is not a framework itself, there are existing frameworks like \emph{Next.js} (\url{https://nextjs.org/}) for the web and \emph{ReactNative} (\url{https://reactnative.dev/}) for building mobile apps using native functionality. React makes use of \ac{JSX}, which allows directly mixing inline \ac{HTML} with the \ac{JS} or \ac{TS} code structure.
+React (\url{https://react.dev/}), developed by Facebook and maintained by its successor Meta, has become the most widely used tool for building \ac{SPA}s and is steadily leading the rankings for most used frontend frameworks both in the Stack Overflow \parencite{stackOverflowPollWebFrameworks23} and the State Of JS \parencite{mostUsedFrontendFrameworks22} polls. By definition, it is not a framework but a \ac{UI} library that builds on other extensions to support state management, routing and deployment functionality. Although it is not a framework itself, there are existing frameworks like Next.js (\url{https://nextjs.org/}) for the web and ReactNative (\url{https://reactnative.dev/}) for building mobile apps using native functionality. React makes use of \ac{JSX}, which allows directly mixing inline \ac{HTML} with the \ac{JS} or \ac{TS} code structure.
 
-\subsection{Vue.js}
+\subsection{Vue}
 
-\emph{Vue.js} (\url{https://vuejs.org/}) was developed by Evan You and is maintained by an international team of individuals. It had a relatively marginal presence in the US and Europe in the first years after its inception. This can be partially attributed to its origin in China, as most of its supporting modules were localised in Chinese. Over the years, it grew in popularity and received much more international support, eventually overcoming the language barrier. Unlike \emph{React}, it is billed as a "progressive framework" that provides fundamental functionality for building reactive components but also accommodates more complex use-cases \parencite{vueProgressiveFramework}. \emph{Vue.js} builds on standard \ac{JS} or \ac{TS}, \ac{HTML} and \ac{CSS} to build components, recommending a simple template mechanism mixed with reactive substitutions. However, it also supports using \ac{JSX} for specifying inline \ac{HTML} within \ac{JS}. As with \emph{React}, there are extensions and frameworks like \emph{Quasar} (\url{https://quasar.dev/}) and \emph{Nuxt} (\url{https://nuxt.com/}) that enable even more sophisticated workflows for application development and deployment.
+Vue (\url{https://vuejs.org/}) was developed by Evan You and is maintained by an international team of individuals. It had a relatively marginal presence in the US and Europe in the first years after its inception. This can be partially attributed to its origin in China, as most of its supporting modules were localised in Chinese. Over the years, it grew in popularity and received much more international support, eventually overcoming the language barrier. Unlike React, it is billed as a "progressive framework" that provides fundamental functionality for building reactive components but also accommodates more complex use-cases \parencite{vueProgressiveFramework}. Vue builds on standard \ac{JS} or \ac{TS}, \ac{HTML} and \ac{CSS} to build components, recommending a simple template mechanism mixed with reactive substitutions. However, it also supports using \ac{JSX} for specifying inline \ac{HTML} within \ac{JS}. As with React, there are extensions and frameworks like Quasar (\url{https://quasar.dev/}) and Nuxt (\url{https://nuxt.com/}) that enable even more sophisticated workflows for application development and deployment.
 
 \subsection{Angular}
 
-\emph{Angular} was initially released by \emph{Google} in 2010 as \emph{AngularJS}  and officially discontinued in 2022 (\url{https://angularjs.org/}). A completely overhauled and currently used version 2 was released in 2016 and maintained by \emph{Google}. It is different from \emph{React} and \emph{Vue.js} in that it is a complete framework that contains everything required to build and deploy an application, and it explicitly recommends \ac{TS} as a programming language. The framework is also less flexible in that it is opinionated and has its own set of best practices baked into the framework's structure.
+Angular was initially released by Google in 2010 as AngularJS and officially discontinued in 2022 (\url{https://angularjs.org/}). A completely overhauled and currently used version 2 was released in 2016 and maintained by Google. It is different from React and Vue in that it is a complete framework that contains everything required to build and deploy an application, and it explicitly recommends \ac{TS} as a programming language. The framework is also less flexible in that it is opinionated and has its own set of best practices baked into the framework's structure.
 
 
 
@@ -86,9 +86,9 @@ Other frameworks and a more stringent and structured application structure might
 
 \input{04_Artefakte/02_Tabellen/backend_frameworks_ranking_soj}
 
-\subsection{Nest JS}
+\subsection{Nest}
 
-Nest JS is a backend framework for developers who look for a more strictly opinionated and robust setup than Express, e.g. for enterprise applications. It follows a modular concept, making dependencies available to the services via injection. There are multiple database options, and transports can be HTTP and WebSockets. There are \ac{CLI} scripts that enable automatic generation of boilerplate application code, and the language used to build Nest applications is TypeScript. It ranks second among the most-used backend frameworks in the State of JS survey \parencite{mostUsedBackendFrameworks22}.
+Nest is a backend framework for developers who look for a more strictly opinionated and robust setup than Express, e.g. for enterprise applications. It follows a modular concept, making dependencies available to the services via injection. There are multiple database options, and transports can be HTTP and WebSockets. There are \ac{CLI} scripts that enable automatic generation of boilerplate application code, and the language used to build Nest applications is TypeScript. It ranks second among the most-used backend frameworks in the State of JS survey \parencite{mostUsedBackendFrameworks22}.
 
 \subsection{Feathers}
 
@@ -108,7 +108,7 @@ The framework primarily uses MongoDB as a database system and initially provided
 
 \subsection{THREE.js}
 
-This \ac{3D} graphics framework with a large community with over 1800 contributors has been around since it was publicly released by Ricardo Cabello in 2010. It features an extensive toolset for graphics generation, rendering and effects and relies on the \emph{WebGL} standard to allow performant rendering via local graphics hardware.
+This \ac{3D} graphics framework with a large community with over 1800 contributors has been around since it was publicly released by Ricardo Cabello in 2010. It features an extensive toolset for graphics generation, rendering and effects and relies on the WebGL standard to allow performant rendering via local graphics hardware.
 
 \subsection{A-Frame}
 
