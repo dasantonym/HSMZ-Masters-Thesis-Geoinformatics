@@ -17,7 +17,7 @@ Motion capture technology is often used in CGI, enabling puppeteering of 3D avat
 
 In the performance field, the preferred methods are IMU-based tracking systems like the SmartSuit by Rokoko or the Perception Neuron sensor kit. These operate over the radio and are independent of the lighting conditions but tend to produce less accurate data or are subject to interference.
 
-The grassroots setup for motion capture is the Kinect, developed by Microsoft in 2010, featuring an infrared time-of-flight measurement system that produces a depth image from which a 3D pose can then be extracted using \textquote[\cite{poseEstimationPaper}]{3D pose estimation}. The Kinect was frequently used among creative coders, although it was initially developed for games. In 2024, the Kinect, now called Azure Kinect, is supposed to be officially discontinued. However, other low-cost 3D cameras are on the market, like the Oak-D with an integrated processing engine or the Orbbec Femto Bolt. These systems produce rather sub-par accuracy but can be used to analyse more general dynamics in the movement data.
+The \textquote{grassroots} setup for motion capture is the Kinect, developed by Microsoft in 2010, featuring an infrared time-of-flight measurement system that produces a depth image from which a 3D pose can then be extracted using \textquote[\cite{poseEstimationPaper}]{3D pose estimation}. The Kinect was frequently used among creative coders, although it was initially developed for games. In 2024, the Kinect, now called Azure Kinect, is supposed to be officially discontinued. However, other low-cost 3D cameras are on the market, like the Oak-D with an integrated processing engine or the Orbbec Femto Bolt. These systems produce rather sub-par accuracy but can be used to analyse more general dynamics in the movement data.
 
 Deep learning models for motion capture like PoseNet or BlazePose have also become available and, while primarily used on 2D (surveillance) footage, can be extended into 3D if combined with the proper calibration data (e.g. depth images). These models are fast and can be run on a regular webcam, but they also tend to produce relatively coarse movement data.
 
@@ -29,11 +29,15 @@ The basic principle for movement sonification is the same as for any data sonifi
 
 \section{Web standards}
 
-The \ac{W3C} has created the context of web standards to formulate certain general definitions for interaction with particular \ac{OS} or hardware functionality via the browser. As \ac{JS} does not define any specific \ac{I/O} functionality, it is the task of the browser environment to supply this. As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \ac{API}s was devised and implemented.
+The idea behind web standards is meant to provide stable definitions of core technologies that are used to build and present web content. Apart from providing a consistent display across different browsers, this is especially important for the interaction with particular \ac{OS} or hardware functionality via the browser. As \ac{JS} does not define any specific \ac{I/O} functionality, it is the task of the browser environment to supply this. As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \ac{API}s was devised and implemented. There are several organisations that standardise web technologies, with the most prominent of them being the \ac{W3C}, \ac{WHATWG}, Ecma, Khronos and the \ac{IETF}.
 
 \subsection{WebRTC}
 
 The standard for real-time communication in browsers was initially proposed and mainly developed by Google. It is an official standard since 2019(?). It provides functionality for transmitting video and audio streams over \ac{UDP} or \ac{TCP}. Additionally, data streams with arbitrary message packets can be used to transmit binary encoded or text data. WebRTC handles all low-level flow control or other transmission aspects. It can be used in direct peer-to-peer communication, but also as a \ac{SFU} enabling one-to-many or many-to-many communication setups.
+
+\subsection{WebSockets}
+
+A transmission protocol that was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011 \parencite{webSocketsProtocolRfc}. It allows full-duplex communication between client and server, running on the same ports and transport layer 7 as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure.
 
 \subsection{WebAudio}
 
@@ -60,7 +64,7 @@ The term \ac{PWA} was initially coined in 2015 by two Google employees in an onl
 
 \subsection{Real-time web applications}
 
-A real-time web application enhances the user experience by relaying relevant changes on the server to the server as they happen. This can be a simple chat application or a more complex collaborative multi-user environment. While real-time updates can happen on any multi-page website, they can also be a beneficial feature of an \ac{SPA} or a \ac{PWA}. Instantaneous updates are commonly realised using WebSockets, a transmission protocol that was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011 \parencite{webSocketsProtocolRfc}. It allows full-duplex communication between client and server, running on the same ports and transport layer as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure. It allows for updates to be pushed to the client whenever a resource on the server changes.
+A real-time web application enhances the user experience by relaying relevant changes on the server to the server as they happen. This can be a simple chat application or a more complex collaborative multi-user environment. While real-time updates can happen on any multi-page website, they can also be a beneficial feature of an \ac{SPA} or a \ac{PWA}. Instantaneous updates are commonly realised using WebSockets, allowing updates to be pushed to the client whenever a resource on the server changes.
 
 
 
