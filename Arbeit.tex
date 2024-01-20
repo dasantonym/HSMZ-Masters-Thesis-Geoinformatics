@@ -47,7 +47,7 @@ a4paper, % paper
 % Wird der Befehl entfernt, werden nur die Quellen gelistet, die auch zitiert werden.
 % Der Befehl sollte bei Abgabe der Bachelorarbeit entfernt werden.
 \nocite{*}
-\newcounter{romanConsecutive}
+% \newcounter{romanConsecutive}
 
 % Set ToC depth to subsubsection
 % \setcounter{tocdepth}{4}
@@ -62,6 +62,7 @@ a4paper, % paper
 \include{01_Vortext/03_Erklaerung}
 \include{01_Vortext/04_Abstract}
 
+\pagenumbering{arabic}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyheadoffset{0cm}
@@ -74,12 +75,12 @@ a4paper, % paper
 }
 % \pagestyle{plain}
 \renewcommand*{\chapterpagestyle}{fancy}
-\pagenumbering{Roman}
+% \pagenumbering{Roman}
 \include{01_Vortext/05_Verzeichnisse}
 \include{00_Allgemein/Nomenklatur}
 
-\setcounter{romanConsecutive}{\value{page}}
-\pagenumbering{arabic}
+% \setcounter{romanConsecutive}{\value{page}}
+% \pagenumbering{arabic}
 \include{02_Textteil/01_introduction}
 \include{02_Textteil/02_concepts}
 \include{02_Textteil/03_tools}
@@ -88,9 +89,9 @@ a4paper, % paper
 \include{02_Textteil/06_conclusion}
 
 
-\pagenumbering{Roman}
+% \pagenumbering{Roman}
 
-\setcounter{page}{\value{romanConsecutive}-1} % decrease counter by one 
+% \setcounter{page}{\value{romanConsecutive}-1} % decrease counter by one 
 \printbibliography[title={Bibliography}]
 \include{03_Nachtext/01_appendix}
 
