@@ -89,7 +89,9 @@
 \SetupFloatingEnvironment{listing}{name=Listing, placement=b}
 \SetupFloatingEnvironment{listing}{listname={Listingverzeichnis}}
 \setminted[java]{linenos, fontsize=\footnotesize, frame=lines, breaklines, breakbefore={.}}
-\usemintedstyle{borland}
+\setminted[js]{linenos, fontsize=\footnotesize, frame=lines, breaklines, breakbefore={.}}
+\setminted[json]{linenos, fontsize=\footnotesize, frame=lines, breaklines, breakbefore={.}}
+\usemintedstyle{friendly}
 % new environment for listings longer than one page; https://tex.stackexchange.com/a/53540
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}
 \usepackage{csquotes}

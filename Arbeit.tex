@@ -62,10 +62,18 @@ a4paper, % paper
 \include{01_Vortext/03_Erklaerung}
 \include{01_Vortext/04_Abstract}
 
-%\pagestyle{fancy}
-%\fancyhf{}
-%\fancyhead[R]{\thepage}
-\renewcommand*{\chapterpagestyle}{plain}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyheadoffset{0cm}
+\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\footrulewidth}{0pt}
+\fancyhead[R]{\thepage}
+\fancypagestyle{plain}{
+  \fancyhf{}
+  \fancyhead[R]{\thepage}
+}
+% \pagestyle{plain}
+\renewcommand*{\chapterpagestyle}{fancy}
 \pagenumbering{Roman}
 \include{01_Vortext/05_Verzeichnisse}
 \include{00_Allgemein/Nomenklatur}
