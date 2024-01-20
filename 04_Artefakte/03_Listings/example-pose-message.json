@@ -1,0 +1,22 @@
+{
+  "t_ns": {
+    "index": 0,
+    "count": 1,
+    "dims": 1,
+    "type": "BigInt64",
+    "le": true
+  },
+  "type": {
+    "index": 8,
+    "count": 1,
+    "dims": 1,
+    "type": "Uint8",
+    "le": true
+  },
+  "points": {
+    "index": 9,
+    "dims": 3,
+    "type": "Float32",
+    "le": true
+  }
+}
