@@ -54,6 +54,10 @@ a4paper, % paper
 % \setcounter{secnumdepth}{4}
 
 \begin{document}
+\setlength{\aboverulesep}{0pt}
+\setlength{\belowrulesep}{0pt}
+% \setlength{\extrarowheight}{.75ex}
+
 \include{00_Allgemein/ToDo}
 
 \pagestyle{empty}
@@ -70,7 +74,7 @@ a4paper, % paper
 \renewcommand{\footrulewidth}{0pt}
 \fancyhead[R]{\thepage}
 \fancypagestyle{plain}{
-  \fancyhf{}
+  \fancyhf{} 
   \fancyhead[R]{\thepage}
 }
 % \pagestyle{plain}
