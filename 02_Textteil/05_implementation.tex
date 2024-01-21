@@ -79,7 +79,7 @@ The conferencing functionality implemented in the web application is sending aud
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/application-messaging-flow}
-\caption[Aplication messaging flow]{Messaging flow between the application's components\protect}
+\caption[Application messaging flow]{Messaging flow between the application's components\protect}
 \label{fig:messagingFlow}
 \end{figure}
 
@@ -100,20 +100,20 @@ Each \emph{User} can own multiple \emph{Space} objects. A \emph{Space} is a cont
 
 \subsection{Message format}
 
-The data messages are not encoded as \ac{JSON} text messages, but sent as raw data to make them as small as possible. Messages are structured as byte sequences, with a 64bit long integer timestamp using the first eight bytes, then a single byte with an unsigned integer for selecting a message schema from the enumerated message types and then a freely defined sequence of different number types. Here, 32bit floating point numbers are used for all of the sensor readings as the numbers stay sufficiently small and the precision is enough for millimetre measurements, statistical values or angles. The numeric values are encoded in Little Endian format that is consistent across the tested environments, but should be explicitly adhered to if other components are added to the application.
+The data messages are not encoded as \ac{JSON} text messages, but sent as raw data to make them as small as possible. Messages are structured as byte sequences, with a 64bit long integer timestamp using the first eight bytes, then a single byte with an unsigned integer for selecting a message schema from the enumerated message types and then a freely defined sequence of different number types (\autoref{fig:messageStructure}). Here, 32bit floating point numbers are used for all of the sensor readings as the numbers stay sufficiently small and the precision is enough for millimetre measurements, statistical values or angles. The numeric values are encoded in Little Endian format that is consistent across the tested environments, but should be explicitly adhered to if other components are added to the application.
 
 \begin{figure}[h]
 \centering
 \includegraphics[width=\textwidth]{04_Artefakte/01_Abbildungen/generic-message-structure}
 \caption[Generic Message Structure]{The basic message structure for transmitting numeric sensor readings\protect}
-\label{fig:apiDataModel}
+\label{fig:messageStructure}
 \end{figure}
 
 \subsection{Message types}
 
-The message types are stored as JSON. This is a simple example message schema for a nanosecond timestamp (\emph{{t\_ns}}), \emph{type} and one or more \ac{3D} \emph{points} stored as floats.
+The message types are stored as JSON. Shown here is a simple example message schema for a nanosecond timestamp (\emph{{t\_ns}}), \emph{type} and one or more \ac{3D} \emph{points} stored as floats.
 
-The root object's property names resolve to the key under which the value can later be accessed. The \emph{index} property specifies the byte index in the message, \emph{count} specifies if the value repeats in sequence or is singular. \emph{dims} sets the dimensions for the value (e.g. \textquote{3} for a \ac{3D} point). The \emph{type} can be a \textquote{Uint8}, \textquote{Float32} or a \textquote{BigInt64} and the property \textquote{le} specifies if this value is encoded as Little Endian.
+The root object's property names resolve to the key under which the value can later be accessed. The \emph{index} property specifies the byte index in the message, \emph{count} specifies if the value repeats in sequence or is singular. \emph{dims} sets the dimensions for the value (e.g. \textquote{3} for a \ac{3D} point). The \emph{type} can be a \textquote{Uint8}, \textquote{Float32} or a \textquote{BigInt64} and the property \textquote{le} specifies if this value is encoded as Little Endian (\autoref{listing:exampleMessage}).
 
 \begin{listing}[!ht]
 \inputminted{json}{04_Artefakte/03_Listings/example-pose-message.json}
