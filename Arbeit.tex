@@ -70,11 +70,11 @@ a4paper, % paper
 \pagestyle{fancy}
 \fancyhf{}
 \fancyheadoffset{0cm}
-\renewcommand{\headrulewidth}{0pt} 
+\renewcommand{\headrulewidth}{0pt}
 \renewcommand{\footrulewidth}{0pt}
 \fancyhead[R]{\thepage}
 \fancypagestyle{plain}{
-  \fancyhf{} 
+  \fancyhf{}
   \fancyhead[R]{\thepage}
 }
 % \pagestyle{plain}
@@ -86,16 +86,17 @@ a4paper, % paper
 % \setcounter{romanConsecutive}{\value{page}}
 % \pagenumbering{arabic}
 \include{02_Textteil/01_introduction}
-\include{02_Textteil/02_concepts}
-\include{02_Textteil/03_tools}
-\include{02_Textteil/04_methodology}
+\include{02_Textteil/02_conceptual_foundations}
+\include{02_Textteil/03_methodology}
+\include{02_Textteil/04_concept}
 \include{02_Textteil/05_implementation}
-\include{02_Textteil/06_conclusion}
+\include{02_Textteil/06_evaluation}
+\include{02_Textteil/07_conclusion}
 
 
 % \pagenumbering{Roman}
 
-% \setcounter{page}{\value{romanConsecutive}-1} % decrease counter by one 
+% \setcounter{page}{\value{romanConsecutive}-1} % decrease counter by one
 \printbibliography[title={Bibliography}]
 \include{03_Nachtext/01_appendix}
 
