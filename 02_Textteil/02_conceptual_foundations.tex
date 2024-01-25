@@ -29,6 +29,7 @@ The basic principle for movement sonification is the same as for any data sonifi
 
 
 \section{Embedded computing and open-source hardware}
+\label{section:embeddedComputing}
 
 The concept of an embedded system is defined as \textquote[\cite{embeddedComputingDefinition}]{a combination of computer hardware and software, and perhaps additional mechanical or other parts, designed to perform a dedicated function. In some cases, embedded systems are part of a larger system or product, \ldots .}
 
@@ -64,34 +65,54 @@ A transmission protocol that was standardised as \ac{RFC} 6455 by the \ac{IETF} 
 
 This standard for handling audio in the browser takes care of basic mixing of channels and different sources (e.g. media streams, audio files). It can also be used for generating sound via several synthesis nodes. Another feature that is commonly used in context of games or virtual reality experiences is the possiblity of placing sound sources in virtual soundstages that are then rendered as ambisonics for psychoacoustics in headphones.
 
+There are several frameworks that provide a high-level abstraction to the WebAudio \ac{API} and thus enable a speedier development process. While the selections of frameworks presented for selection are supposed to be the top three entries based on GitHub Stars, this list adds the relatively new framework Elementary, that takes a different approach to development using declarative definition of sound structures. It has roughly half the rating of Flocking, but has been around only since 2022 (\ref{tab:githubAudioFrameworks}).
+
+\input{04_Artefakte/02_Tabellen/github_audio_frameworks}
+
+\subsubsection{Howler.js}
+
+Howler is a complete audio framework that builds on the WebAudio \ac{API} and provides easy access to audio functionality, focusing primarily on interactive audio for web apps or games. It offers various modes of sound playback and mixing as well as spatial audio as a plugin, but at the time of writing, only supports connecting live audio sources through a yet unmerged pull request on GitHub \footnote{Pull request for supporting external media streams: \href{https://github.com/goldfire/howler.js/pull/1634}{https://github.com/goldfire/howler.js/pull/1634}}.
+
+\subsubsection{Tone.js}
+
+Tone.js is explicitly focused on musical application, working much like a digital audio workstation software, providing various modes of sound synthesis, as well as transport controls, metrum and scales. It supports spatialisation using a \ac{3D} panner node and, while not explicitly documented, should support external audio stream input through its \textquote{UserMedia} node.
+
+\subsubsection{Flocking}
+
+Flocking is more of an outsider, being around since 2011, but having gathered only small amount of star ratings, but has a unique approach in that it defines sound objects using \ac{JSON}, making them easily portable and allowing for generative approaches to sound generation on a meta-level. According to its developer, \textquote[\cite{githubFlocking}]{its goal is to promote a uniquely community-minded approach to instrument design and composition.} Unfortunately, it currently does not support parallelising audio rendering in special workers and thus, \textquote[\cite{githubFlocking}]{Flocking is not currently well-suited to applications that involve a lot of graphics rendering or user interaction.}
+
+\subsubsection{Elementary}
+
+Another audio framework following a declarative and functional approach is Elementary, which has only been around since early 2023. It separates the declarative \ac{API} for creating instruments and musical structures from the sound rendering, allowing it to use the Web Audio \ac{API} for real-time audio in the browser and an offline renderer for Node.js. The framework offers extendability through native nodes that can be developed in C++ and used in the Node.js environment.
+
+\subsubsection{Resonance}
+
+Another library worth mentioning is Resonance, which focuses exclusively on spatial audio. It was developed by Google and based on Omnitone, another Google project focusing on ambisonic spatial audio rendering. It received only one release and seems to have remained dormant since then, but it still works without breaking changes. It uses a default \ac{HRTF} to model audio spatialisation. It allows a virtual room to be created with different materials for walls, floors, and ceilings that provide different reflection types. It also offers custom sources to be defined, connected to web audio nodes, and positioned around the virtual space. It hooks into any existing audio context, thus allowing a combination with virtually any other WebAudio-compliant audio framework.
+
 \subsection{WebXR}
 
 The various virtual and augmented reality devices available are made accessible via the WebXR \ac{API}. The browser manages the communication with the headset and a \ac{3D} scene created in a web-based graphics framework like THREE.js or A-Frame can be instantly experienced on a \ac{VR} headset like the HTC Vive or Oculus Quest.
 
-\subsubsection{THREE.js}
+\input{04_Artefakte/02_Tabellen/github_3d_frameworks}
 
-This \ac{3D} graphics framework with a large community with over 1800 contributors has been around since it was publicly released by Ricardo Cabello in 2010. It features an extensive toolset for graphics generation, rendering and effects and relies on the WebGL standard to allow performant rendering via local graphics hardware.
+\subsubsection{Three.js}
+
+This \ac{3D} graphics framework with a large community with over 1800 contributors has been around since 2010. Originally developed for the ActionScript language used in Macromedia and later Adobe Flash (another Ecma standard-compliant language, see \autoref{chapter:programmingLanguages}). It features an extensive toolset for graphics generation, rendering and effects and relies on the WebGL standard to allow performant rendering via local graphics hardware.
+
+\subsection{Babylon.js}
+
+Babylon.js is another fully-fledged \ac{3D} framework with a strong focus on games and realistic high-quality rendering. It was originally developed by Microsoft employees in 2013. The framework features an extensive collection of tools for interaction, animation and also supports the integration of the \ac{WebXR} standard to make use of \ac{VR} equipment in the browser.
 
 \subsubsection{A-Frame}
 
-Based on THREE.js, this framework allows the developer to create \ac{3D} scenes by composing custom HTML elements that provide geometric primitives, lights, cameras, etc. This way, it has a low entry barrier for people coming from web development with limited scripting experience. It explicitly focuses on mixed reality applications, implements the WebXR standard and controls for various headsets and controllers.
-
-\subsubsection{Resonance}
-
-Resonance was developed by Google-based Omnitone, another Google project focusing on ambisonic spatial audio rendering. It received only one release and seems to have remained dormant since then, but it still works without breaking changes. It uses a default \ac{HRTF} to model audio spatialisation. It allows a virtual room to be created with different materials for walls, floors, and ceilings that provide different reflection types. It also offers custom sources to be defined, connected to web audio nodes, and positioned around the virtual space. It hooks into any existing audio context, thus allowing a combination with any WebAudio-compliant audio framework.
-
-\subsubsection{Howler.js}
-
-Howler is a more complete audio framework that builds on the WebAudio \ac{API} and provides easier access to audio functionality. It offers spatial audio as a plugin, but at the time of writing, only supports connecting live audio sources through a yet unmerged pull request on GitHub (see: \href{https://github.com/goldfire/howler.js/pull/1634}{https://github.com/goldfire/howler.js/pull/1634}).
-
+A-frame is a framework that allows the developer to create \ac{3D} scenes by composing custom HTML elements that provide geometric primitives, lights, cameras, etc. This way, it has a comparably low entry barrier for people coming from web development with limited scripting experience. It explicitly focuses on mixed reality applications, implements the WebXR standard and has preset control objects for various headsets and controllers. It is based on Three.js, whose full functionality can optionally be accessed through A-Frame, if more custom behaviour is required.
 
 \subsection{WebBluetooth}
 
-This rather simple \ac{API} provides access to the computer's Bluetooth functionality. It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics sending and receiving messages to and from the browser.
-
-
+This rather simple \ac{API} provides access to the computer's Bluetooth functionality. It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics sending and receiving messages to and from the browser (see: \autoref{section:embeddedComputing}).
 
 \section{Programming languages}
+\label{section:programmingLanguages}
 
 \input{04_Artefakte/02_Tabellen/github_language_ranking}
 
@@ -123,7 +144,7 @@ There is a native code interface that allows extending Python with bindings to n
 
 C++ originated as an extension to C in 1985. It is a multi-paradigm, statically typed and object-oriented programming language.
 
-It is used to develop code for embedded opens-source hardware platforms, extend both Node and Python and, more generally, provides direct interaction with the operating system and its APIs. While it is the oldest of the programming languages mentioned here, it has remained essential to the open-source world, not least because of its prevalence in the Linux ecosystem.
+It is used to develop code for embedded opens-source hardware platforms (see: \autoref{section:embeddedComputing}), extend both Node and Python and, more generally, provides direct interaction with the operating system and its APIs. While it is the oldest of the programming languages mentioned here, it has remained essential to the open-source world, not least because of its prevalence in the Linux ecosystem.
 
 
 \section{Application design paradigms}
