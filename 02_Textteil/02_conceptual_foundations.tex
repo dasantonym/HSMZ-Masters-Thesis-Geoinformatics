@@ -240,14 +240,19 @@ The framework primarily uses MongoDB as a database system and initially provided
 
 \section{Databases}
 
-\subsection{MongoDB}
-
-A document store database that is designed to hold large amounts of unstructured data. It has its own query language and features aggregation functionality that allows map/reduce and transformation operations or resolving of relations on the data before being sent to the client. Its focus on storing documents of any kind can become problematic since it can lead to inconsistent data very easily if appropriate care isn't applied in the application development (it supports schema validation, but that is not mandatory). However, this loose schematic handling can be beneficial if the application data can't be adequately modelled from the get-go and is subject to more frequent changes.
+\input{04_Artefakte/02_Tabellen/stack_overflow_databases_23}
 
 \subsection{PostgreSQL}
 
-This very widely used database uses a table-based data topology and implements \ac{SQL} for interaction with the database and its contents. The relatively rigid database schema provides a more solid structure for data storage and retrieval but, on the other hand, requires migrations to be written to transition from one database structure version to another. This can become tedious if the data modelling process is continuously ongoing and volatile.
+This very widely used database uses a table-based data topology and implements \ac{SQL} for interaction with the database and its contents. The relatively rigid database schema provides a more solid structure for data storage and retrieval but, on the other hand, requires migrations to be written to transition from one database structure version to another. This can become tedious if the data modelling process is continuously ongoing and volatile. It has an extensive feature set supporting complex data structures, as well as \ac{GIS} data and data structured in \ac{JSON} format. Developed in the 1980s at the University of California and switched to the \ac{SQL} in the 90s, it has remained a popular choice for enterprise and small-scale use alike.
 
+\subsection{MySQL}
+
+Similar to PostgreSQL in that it also uses \ac{SQL}, MySQL supports many of the features of PostgreSQL, but has an overall smaller feature set. It was originally developed in the 1990s by the private Swedish company MySQL AB and was forked as a completely open-source version in 2009 and renamed MariaDB. It is still a popular choice, especially for smaller web projects that don't need the extra functionality and value its rather simple setup.
+
+\subsection{MongoDB}
+
+A document store database that is designed to hold large amounts of unstructured data. It has its own query language and features aggregation functionality that allows map/reduce and transformation operations or resolving of relations on the data before being sent to the client. It uses the \ac{NoSQL} paradigm and focuses on storing documents of any kind, which can become problematic in rather informal development environments since it can lead to inconsistent data very easily if appropriate care isn't applied during application development (it supports schema validation, but that is not mandatory). However, this loose schematic handling can be beneficial if the application data can't be adequately modelled from the get-go and is subject to more frequent changes. It was initially released as open-source in 2009, then was put under a proprietary license in 2018, but remains available to be used for free with limited support.
 
 
 \section{Application deployment}
