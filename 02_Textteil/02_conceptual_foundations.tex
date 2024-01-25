@@ -37,6 +37,7 @@ While this definition applies to the majority of contemporary electronics, it ro
 
 
 \section{Web standards}
+\label{section:webStandards}
 
 The idea behind web standards is meant to provide stable definitions of core technologies that are used to build and present web content. Apart from providing a consistent display across different browsers, this is especially important for the interaction with particular \ac{OS} or hardware functionality via the browser. As \ac{JS} does not define any specific \ac{I/O} functionality, it is the task of the browser environment to supply this. As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \ac{API}s was devised and implemented. There are several organisations that standardise web technologies, with the most prominent of them being the \ac{W3C}, \ac{WHATWG}, Ecma, Khronos and the \ac{IETF}.
 
@@ -59,11 +60,25 @@ Mediasoup can be placed at an opposite end of the spectrum regarding high-level 
 
 \subsection{WebSockets}
 
-A transmission protocol that was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011 \parencite{webSocketsProtocolRfc}. It allows full-duplex communication between client and server, running on the same ports and transport layer 7 as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure.
+A transmission protocol that was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011 \parencite{webSocketsProtocolRfc}. It allows full-duplex communication between client and server, running on the same ports and transport layer 7 as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure. As the WebSockets standard was not fully supported across browsers for a time, there have been various approaches at providing real-time functionality to web applications more or less loosely based on the WebSockets specification. However, the current browser landscape shows a much more complete support for the original WebSockets protocol \parencite{canIUseWebSockets}.
+
+\input{04_Artefakte/02_Tabellen/github_web_sockets_libraries}
+
+\subsubsection{Socket.IO}
+
+Socket.IO is billed as a \textquote[\cite{githubSocketIO}]{realtime [sic] application framework} and provides client and server implementation. While it is very popular for real-time communication in the browser, it implements its own protocol instead of building on the WebSockets standard. As stated in the documentation, \textquote[\cite{githubSocketIO}]{a WebSocket client will not be able to successfully connect to a Socket.IO server, and a Socket.IO client will not be able to connect to a WebSocket server}.
+
+\subsubsection{ws}
+
+WS is a standards-compliant implementation of the WebSockets protocol for use in server-side applications written in Node.js. It is written in C++ to provide good performance and it supports compression via implementation of the standards proposal in \ac{RFC} RFC 7692 \textquote[\cite{webSocketsExtensionCompression}]{Compression Extensions for WebSocket}.
+
+\subsubsection{µWebSockets}
+
+µWebSockets is focused on robustness and performance, while exclusively communicating via standards-compliant WebSockets protocol. Like WS, it is implemented in C++ and used via Node.js on the server side and does not require a specific client library.
 
 \subsection{WebAudio}
 
-This standard for handling audio in the browser takes care of basic mixing of channels and different sources (e.g. media streams, audio files). It can also be used for generating sound via several synthesis nodes. Another feature that is commonly used in context of games or virtual reality experiences is the possiblity of placing sound sources in virtual soundstages that are then rendered as ambisonics for psychoacoustics in headphones.
+This standard for handling audio in the browser takes care of basic mixing of channels and different sources (e.g. media streams, audio files). It can also be used for generating sound via several synthesis nodes. Another feature that is commonly used in context of games or virtual reality experiences is the possibility of placing sound sources on virtual soundstages that are then rendered as ambisonics for psychoacoustics in headphones.
 
 There are several frameworks that provide a high-level abstraction to the WebAudio \ac{API} and thus enable a speedier development process. While the selections of frameworks presented for selection are supposed to be the top three entries based on GitHub Stars, this list adds the relatively new framework Elementary, that takes a different approach to development using declarative definition of sound structures. It has roughly half the rating of Flocking, but has been around only since 2022 (\ref{tab:githubAudioFrameworks}).
 
@@ -99,7 +114,7 @@ The various virtual and augmented reality devices available are made accessible 
 
 This \ac{3D} graphics framework with a large community with over 1800 contributors has been around since 2010. Originally developed for the ActionScript language used in Macromedia and later Adobe Flash (another Ecma standard-compliant language, see \autoref{chapter:programmingLanguages}). It features an extensive toolset for graphics generation, rendering and effects and relies on the WebGL standard to allow performant rendering via local graphics hardware.
 
-\subsection{Babylon.js}
+\subsubsection{Babylon.js}
 
 Babylon.js is another fully-fledged \ac{3D} framework with a strong focus on games and realistic high-quality rendering. It was originally developed by Microsoft employees in 2013. The framework features an extensive collection of tools for interaction, animation and also supports the integration of the \ac{WebXR} standard to make use of \ac{VR} equipment in the browser.
 
@@ -212,7 +227,7 @@ Nest is a backend framework for developers who look for a more strictly opiniona
 
 \subsection{Feathers}
 
-This framework takes a different approach, making few assumptions about the specific application structure. It uses aspect-oriented programming and a service-centric architecture and before-, after- and around-hooks (so-called \textquote{cross-cutting concerns}) for the services that modify basic behaviour or add functionality. There are adapters for a wide range of databases and authentication methods. The framework has a dedicated concept of channels that enable real-time functionality and messaging to clients. Real-time transports are also abstracted and can be deployed using different WebSockets libraries. It also provides a \ac{CLI} to generate application code that can be written in \ac{JS} or \ac{TS}.
+This framework takes a different approach, making few assumptions about the specific application structure. It uses aspect-oriented programming and a service-centric architecture and before-, after- and around-hooks (so-called \textquote{cross-cutting concerns}) for the services that modify basic behaviour or add functionality. There are adapters for a wide range of databases and authentication methods. The framework has a dedicated concept of channels that enable real-time functionality and messaging to clients. Real-time transports are also abstracted and can be deployed using either Socket.IO or µWebSockets (see \autoref{section:webStandards}). It also provides a \ac{CLI} to generate application code in \ac{JS} or \ac{TS}.
 
 Feathers started as a hobby project by David Luecke and Eric Kryski in 2013 \parencite{feathersFrameworkHistory} and is currently maintained by David Luecke and a community of individual contributors. It still ranks in the lower percentages in the State of JS survey but almost doubled that percentage from the previous one in 2021 \parencite{mostUsedBackendFrameworks21}.
 
