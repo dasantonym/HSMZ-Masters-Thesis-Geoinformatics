@@ -7,22 +7,28 @@ This feasibility study is based on three essential parts. The first is a referen
 
 \subsection{Choice of concepts and tools}
 
-To produce a valid test subject for the proposal, the reference implementation is created according to a prior selection of tools and methods deemed appropriate for the task at hand. The choice is made from the tools presented in \autoref{chapter:conceptualFoundations}.
+To produce a valid test subject for the proposal, the reference implementation is created according to a prior selection of tools and methods deemed appropriate for the task at hand. The choice is made from the concepts and tools presented in \autoref{chapter:conceptualFoundations}.
+
+First, possible candidates are identified through internet search and then at least three candidates are selected using the number of \textquote{Stars} received on GitHub as an indicator of popularity. In some cases, another metric has to be used where the technology itself predates GitHub (e.g. databases or programming languages) and its popularity should be judged by other means. In this case, there is a yearly developer survey being conducted by the popular technology forum Stack Overflow with over 90.000 participants for 2023 \parencite{stackOverflowPoll} and the \textquote{State Of JS} survey with over 20.000 participants that is more focused on web development \parencite{stateOfJSSurvey}. Additionally, GitHub is publishing a yearly statistic on its public repositories, which is helpful for identifying technological trends and popularity among millions of open-source repositories \parencite{stateOfTheOctoverse23}. The selection is further narrowed by focusing on specific requirements that the study posits towards its supporting technology.
+
+The decision on choosing a specific candidate is then made not by popularity alone, but with a stronger weight on a good fit to the project's requirements and needs. If a less popular framework fits the specific style of development, it is preferred to the status quo. Another case might be a more recent project that hasn't collected as high of a rating on GitHub, but presents a promising new paradigm or feature set.
 
 \subsection{Application development and deployment}
 
-The application is implemented in its entirety, documented and packaged. Appropriate test coverage is provided, and the overall time spent is logged in timesheets and categorised by the general work areas. The application's server components are deployed to university hardware and made available over the internet. The client application is then run on various consumer computer systems.
+The application development works from the most basic boilerplate code towards finding the appropriate structure for the specific use-case. Well-known and easily defined components are built first and the special functionality is then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics. As there is only a rough architectural model for the project defined beforehand, tests and documentation is written later in the process, as the parts stabilise on their own and in their relationship among each other. This method does not strictly adhere to common development procedures, but borrows loosely from agile development (sprints, review, reorientation) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as layering, separation, and standardised messaging \parencite{patternOrientedSoftwareArchitecture}. A more rigid structure for the development process might be desirable for teams, but the various and disparate \textquote{moving parts} in conjunction with heavy reliance on browser-only \ac{API}s complicate the creation of a well-simulated testing environment using either real or mock-data.
+
+The application is implemented in its entirety, documented and packaged. Appropriate test coverage is provided for the core functionality in the API and the messaging components, and the overall time spent is logged in timesheets and categorised by the general work areas. The application's server components are deployed early on to university hardware and made available over the internet. The client application is then run and tested on various consumer computer systems and networking setups.
 
 \section{Quantitative analysis}
 
 
 \subsection{Statistics}
 
-A statistical analysis of the timesheets provides insight into the time spent on various aspects of the software. It should differentiate between basic boilerplate code that can be reused and custom code used for the actual use case.
+A statistical analysis of the timesheets provides insight into the time spent on various aspects of the software. It should differentiate between basic boilerplate code that can be reused and custom code used for the actual use case, in order to provide insights both into the feasibility of setting up such a system from scratch with only a single developer, as well as the potential cost of just reworking the parts deemed transient and related to the specific use-case.
 
 \subsection{Performance testing}
 
-The application's performance is only tested regarding the load put on the \ac{CPU} (server and client) as well as the network throughput and latency. It is verified that all signal processing works as expected through unit testing and simple testing tasks performed on the application. A practical test using actual performers and dance interaction is beyond the scope of this feasibility study.
+The application's performance is tested regarding the load put on the \ac{CPU} (server and client) as well as the network throughput and latency. It is verified that all message processing works as expected through unit testing and simple testing tasks performed on the application. A practical test that analyses the actual user experience and using performers and real dance interaction is beyond the scope of this study.
 
 \section{Qualitative analysis}
 

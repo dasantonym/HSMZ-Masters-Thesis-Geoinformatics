@@ -1,5 +1,6 @@
 \chapter{Implementation}
 
-\subsection{Infrastructure setup}
+\section{Infrastructure setup}
 
 Initially, the supporting server infrastructure was deployed to allow development on a working WebRTC infrastructure. The basis was a clean, freshly bootstrapped Kubernetes installation running on a single server with 16 CPU-cores (with multithreading), 64GB RAM and a 512GB SSD drive, located at Mainz University and connected to the internet via a one gigabit network connection. LiveKit and its Redis database are installed via the application deployment manager Helm, using an official installation from its maintainers. To simplify the deployment, LiveKit is placed behind a reverse proxy (Traefik) to manage SSL termination via the LetsEncrypt service, as well as routing to the actual service running inside the cluster. This simplified setup results in LiveKit being accessible on a single TCP port instead of a range of UDP ports, as WebRTC would usually be deployed. The detailed Kubernetes setup instructions are documented in the according folder in the Git repository \footnote{Kubernetes setup instructions: \href{https://github.com/dasantonym/sensorama/tree/master/kubernetes}{https://github.com/dasantonym/sensorama/tree/master/kubernetes}}.
+
