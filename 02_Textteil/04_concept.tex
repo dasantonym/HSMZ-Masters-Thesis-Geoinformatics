@@ -31,23 +31,29 @@ The basic design paradigm used for the Sensorama application is that of an \ac{S
 
 The application's custom part is partitioned into the user interface, which is a static built \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which is a single-process Node application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
 
-\subsection{Coding style}
+\subsection{Coding methods}
 
-While the primarily favoured coding paradigm is object-oriented programming, this is only strictly applied to the core functionality. As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it is beneficial not to enforce a singular coding style. This might be considered bad practice in a streamlined development environment, but it serves the purpose of a modular and somewhat unstable \textquote{single-use} application environment.
+The primarily favoured coding paradigm is object-oriented programming, but this is not strictly enforced for all components. As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it is beneficial not to enforce a singular coding style. While this is usually considered bad practice in terms of maintainability for long-term development, but it serves the purpose of a modular and somewhat unstable \textquote{single-use} application environment.
+
+An essential part of the development concept is the sequence of development phases. As there is no explicit definition beforehand, the development starts out by establishing a functional skeleton first and working within that to carve out the actual functionality. Then, monolithic large blocks of code are built where different approaches to desired functionality are quickly tried and discarded, or kept and subsequently extracted into separate locations, grouped by functional association. In this scenario, it is important to review and refactor regularly and often in order to solidify the application structure and prevent it from dissolving into \textquote{spaghetti code} and to prevent unnecessary side-effects among the components. Only towards the end of the development process are the core features extracted into the separate \ac{SDK} module and unit-tests are written. As the application would now move into practical testing and thus, some sort of \textquote{production} deployment, the core functionality needs to become more rigid and covered by test cases.
 
 \subsection{Testing}
 
-Only the core functionality deemed stable and reusable is unit-tested to provide a solid base functionality. The general user interface and data producers are considered transient because they serve a singular use case and should be subject to frequent modification. These application components should be hackable and replaceable, so they are not tested, at least in the scope of this study. However, more stable and general tools and extensions that warrant setting up testing could still be added in the future.
+The general user interface and data producers are considered transient because they serve a singular use case and should be subject to frequent modification. These application components should be hackable and replaceable, so they are not tested, at least in the scope of this study. However, more stable and general tools and extensions that warrant setting up testing could still be added in the future.
 
 The unit-testing focuses on the data input and output for the core functionality to provide a stable foundation for the system. By modeling the basic request and response cases and formulating them as tests, potential later users have a tangible way of understanding the application's core mechanics.
 
-For \ac{JS}, Jest, Mocha and Jasmine are three popular testing frameworks (\ref{tab:githubTestingFrameworks}), among others, that could be used for implementing unit-testing for the project. In this case, the selection forgoes the most popular option of Jest in favour of Mocha, which is used by the Feathers \ac{API} framework in its generator for boilerplate code. This way, basic tests to base work on are already available and, to keep the project consistent across modules, will be adapted for the core \ac{SDK} module as well.
+For \ac{JS}, Jest, Mocha and Jasmine are three popular testing frameworks (\ref{tab:githubTestingFrameworks}), among others, that can be used for implementing unit-testing for the project. In this case, the selection forgoes the most popular option of Jest in favour of Mocha, which is used by the Feathers \ac{API} framework in its generator for boilerplate code. This way, basic tests to base work on are already available and, to keep the project consistent across modules, will be adapted for the core \ac{SDK} module as well.
 
 \input{04_Artefakte/02_Tabellen/github_testing_frameworks_stars.tex}
 
 \section{Application components}
 
 The application comprises several third-party components merely deployed as-is (WebRTC, databases, static web server) and the custom-developed parts described here.
+
+\subsection{Core SDK module}
+
+The core functionality is built into a separate module to enable its integration into other setups that use different frameworks or architectures. The module uses the \ac{NPM}'s package standard and can be used in the browser as well as in Node.js. While this module carries the most fundamental functionality, it is set up last in the development process, as the essential parts only crystallise during the initial development phase.
 
 \subsection{Web frontend}
 
@@ -67,7 +73,7 @@ Three different native utilities are additionally implemented.
 
 \subsubsection{General data producer}
 
-This component is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or pointcloud extraction, Open3D for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files. Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction.
+This component is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files. Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction. This data producer also includes functionality to extract the movement qualities from the 
 
 \subsubsection{Captury data producer}
 
@@ -75,7 +81,7 @@ For real-time streaming of live motion capture data from the Captury Live system
 
 \subsubsection{Head-tracker}
 
-As there was no easily accessible and platform-independent head-tracking equipment, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus. The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service. This device can be directly integrated using the browser's WebBluetooth web standard.
+As there was no affordable, open and platform-independent head-tracking solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus. The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service. This device can be directly integrated using the browser's WebBluetooth web standard.
 
 \section{Messaging}
 
