@@ -21,6 +21,37 @@
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
 
+
+\subsection{Code quality}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-complexity}
+\caption[Cyclomatic complexity]{Cyclomatic complexity per component\protect}
+\label{fig:cyclomaticComplexity}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-filecount}
+\caption[File count]{Number of source files per application component\protect}
+\label{fig:fileCount}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc-total}
+\caption[Lines of code (total)]{Total lines of code per application component\protect}
+\label{fig:linesOfCodeTotal}
+\end{figure}
+
+\begin{figure}[h]
+\centering
+\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc}
+\caption[Lines of code]{Maximum and median number of lines of code per application component\protect}
+\label{fig:linesOfCode}
+\end{figure}
+
 \section{Critical reflection}
 \label{sec:critical-reflection}
 
@@ -34,5 +65,5 @@ Currently, there is no built-in way to load custom \ac{HRTF} data, which should 
 There are approaches using a custom build of the Chromium browser~\parencite{chromiumCustomHrtf} or a custom audio node~\parencite{customHrtfAudioNode} which unfortunately does not work with the \ac{SOFA} file format, so it is generally rather disappointing not seeing this thoroughly implemented in the general standard \ac{API}.
 
 The initial setup for the data producers was also relatively quick, due to the large number of examples for the DepthAI \ac{SDK} and the clarity and hands-on approach to the main Python documentation.
-The only thing lacking here, was a straighforward way to manage dependencies, as there were different results for the same dependencies being installed via PIP or Conda.
+The only thing lacking here, was a straightforward way to manage dependencies, as there were different results for the same dependencies being installed via PIP or Conda.
 
