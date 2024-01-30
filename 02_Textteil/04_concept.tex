@@ -1,4 +1,4 @@
-\chapter{Concept}
+\chapter{Application concept}
 \label{ch:concept}
 
 \section{Architecture}
@@ -45,11 +45,7 @@ Still, it could be implemented with the existing application as well.
 It is an exclusively real-time application that uses WebSockets for all transmission between app components and uses the WebRTC standard for user communication.
 It is set up as a monorepo, where all components are developed across languages in one repository.
 
-\subsection{Application partitioning}
-
 The application's custom part is partitioned into the user interface, which is a static built \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which is a single-process Node application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
-
-\subsection{Coding methods}
 
 The primarily favoured coding paradigm is object-oriented programming, but this is not strictly enforced for all components.
 As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it is beneficial not to enforce a singular coding style.
@@ -61,8 +57,6 @@ Then, monolithic large blocks of code are built where different approaches to de
 In this scenario, it is important to review and refactor regularly and often in order to solidify the application structure and prevent it from dissolving into \textquote{spaghetti code} and to prevent unnecessary side-effects among the components.
 Only towards the end of the development process are the core features extracted into the separate \ac{SDK} module and unit-tests are written.
 As the application would now move into practical testing and thus, some sort of \textquote{production} deployment, the core functionality needs to become more rigid and covered by test cases.
-
-\subsection{Testing}
 
 The general user interface and data producers are considered transient because they serve a singular use case and should be subject to frequent modification.
 These application components should be hackable and replaceable, so they are not tested, at least in the scope of this study.
@@ -113,20 +107,14 @@ The Feathers framework exports its own client library that is specifically gener
 
 Three different native utilities are additionally implemented.
 
-\subsubsection{General data producer}
-
-This component is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files.
+The general \emph{data producer} is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files.
 Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction.
 This data producer also includes functionality to extract the movement qualities from the
 
-\subsubsection{Captury data producer}
-
 For real-time streaming of live motion capture data from the Captury Live system, there currently only exists a C++ client library provided by the system's manufacturer.
-Thus, this producer component has to be implemented separately and uses a C++-based WebSockets server streaming the library's received data.
+Thus, the \emph{Captury data producer} component has to be implemented separately and uses a C++-based WebSockets server streaming the library's received data.
 
-\subsubsection{Head-tracker}
-
-As there was no affordable, open and platform-independent head-tracking solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus.
+As there was no affordable, open and platform-independent \emph{head-tracking} solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus.
 The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service.
 This device can be directly integrated using the browser's WebBluetooth web standard.
 
@@ -155,8 +143,6 @@ There are four core data models being used within the application.
 The two models stored by the \ac{API} server are spaces and users.
 These are very simple reference objects that bring together multiple participants in a common space, authenticated by personalised tokens, allowing them to exchange messages, which are instances of the third data model.
 
-\subsection{API data models}
-
 Each \emph{User} can own multiple \emph{Space} objects.
 A \emph{Space} is a container object that references a coherent shared space which is constructed from multiple parties' sensor readings. \emph{Users} can request one or more \emph{Token} objects that allow them to connect to a \textquote{conference room} on the LiveKit server that maps to a specific ID of a \emph{Space}.
 Once connected, the LiveKit server notifies the \ac{API} server of the new connection and now the connected \emph{User's} ID can be found in the list retrieved from the virtual \textquote{connected} property in the \emph{Space} object.
@@ -168,8 +154,6 @@ Once connected, the LiveKit server notifies the \ac{API} server of the new conne
 \label{fig:apiDataModel}
 \end{figure}
 
-\subsection{Message format}
-
 The data messages are not encoded as \ac{JSON} text messages, but sent as raw data to make them as small as possible.
 Messages are structured as byte sequences, with a 64bit long integer timestamp using the first eight bytes, then a single byte with an unsigned integer for selecting a message schema from the enumerated message types and then a freely defined sequence of different number types (\autoref{fig:messageStructure}). Here, 32bit floating point numbers are used for all of the sensor readings as the numbers stay sufficiently small and the precision is enough for millimetre measurements, statistical values or angles.
 The numeric values are encoded in Little Endian format that is consistent across the tested environments, but should be explicitly adhered to if other components are added to the application.
@@ -180,8 +164,6 @@ The numeric values are encoded in Little Endian format that is consistent across
 \caption[Generic Message Structure]{The basic message structure for transmitting numeric sensor readings\protect}
 \label{fig:messageStructure}
 \end{figure}
-
-\subsection{Message types}
 
 The message types are stored as JSON. Shown here is a simple example message schema for a nanosecond timestamp (\emph{{t\_ns}}), \emph{type} and one or more \ac{3D} \emph{points} stored as floats.
 
