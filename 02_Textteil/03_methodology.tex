@@ -1,10 +1,9 @@
 \chapter{Methodology}
 \label{ch:methodology}
 
-This feasibility study is based on three essential parts.
+This feasibility study is based on two essential parts.
 The first is a reference implementation, providing insights on the work necessary to arrive at the base functionality.
-After the implementation, a quantitative analysis of the application's functionality is made, as well as a statistical overview of the time spent on development.
-Additionally, there is a qualitative review of the resulting codebase and a reflection on the work process.
+Based on the implementation, an analysis of the application's functionality is made, an overview of the time spent on development and there is a qualitative review of the resulting codebase and a reflection on the work process.
 
 
 \section{Reference implementation}
@@ -35,29 +34,24 @@ The application's server components are deployed early on to university hardware
 The client application is then run and tested on various consumer computer systems and networking setups.
 
 
-\section{Quantitative analysis}
-\label{sec:quantitative-analysis}
-
-\subsection{Statistics}
+\section{Analysis and evaluation}
+\label{sec:analysis-evaluation}
 
 A statistical analysis of the timesheets provides insight into the time spent on various aspects of the software.
 It should differentiate between basic boilerplate code that can be reused and custom code used for the actual use case, in order to provide insights both into the feasibility of setting up such a system from scratch with only a single developer, as well as the potential cost of just reworking the parts deemed transient and related to the specific use-case.
-
-\subsection{Performance testing}
 
 The application's performance is tested regarding the load put on the \ac{CPU} (server and client) as well as the network throughput and latency.
 It is verified that all message processing works as expected through unit testing and simple testing tasks performed on the application.
 A practical test that analyses the actual user experience and using performers and real dance interaction is beyond the scope of this study.
 
+The \emph{code quality} is assessed based on volume (lines of code without comments) and cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code \parencite[see][]{mcCabeComplexity}.
+Both metrics should be kept low, as code with a high number lines makes it harder to read and a high complexity is harder to follow and understand.
+It is recommended to limit the cyclomatic complexity to a value of 10, with special justified exceptions going up to 15 as a maximum \parencite[15]{testingCyclomaticComplexity}, in order to facilitate a development style that aims to reduce the danger of potential errors caused by excessive complexity.
+The code volume per file is more difficult to reduce to a singular threshold.
+For \ac{OOP}, it is often advised to limit a file to a single class, but depending on the language used, the file can also just contain multiple functions that are better grouped together instead of scattered across multiple files.
+A general rule of thumb that has proven to be a good measurement is that a single file should not exceed 160-200 lines of code (without comments), in order to be able to quickly skim it and get a general overview.
+There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand. In those cases, there can either be a discussion about how to change the general application design to partition the functionality differently, or it can be decided to keep this code as is and improve documentation.
+Reducing volume and complexity is especially important if the code should be passed on to other people that want to maintain and modify it for further use. Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity, and the more static and stable core parts can be the location where the more complex parts is moved to (e.g. the core \ac{SDK}).
 
-\section{Qualitative analysis}
-\label{sec:qualitative-analysis}
-
-\subsection{Code quality}
-
-The code quality is mainly assessed in terms of volume (lines of code), complexity (number of classes and functions, cognitive complexity) and stylistic coherence.
-
-\subsection{Critical reflection}
-
-A critical analysis of the development process should weigh the expectations against the experiences made during the implementation of the decisions made in planning the application.
-It should critically evaluate the feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.
+Additionally, a \emph{critical reflection} and analysis of the development process should weigh the expectations against the experiences made during the implementation of the decisions made in planning the application.
+It should evaluate the notion of general reproducibility, feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.
