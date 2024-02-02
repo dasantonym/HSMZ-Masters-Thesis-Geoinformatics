@@ -107,7 +107,7 @@ The Feathers framework exports its own client library that is specifically gener
 
 Three different native utilities are additionally implemented.
 
-The general \emph{data producer} is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files.
+The general \emph{data producer} is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D \parencite{open3DZhou2018} for working with point-cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files \parencite{githubPyMotion}.
 Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction.
 This data producer also includes functionality to extract the movement qualities from the
 
@@ -144,7 +144,8 @@ The two models stored by the \ac{API} server are spaces and users.
 These are very simple reference objects that bring together multiple participants in a common space, authenticated by personalised tokens, allowing them to exchange messages, which are instances of the third data model.
 
 Each \emph{User} can own multiple \emph{Space} objects.
-A \emph{Space} is a container object that references a coherent shared space which is constructed from multiple parties' sensor readings. \emph{Users} can request one or more \emph{Token} objects that allow them to connect to a \textquote{conference room} on the LiveKit server that maps to a specific ID of a \emph{Space}.
+A \emph{Space} is a container object that references a coherent shared space which is constructed from multiple parties' sensor readings.
+\emph{Users} can request one or more \emph{Token} objects that allow them to connect to a \textquote{conference room} on the LiveKit server that maps to a specific ID of a \emph{Space}.
 Once connected, the LiveKit server notifies the \ac{API} server of the new connection and now the connected \emph{User's} ID can be found in the list retrieved from the virtual \textquote{connected} property in the \emph{Space} object.
 
 \begin{figure}[h]
