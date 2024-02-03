@@ -62,7 +62,7 @@ This allows the user to view the \ac{3D} scene on screen while listening to bina
 The general \emph{data producer} was written in Python and provides multiple data sources: an interface to a Blazepose implementation on the Oak-D \ac{3D} camera, as well as reading depth images as point clouds from the camera and an interface to load and playback motion capture data in the \ac{BVH} file format.
 All three data sources were implemented as separate Python classes, because the classes related to the Oak-D camera were built by modifying existing code for pose recognition \parencite{githubDepthAiBlazePose} and pointcloud processing \parencite{githubDepthAiPointcloud}.
 The \ac{BVH} data producer however, was created from scratch.
-The classes were set up to all support calling a function to return current point data as a multidimensional array in a loop that is quantised to a fixed framerate of 25 frames.
+The separate producer classes were set up to all support calling a function to return current point data as a multidimensional array in a loop that is quantised to a fixed framerate of 25 frames.
 The returned data is then packed as a byte sequence and sent over websockets according to the appropriate format (see \autoref{sec:datamodeling}).
 This way, the disparate sources could all be imported in a single main file that uses a combined set of utility functions for running a WebSockets server and for packing data.
 
