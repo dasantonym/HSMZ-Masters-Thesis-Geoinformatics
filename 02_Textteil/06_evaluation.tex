@@ -23,7 +23,7 @@ The results for the latency analysis are shown in separate graphs for each compu
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a-02}
+\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a-02}
 \caption[Message latency on Computer A]{Computer A: Latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerA}
 \end{figure}
@@ -33,7 +33,7 @@ Both values show a jitter at a variance of about 25ms for the remote connection 
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b-02}
+\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b-02}
 \caption[Message latency on Computer B]{Computer B: Latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerB}
 \end{figure}
@@ -47,7 +47,7 @@ In total, 96 work hours were spent on the creation of the reference implementati
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-languages}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-languages}
 \caption[Time spent on languages]{Time spent on various programming languages\protect}
 \label{fig:timeSpentLanguages}
 \end{figure}
@@ -56,7 +56,7 @@ The time spent on programming languages (\ref{fig:timeSpentLanguages}) shows a o
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-types-of-work}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-types-of-work}
 \caption[Time spent on areas of work]{Time spent on areas of work\protect}
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
@@ -65,7 +65,7 @@ The distribution of time spent on software development versus setting up the inf
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-complexity}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-complexity}
 \caption[Cyclomatic complexity]{Cyclomatic complexity per component\protect}
 \label{fig:cyclomaticComplexity}
 \end{figure}
@@ -74,7 +74,7 @@ The cyclomatic complexity (\ref{fig:cyclomaticComplexity}) was only calculated f
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-filecount}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-filecount}
 \caption[File count]{Number of source files per application component\protect}
 \label{fig:fileCount}
 \end{figure}
@@ -83,7 +83,7 @@ In terms of weight measured by the number of files (\ref{fig:fileCount}), the mo
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc-total}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc-total}
 \caption[Lines of code (total)]{Total lines of code per application component\protect}
 \label{fig:linesOfCodeTotal}
 \end{figure}
@@ -92,23 +92,36 @@ The distribution of weight in regard to the total lines of code without comments
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc}
 \caption[Lines of code]{Maximum and median number of lines of code per application component\protect}
 \label{fig:linesOfCode}
 \end{figure}
 
-Median and maximum amounts of lines of code across files for each component (\ref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maxium value and below the recommended thresholds (see \autoref{ch:methodology}). Again, the only exception to this is the data producer that, while showing a normal median, shows a maximum of 424 lines of code.
+Median and maximum amounts of lines of code across files for each component (\ref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maxium value and below the recommended thresholds (see \autoref{ch:methodology}). Again, the only exception to this is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
 
 \section{Critical reflection}
 \label{sec:critical-reflection}
 
-The development process was carried out in two main timeframes (X and Y) and followed the guiding principles decided in the concept.
+The development process was carried out in two main phases (X and Y) and followed the guiding principles decided in the application concept (see \autoref{ch:concept}).
 It was a mostly pleasant experience with the selected frameworks delivering on their promised functionality and ease of use.
 The initial setup was extremely quick due to the ease of setup of the WebRTC server and the quick generation of boilerplate code for the \ac{API} and the \ac{UI}.
-However, the web audio standard implementation leaves a lot to desire, especially the support for spatial audio in the browser.
-Currently, there is no built-in way to load custom \ac{HRTF} data, which should drastically improve the accuracy of spatial positioning for sound.
+As the boilerplate code was generated instantly and a dvelopment environment could be set up quickly, the work immediately started with practical experimentation, which is a motivational boost and quickly establishes tangible results.
+Web standards integration was simple and efficient, both with directly implemented standards such as WebSockets and Web Bluetooth, as well as the ones integrated through third-party libraries.
+However, only the web audio standard implementation leaves a lot to desire, especially the support for spatial audio in the browser.
+Currently, there is no built-in way to load custom \ac{HRTF} data, which would drastically improve the accuracy of spatial positioning for sound.
 There are approaches using a custom build of the Chromium browser~\parencite{chromiumCustomHrtf} or a custom audio node~\parencite{customHrtfAudioNode} which unfortunately does not work with the \ac{SOFA} file format, so it is generally rather disappointing not seeing this thoroughly implemented in the general standard \ac{API}.
 
-The initial setup for the data producers was also relatively quick, due to the large number of examples for the DepthAI \ac{SDK} and the clarity and hands-on approach to the main Python documentation.
-The only thing lacking here, was a straightforward way to manage dependencies, as there were different results for the same dependencies being installed via PIP or Conda.
+What might be a challenge in general is the selection of appropriate tools and libraries.
+As each of the libraries and frameworks that make up the broad spectrum of available web development technologies tend to favour different paradigms that in turn are also subject to change due to trends and \textquote{hype cycles}, it can be difficult to keep up and daunting to make an informed choice among the available options.
+Looking at the options evaluated over the course of this study, there are a few factors to take into account when deciding which framework to prefer for a specific type of project.
+It is important to really decide if a project is to be maintained in the long run. If, as in this case, the actual implementation is transient and does not require long-term maintenance, then the choice should really be guided by the provided feature set and the paradigms implemented. While it is always a good choice to use a library that has a large community and a longstanding presence, a more experimental and niche case might require something newer or just less popular.
 
+For the development process itself, the stratey of getting something up and running as quickly as possible, working on that while regularly refactoring and restructuring was a very rewarding experience.
+While this approach might be perceived as not exactly team-friendly due to the danger of conflicting work, it can still be applied in very small teams by agreeing on basic protocols and then working on separate components.
+The partitioning of the application into several components was also highly beneficial, because it allowed for different languages to be used where appropriate.
+There are many more implementations of movement analysis for Python than for JavaScript or Node.js and before porting functionality to a different language it is easier to set up a separate microservice or tool and use a standardised messaging protocol to communicate with the rest of the application.
+Another benefit of the partitioning design pattern is that components can be discarded and replaced with different technologies and supporting libraries without necessarily influencing the application's overall functionality.
+It is important to note, though, that while the \ac{UI} is thought of as transient and unstable, unit testing is still highly recommended for the stable components that should keep being used outside of the specific implementation.
+While it could be beneficial to develop the the core \ac{SDK} using test-driven development and, once stable, working on the implementation, it would add a period of time during which there would be only theoretical planning and development.
+This seems out of place for small creative projects that work interdisciplinary, like a dance production that needs its own remote collaboration tool and that needs to get started as quickly as possible.
+Nonetheless, it is still important that there needs to be a finishing phase in which the core functionality is extracted, documented and outfitted with tests, in order to keep the \ac{SDK} as an artifact to base further projects on.
