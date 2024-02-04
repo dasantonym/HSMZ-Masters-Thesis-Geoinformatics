@@ -10,7 +10,7 @@ Cost of rendering audio and video, as well as general user experience metrics we
 
 Computers used in the performance evaluation were end-user laptops with the following specifications: \emph{Computer A} is equipped with an 3.1GHz dual-core Intel Core i5 \ac{CPU}, 16GB of \ac{RAM} and a 500GB \ac{SSD}.
 \emph{Computer B} is equipped with an Apple M1 Max \ac{CPU} with ten cores, 64GB of \ac{RAM} and a 1TB \ac{SSD}.
-Both systems used the Google Chrome browser (version 121.0.6167.85), ran macOS 13.6.3 and connected to the network via 5GHz WiFi.
+Both systems used the Google Chrome browser (version 121.0.6167.85), ran macOS 13.6.4 and connected to the network via 5GHz WiFi.
 Both computers used the same \ac{NTP} server to synchronise clocks and the synchronisation was refreshed before each data sampling.
 
 The \emph{latency measurements} were conducted for the data channels and over a consumer 50Mbit \ac{DSL} connection.
@@ -23,25 +23,27 @@ The results for the latency analysis are shown in separate graphs for each compu
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a}
+\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a-02}
 \caption[Message latency on Computer A]{Computer A: Latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerA}
 \end{figure}
 
-Results for computer A (\ref{fig:latencyComputerA}) show a median latency of 18ms for remote messages received over the WebRTC connection and 2ms for the connection from the local data producer to the browser.
-Both values show a jitter at a variance of about 11ms for the remote connection and about 6ms for the local connection.
+Results for computer A (\ref{fig:latencyComputerA}) show a median latency of 32ms for remote messages received over the WebRTC connection and 2ms for the connection from the local data producer to the browser.
+Both values show a jitter at a variance of about 25ms for the remote connection and about 5ms for the local connection.
 
 \begin{figure}[h]
 \centering
-\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b}
+\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b-02}
 \caption[Message latency on Computer B]{Computer B: Latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerB}
 \end{figure}
 
-The results gathered on computer B (\ref{fig:latencyComputerB}) show a median latency of 48ms for the remote messages and 1ms for the local data producer connection.
-Here, the jitter happens at a variance of about 13ms for the remote connection and about 3ms for the local connection.
+The results gathered on computer B (\ref{fig:latencyComputerB}) show a median latency of 31ms for the remote messages and 1ms for the local data producer connection.
+Here, the jittering happens at a variance of about 7ms for the remote connection and about 1ms for the local connection.
 
-The development process evaluation was based off the timesheets that were kept during the development process. All recorded tasks were categorised by the language used (e.g. JavaScript), the component worked on and the type of work
+The evaluation of time spent on the development work was based off the timesheets that were kept during the process. Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be properly separated from the work on the study itself. All recorded tasks were categorised by the language used (e.g. JavaScript vs. Python), the component worked on (e.g. \ac{UI} vs. \ac{API}) and the type of work (e.g. programming vs. administration).
+
+In total, 96 work hours were spent on the creation of the reference implementation and its deployment on the test infrastructure. This would amount to 12 workdays, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
 
 \begin{figure}[h]
 \centering
@@ -50,12 +52,16 @@ The development process evaluation was based off the timesheets that were kept d
 \label{fig:timeSpentLanguages}
 \end{figure}
 
+The time spent on programming languages (\ref{fig:timeSpentLanguages}) shows a obvious lead for \ac{JS} being the most-used language, which would be rather obvious, given that it was chosen as the language for the \ac{UI} and the \ac{API}. However, Python still takes up almost a third of the work hours spent on programming. C and C++ required only a marginal amount of work with under 4\% of the time spent.
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-types-of-work}
 \caption[Time spent on areas of work]{Time spent on areas of work\protect}
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
+
+The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker's hardware implementation (\ref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) were spent on programming and the latter two factors were marginal in the effort needed to be put in.
 
 \begin{figure}[h]
 \centering
@@ -64,12 +70,16 @@ The development process evaluation was based off the timesheets that were kept d
 \label{fig:cyclomaticComplexity}
 \end{figure}
 
+The cyclomatic complexity (\ref{fig:cyclomaticComplexity}) was only calculated for the core \ac{SDK}, the \ac{UI}, \ac{API} and the general data producer. The Arduino code does not use any branching and the C++ code for the Captury producer was deemed a workaround since it should be integrated in the Python structure for proper use. The maximum complexity shows a large overhead exceeding the recommended thresholds (see \autoref{ch:methodology}) on behalf of the core \ac{SDK} with 15 and for the data producer with 19, although the median values show a distinct concentration of complexity with the data producer (6 versus 1 for the \ac{SDK}). This shows that the massive complexity value of 15 rather is an outlier for the \ac{SDK}, but seems more intrinsic to the data producer's structure. The \ac{UI} and \ac{API} however, show a very low overall complexity, which was the desired outcome to keep these parts more hackable and easy to grasp.
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-filecount}
 \caption[File count]{Number of source files per application component\protect}
 \label{fig:fileCount}
 \end{figure}
+
+In terms of weight measured by the number of files (\ref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept. In general, it shows a relatively moderate weight for the entire application with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
 
 \begin{figure}[h]
 \centering
@@ -78,12 +88,16 @@ The development process evaluation was based off the timesheets that were kept d
 \label{fig:linesOfCodeTotal}
 \end{figure}
 
+The distribution of weight in regard to the total lines of code without comments produced for each component (\ref{fig:linesOfCodeTotal}) aligns with the number of files for the \ac{UI}, but shows a large overhead for the data producer with almost as many lines of code distributed among a third of the number of files.
+
 \begin{figure}[h]
 \centering
 \includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc}
 \caption[Lines of code]{Maximum and median number of lines of code per application component\protect}
 \label{fig:linesOfCode}
 \end{figure}
+
+Median and maximum amounts of lines of code across files for each component (\ref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maxium value and below the recommended thresholds (see \autoref{ch:methodology}). Again, the only exception to this is the data producer that, while showing a normal median, shows a maximum of 424 lines of code.
 
 \section{Critical reflection}
 \label{sec:critical-reflection}
