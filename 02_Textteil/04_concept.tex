@@ -71,52 +71,23 @@ This way, basic tests to base work on are already available and, to keep the pro
 
 \input{04_Artefakte/02_Tabellen/github_testing_frameworks_stars}
 
-\section{Application components}
-\label{sec:application-components}
+\section{Sonification method}
 
-The application comprises several third-party components merely deployed as-is (WebRTC, databases, static web server) and the custom-developed parts described here.
+Three basic movement qualities are to be extracted to provide a reference pipeline for evaluating the basic mechanics of this sonification approach.
+These are the \textquote{average velocity}, generally defined as the distance travelled over time (e.g.\ m/s), and two more specialised concepts developed for expressive movement analysis.
+These are \textquote{Quantity of Movement}~\parencite[96-97]{movementQualities}, describing the amount of difference between poses over time, and the \textquote{Contraction Index}~\parencite[97]{movementQualities} which observes the density of space used by a pose.
+While the former is easily defined as the velocity calculated for a singular point (the centre of mass with an equal distribution), the latter two have been initially developed to observe pixelated \ac{2D} camera images and need to be translated to \ac{3D} space.
 
-\subsection{Core SDK module}
+The movement qualities are then made available to the application to enable an event-based system, where thresholds can be defined that switch a boolean value at the time of crossing.
+As these values are watched, events can be triggered depending on their on- or off-state.
+At the time of an event, the current value of a quality or a combination of them can be used to determine the magnitude of the event's impact.
 
-The core functionality is built into a separate module to enable its integration into other setups that use different frameworks or architectures.
-The module uses the \ac{NPM}\textquotesingle s package format and can be used in the browser as well as in Node.js.
-While this module carries the most fundamental functionality, it is set up last in the development process, as the essential parts only crystallise during the initial development phase.
+To create an example sonification algorithm, a simple system of scales, chords, and note selection is introduced.
+The system is set to a specific scale (e.g. E-minor) for which a list of possible chords is produced. Each time an event is triggered on one of the qualities (e.g. Quantity of Movement), the actual value can be used to decide which chord to select from the list using the normalised value from 0.0-1.0 to select a list index. The notes selected from the chord are then transposed by using another quality (Contraction Index) selecting the root note for the chord across the octaves.
+The average velocity is used to set the note length, triggering shorter notes when standing still and longer notes while traveling in space and moving to certain quadrants in the space can be used to select different scales.
 
-\subsection{Web frontend}
-
-The web frontend provides the main entry point for the users.
-It allows authentication via a local username and password combination and then provides objects modelled as virtual \textquote{Spaces} that are the central anchor to organise all communications.
-A space object then maps to the the concept of a \textquote{chat room} in LiveKit or other real-time communications environments.
-Users can create spaces, name them and then join them, becoming active data producers, or choose to view them as passive spectators.
-
-Depending on the participant's role, a space is rendered as a different set of components.
-Participants who actively join have access to a LocalProducer and a HeadTracker component.
-These components provide a direct link via WebSockets to the external data-producer utilities and a WebBluetooth connection to the custom head-tracking device built on Arduino.
-Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
-
-The frontend coordinates connections between the WebRTC server, the backend \ac{API} and the local utilities.
-It also implements the various web standard \ac{API}s needed for sound, graphics and communication.
-
-\subsection{API backend}
-
-In the backend, the \ac{API} server is tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server.
-Through its real-time implementation, it can notify connected clients of changes like other connecting users or updates to data.
-The Feathers framework exports its own client library that is specifically generated for the current server configuration and can be directly integrated into Vue by using a specific client adapter module (\textquote{feathers-pinia}) that handles authentication and basic \ac{CRUD} operations.
-
-\subsection{Native utilities}
-
-Three different native utilities are additionally implemented.
-
-The general \emph{data producer} is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D \parencite{open3DZhou2018} for working with point cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files \parencite{githubPyMotion}.
-Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction.
-This data producer also includes functionality to extract the movement qualities from the
-
-For real-time streaming of live motion capture data from the Captury Live system, there currently only exists a C++ client library provided by the system's manufacturer.
-Thus, the \emph{Captury data producer} component has to be implemented separately and uses a C++-based WebSockets server streaming the library's received data.
-
-As there was no affordable, open and platform-independent \emph{head-tracking} solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus.
-The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service.
-This device can be directly integrated using the browser's WebBluetooth web standard.
+It must be noted, that while this is a valid system for a parameter mapping sonification and will produce harmonic notes, it falls short of producing output in a musical sense, because it lacks the ability to construct structures and dramaturgic variance.
+However, if engaged with over an amount of time and practiced, it can still yield interesting results, but will also require a very strict way of choosing the movement required to produce musically interesting results.
 
 \section{Messaging}
 \label{sec:messaging}
@@ -177,3 +148,51 @@ The \emph{type} can be a \textquote{Uint8}, \textquote{Float32} or a \textquote{
 \caption{Example pose message schema}
 \label{listing:exampleMessage}
 \end{listing}
+
+\section{Application components}
+\label{sec:application-components}
+
+The application comprises several third-party components merely deployed as-is (WebRTC, databases, static web server) and the custom-developed parts described here.
+
+\subsection{Core SDK module}
+
+The core functionality is built into a separate module to enable its integration into other setups that use different frameworks or architectures.
+The module uses the \ac{NPM}\textquotesingle s package format and can be used in the browser as well as in Node.js.
+While this module carries the most fundamental functionality, it is set up last in the development process, as the essential parts only crystallise during the initial development phase.
+
+\subsection{Web frontend}
+
+The web frontend provides the main entry point for the users.
+It allows authentication via a local username and password combination and then provides objects modelled as virtual \textquote{Spaces} that are the central anchor to organise all communications.
+A space object then maps to the the concept of a \textquote{chat room} in LiveKit or other real-time communications environments.
+Users can create spaces, name them and then join them, becoming active data producers, or choose to view them as passive spectators.
+
+Depending on the participant's role, a space is rendered as a different set of components.
+Participants who actively join have access to a LocalProducer and a HeadTracker component.
+These components provide a direct link via WebSockets to the external data-producer utilities and a WebBluetooth connection to the custom head-tracking device built on Arduino.
+Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
+
+The frontend coordinates connections between the WebRTC server, the backend \ac{API} and the local utilities.
+It also implements the various web standard \ac{API}s needed for sound, graphics and communication.
+
+\subsection{API backend}
+
+In the backend, the \ac{API} server is tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server.
+Through its real-time implementation, it can notify connected clients of changes like other connecting users or updates to data.
+The Feathers framework exports its own client library that is specifically generated for the current server configuration and can be directly integrated into Vue by using a specific client adapter module (\textquote{feathers-pinia}) that handles authentication and basic \ac{CRUD} operations.
+
+\subsection{Native utilities}
+
+Three different native utilities are additionally implemented.
+
+The general \emph{data producer} is written as a \ac{CLI} utility in Python, as it implements various Python-specific extensions: the DepthAI framework, used to work with the Oak-D line of \ac{3D}-cameras, OpenVino for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D \parencite{open3DZhou2018} for working with point cloud data and general spatial operations and PyMotion, a library for working with recorded \ac{BVH} motion capture data files \parencite{githubPyMotion}.
+Python also allows for easy statistical data analysis using NumPy, which is used for movement quality extraction.
+This data producer also includes functionality to extract the movement qualities from the
+
+For real-time streaming of live motion capture data from the Captury Live system, there currently only exists a C++ client library provided by the system's manufacturer.
+Thus, the \emph{Captury data producer} component has to be implemented separately and uses a C++-based WebSockets server streaming the library's received data.
+
+As there was no affordable, open and platform-independent \emph{head-tracking} solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus.
+The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service.
+This device can be directly integrated using the browser's WebBluetooth web standard.
+
