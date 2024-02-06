@@ -228,7 +228,6 @@ It is a multi-paradigm, statically typed and object-oriented programming languag
 It is used to develop code for embedded open-source hardware platforms (see: \autoref{sec:embeddedcomputing}), extend both Node and Python and, more generally, provides direct interaction with the operating system and its APIs.
 While it is the oldest of the programming languages mentioned here, it has remained essential to the open-source world, not least because of its prevalence in the Linux ecosystem.
 
-
 \section{Application design paradigms}
 \label{sec:application-design-paradigms}
 
@@ -246,8 +245,8 @@ While real-time updates can happen on any multi-page website, they can also be a
 Instantaneous updates are commonly realised using WebSockets, allowing updates to be pushed to the client whenever a resource on the server changes.
 
 
-\section{Frontend frameworks and libraries}
-\label{sec:frontend-frameworks-and-libraries}
+\section{Frontend frameworks}
+\label{sec:frontend-frameworks}
 
 There is a wide range of available \ac{JS} frameworks to build dynamic frontends for \ac{SPA}s and \ac{PWA}s. The three libraries currently dominating the landscape are React, developed by Facebook in 2013, and Vue, created by Evan You in 2014.
 These libraries can be used with frameworks to offer complete routing and state management solutions.
@@ -278,9 +277,6 @@ As with React, there are extensions and frameworks like Quasar\footnote{\url{htt
 A wholly overhauled and currently used version 2 was released in 2016 and maintained by Google.
 It differs from React and Vue in that it is a complete framework containing everything required to build and deploy an application, and it explicitly recommends \ac{TS} as a programming language.
 The framework is also less flexible in that it is opinionated and has its own set of best practices baked into the framework's structure.
-
-
-
 
 \section{Backend frameworks}
 \label{sec:backend-frameworks}
@@ -331,8 +327,6 @@ Still, it seems to be subject to debate regarding its ease of use versus its \te
 
 \input{04_Artefakte/02_Tabellen/stack_overflow_databases_23}
 
-
-
 \emph{PostgreSQL}\footnote{\url{https://www.postgresql.org}} is a very widely used database which uses a table-based data topology and implements \ac{SQL} for interaction with the database and its contents.
 The relatively rigid database schema provides a more solid structure for data storage and retrieval but, on the other hand, requires migrations to be written to transition from one database structure version to another.
 This can become tedious if the data modelling process is continuously ongoing and volatile.
@@ -348,7 +342,6 @@ It has its own query language and features aggregation functionality that allows
 It uses the \ac{NoSQL} paradigm and focuses on storing documents of any kind, which can become problematic in relatively informal development environments since it can lead to inconsistent data very easily if appropriate care isn't applied during application development (it supports schema validation, but that is not mandatory).
 However, this loose schematic handling can be beneficial if the application data isn't adequately modelled from the get-go and is subject to more frequent changes.
 It was initially released as open-source in 2009, then was put under a proprietary license in 2018, but remains available to be used for free with limited support.
-
 
 \section{Application deployment}
 \label{sec:application-deployment}
