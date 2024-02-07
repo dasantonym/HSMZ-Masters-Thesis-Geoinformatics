@@ -6,16 +6,16 @@
 \label{sec:statistics}
 
 The statistical evaluation focused both on the extrinsic properties of the application and the development process itself (e.g. code volume, complexity, time spent on development), as well as the intrinsic functional properties of the core functionality that are reflected in the cost of \ac{CPU}-, network-usage and message latency.
-Cost of rendering audio and video, as well as general user experience metrics were beyond the scope of the study, as these are highly specific to the task being implemented and are considered transient.
+The cost of rendering audio and video, as well as general user experience metrics, were beyond the scope of the study, as these are highly specific to the task being implemented and are considered transient.
 
 Two computers used in the performance evaluation were end-user laptops with the following specifications:
 
 \emph{Computer A} was equipped with an 3.1GHz dual-core Intel Core i5 \ac{CPU}, 16 \ac{GB} of \ac{RAM} and a 500 \ac{GB} \ac{SSD}.
 
 \emph{Computer B} was equipped with an Apple M1 Max \ac{CPU} with ten cores, 64 \ac{GB} of \ac{RAM} and a 1 \ac{TB} \ac{SSD}.
-Both systems were located outside of Mainz, but within the Rhineland-Palatinate, used the Google Chrome browser (version 121.0.6167.85), ran macOS 13.6.4 and connected to the network via an 802.11ac wireless connection.
+Both systems were located outside Mainz but within the Rhineland-Palatinate, used the Google Chrome browser (version 121.0.6167.85), ran macOS 13.6.4 and connected to the network via an 802.11ac wireless connection.
 
-Another pairing of test computers were two desktop \acp{PC} with the following specifications:
+Another pairing of test computers was two desktop \acp{PC} with the following specifications:
 
 \emph{Computer C} was equipped with an 3.60GHz eight-core Intel Core i7-7700 \ac{CPU}, 32 \ac{GB} \ac{RAM} and a 256 \ac{GB} \ac{SSD}.
 
@@ -24,13 +24,13 @@ Another pairing of test computers were two desktop \acp{PC} with the following s
 Both systems were located at Mainz University of Applied Sciences, used the Google Chrome browser (version 121.0.6167.85), ran on Ubuntu Linux version 22.04.3 and were connected over a one-gigabit Ethernet connection.
 
 The \emph{latency measurements} were conducted for the data channels and over a consumer 50Mbit \ac{DSL} connection, as well as the Mainz University design department\textquotesingle s gigabit Ethernet connection.
-All computers were using the same \ac{NTP} server to synchronise clocks and the synchronisation was continuously refreshed during each data sampling to provide at least a low single-digit millisecond clock accuracy.
-They were repeated multiple times to account for variance in overall network service quality.
-The measurements always used the \ac{BVH} data producer sending the message type for movement qualities alongside 29 key points at a rate of 25 messages per second.
-Payload size was 453 bytes for each message, amounting to a required bandwidth of about 11.3 kilobytes per second for each motion capture data stream.
-The audio streams were published alongside the data packets, but were not measured for latency.
+All computers synchronised clocks using the same \ac{NTP} server. The synchronisation was continuously refreshed during each data sampling to provide at least a low single-digit millisecond clock accuracy.
+They were repeated multiple times to account for overall network service quality variance.
+The measurements always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29 key points at a rate of 25 messages per second.
+The payload size was 453 bytes for each message, amounting to a required bandwidth of about 11.3 kilobytes per second for each motion capture data stream.
+The audio streams were published alongside the data packets but were not measured for latency.
 
-The results for the latency analysis are shown in separate graphs for each computer containing the datasets for the local and remote messages on each device.
+The results of the latency analysis are shown in separate graphs for each computer containing the datasets for the local and remote messages on each device.
 
 \begin{figure}[h]
 \centering
@@ -55,14 +55,14 @@ Here, the jittering happens at a variance of about 7ms for the remote connection
 The \ac{CPU} load and network throughput was low at an average of !!! and !!!.
 
 Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained under 40ms, which is well below the lower tolerance limit of 160ms proposed in a study by \cite{audioLatency}.
-On the server-side, the impact on the computing resources was barely registering at a rate of !!!! and the network throughput of !!!! left significant headroom on a gigabit connection.
+On the server side, the impact on the computing resources was barely registering at a rate of !!!! and the network throughput of !!!! left significant headroom on a gigabit connection.
 
 \section{Workload evaluation}
 
-The evaluation of time spent on the development work was based off the timesheets that were kept during the process. Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be properly separated from the work on the study itself.
+The evaluation of time spent on the development work was based on the timesheets kept during the process. Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be adequately separated from the work on the study itself.
 All recorded tasks were categorised by the language used (e.g. JavaScript vs. Python), the component worked on (e.g. \ac{UI} vs. \ac{API}) and the type of work (e.g. programming vs. administration).
 
-In total, 96 work hours were spent on the creation of the reference implementation and its deployment on the test infrastructure. This would amount to 12 workdays, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
+In total, 96 work hours were spent creating the reference implementation and its deployment on the test infrastructure. This would amount to 12 workdays, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
 
 \begin{figure}[h]
 \centering
@@ -71,7 +71,7 @@ In total, 96 work hours were spent on the creation of the reference implementati
 \label{fig:timeSpentLanguages}
 \end{figure}
 
-The time spent on programming languages (\ref{fig:timeSpentLanguages}) shows an obvious majority for \ac{JS}, given that it was chosen as the language for the \ac{UI} and the \ac{API} and the project\textquotesingle s primary language.
+The time spent on programming languages (\ref{fig:timeSpentLanguages}) shows an apparent majority for \ac{JS}, given that it was chosen as the language for the \ac{UI} and the \ac{API} and the project\textquotesingle s primary language.
 However, Python still takes up almost a third of the work hours spent on programming.
 C and C++ required only a marginal amount of work with under 4\% of the time spent.
 
@@ -82,9 +82,9 @@ C and C++ required only a marginal amount of work with under 4\% of the time spe
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
 
-The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker's hardware implementation (\ref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) were spent on programming and the latter two factors were marginal in the effort needed to be put in.
+The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker's hardware implementation (\ref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) was spent on programming and the latter two factors were marginal in the effort needed to be put in.
 
-Taking into account that this setup could be modified and reused for later projects, the initial setup cost for of under a month of work for a single developer is manageable and provides another positive argument for the feasibility of such an endeavour.
+Considering this setup could be modified and reused for later projects, the initial setup cost of under a month of work for a single developer is manageable. It provides another positive argument for the feasibility of such an endeavour.
 
 \section{Code quality}
 
@@ -96,10 +96,10 @@ Taking into account that this setup could be modified and reused for later proje
 \end{figure}
 
 The cyclomatic complexity (\ref{fig:cyclomaticComplexity}) was only calculated for the core \ac{SDK}, the \ac{UI}, \ac{API} and the general data producer.
-The Arduino code does not use any branching and the C++ code for the Captury producer was deemed a workaround since it should be integrated in the Python structure for proper use.
-The maximum complexity shows a large overhead exceeding the recommended thresholds (see \autoref{ch:methodology}) on behalf of the core \ac{SDK} with 15 and for the data producer with 19, although the median values show a distinct concentration of complexity with the data producer (6 versus 1 for the \ac{SDK}).
-This shows that the massive complexity value of 15 rather is an outlier for the \ac{SDK}, but seems more intrinsic to the data producer's structure, as it was put together using outside code from example projects.
-The \ac{UI} and \ac{API} however, show a very low overall complexity, which was the desired outcome to keep these parts more hackable and easy to grasp.
+The Arduino code does not use any branching, and the C++ code for the Captury producer was deemed a workaround since it should be integrated into the Python structure for proper use.
+The maximum complexity shows a significant overhead exceeding the recommended thresholds (see \autoref{ch:methodology}) on behalf of the core \ac{SDK} with 15 and for the data producer with 19, although the median values show a distinct concentration of complexity with the data producer (6 versus 1 for the \ac{SDK}).
+This shows that the massive complexity value of 15 is an outlier for the \ac{SDK} but seems more intrinsic to the \textquote{DataProducer} class structure.
+However, the \ac{UI} and \ac{API} show a very low overall complexity, which was the desired outcome to keep these parts more hackable and easy to grasp.
 
 \begin{figure}[h]
 \centering
@@ -108,7 +108,7 @@ The \ac{UI} and \ac{API} however, show a very low overall complexity, which was 
 \label{fig:fileCount}
 \end{figure}
 
-In terms of weight measured by the number of files (\ref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept. In general, it shows a relatively moderate weight for the entire application with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
+In terms of weight measured by the number of files (\ref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept. It generally shows a relatively moderate weight for the entire application, with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
 
 \begin{figure}[h]
 \centering
@@ -117,7 +117,7 @@ In terms of weight measured by the number of files (\ref{fig:fileCount}), the mo
 \label{fig:linesOfCodeTotal}
 \end{figure}
 
-The distribution of weight in regard to the total lines of code without comments produced for each component (\ref{fig:linesOfCodeTotal}) aligns with the number of files for the \ac{UI}, but shows a large overhead for the data producer with almost as many lines of code distributed among a third of the number of files.
+The distribution of weight regarding the total lines of code without comments produced for each component (\ref{fig:linesOfCodeTotal}) aligns with the number of files for the \ac{UI} but shows a significant overhead for the data producer with almost as many lines of code distributed among a third of the number of files.
 
 \begin{figure}[h]
 \centering
@@ -126,37 +126,37 @@ The distribution of weight in regard to the total lines of code without comments
 \label{fig:linesOfCode}
 \end{figure}
 
-Median and maximum amounts of lines of code across files for each component (\ref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maxium value and below the recommended thresholds (see \autoref{ch:methodology}).
-Again, the only exception to this is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
+Median and maximum amounts of lines of code across files for each component (\ref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maximum value and below the recommended thresholds (see \autoref{ch:methodology}).
+Again, the only exception is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
 
-Summarily, the results for the code quality of such a rather non-standard development process provide further encouragement to pursue more projects based on the same strategy or even on the study\textquotesingle s resulting source code.
-The average complexity and weight of the code, along with the documentation and comments added to it should enable third-party developers to engage with the results by reviewing and modifying specific parts to introduce their own experimental data capture, visualisation or sonification methods.
+Summarily, the results for the code quality of such a somewhat non-standard development process provide further encouragement to pursue more projects based on the same strategy or even on the study\textquotesingle s resulting source code.
+The average complexity and weight of the code, along with the documentation and comments added, should enable third-party developers to engage with the results by reviewing and modifying specific parts to introduce their own experimental data capture, visualisation or sonification methods.
 
 \section{Critical reflection}
 \label{sec:critical-reflection}
 
-The development process was carried out following the guiding principles decided in the application concept (see \autoref{ch:concept}).
-It was a mostly pleasant experience with the selected frameworks delivering on their promised functionality and ease of use.
+The development process followed the guiding principles defined in the application concept (see \autoref{ch:concept}).
+It was a pleasant experience with the selected frameworks delivering on their promised functionality and ease of use.
 The initial setup was quick and simple due to the ease of setup of the LiveKit \ac{WebRTC} server and the generation of boilerplate code for the \ac{API} and the \ac{UI}.
-A dvelopment environment was set up equally easy and work immediately started with practical experimentation, providing a motivational boost by quickly establishing tangible results.
-Web standards integration was simple and efficient, both through directly implemented standards such as WebSockets and WebBluetooth, as well as the other ones integrated through third-party libraries.
-However, the web audio standard implementation still leaves a lot to desire, especially the support for customised spatial audio in the browser.
+A development environment was set up equally quickly, and work immediately started with practical experimentation, providing a motivational boost by quickly establishing tangible results.
+Web standards integration was simple and efficient through directly implemented standards such as WebSockets and WebBluetooth and the other ones integrated through third-party libraries.
+However, the implementation of the web audio standard still leaves a lot to desire, especially the support for customised spatial audio in the browser.
 Currently, there is no built-in way to load custom \ac{HRTF} data, which would drastically improve the accuracy of spatial positioning for sound.
-There are approaches using a custom build of the Chromium browser~\parencite{chromiumCustomHrtf} or a custom audio node~\parencite{customHrtfAudioNode} which unfortunately does not work with the \ac{SOFA} file format, and due to the study's time constraints did not make it into the reference implementation.
+There are approaches using a custom build of the Chromium browser~\parencite{chromiumCustomHrtf} or a custom audio node~\parencite{customHrtfAudioNode}, which unfortunately does not work with the \ac{SOFA} file format, and due to the study's time constraints did not make it into the reference implementation.
 
-What might be a challenge for many beginners that have basic programming knowledge, but are not primarily working in web development is the selection of appropriate tools and libraries.
-As the libraries and frameworks that make up the broad spectrum of available web development technologies tend to favour different paradigms that in turn are also subject to frequent change due to trends and \textquote{hype cycles}, it can be difficult to keep up and daunting to make an informed choice among the available options.
-Looking at the options evaluated over the course of this study, there are a few factors to take into account when deciding which framework to prefer for a specific type of project.
-It is important to decide if a project really is going to be maintained in the long run.
-If, as in this case, the actual implementation is transient and does not require long-term maintenance, then the choice should rather be guided by the provided feature set and the paradigms implemented.
-While it is always a good choice to use a library that has a large community and a longstanding presence, a more experimental and niche case might require something newer or less popular.
+The selection of appropriate tools and libraries might be a challenge for many beginners with basic programming knowledge who are not primarily working in web development.
+As the libraries and frameworks that make up the broad spectrum of available web development technologies tend to favour different paradigms that, in turn, are also subject to frequent change due to trends and \textquote{hype cycles}, it can be challenging to keep up and daunting to make an informed choice among the available options.
+Looking at the options evaluated throughout this study, there are a few factors to consider when deciding which framework to prefer for a specific type of project.
+It is vital to decide if a project will be maintained in the long run.
+If, as in this case, the implementation is transient and does not require long-term maintenance, then the choice should be guided by the provided feature set and the paradigms implemented.
+While it is always a good choice to use a library with a large community and a longstanding presence, a more experimental and niche case might require something newer or less popular.
 
-For the development process itself, the stratey of getting something up and running as quickly as possible, working on that while regularly refactoring and restructuring was a very rewarding experience.
+For the development process itself, the strategy of getting something up and running as quickly as possible, working on that while regularly refactoring and restructuring, was a gratifying experience.
 While this approach might be perceived as not exactly team-friendly due to the danger of conflicting work, it can still be pursued in very small teams by agreeing on basic protocols and then working on separate components.
-The partitioning of the application into several components was also highly beneficial, because it allowed for different languages to be used where appropriate.
-There are many more implementations of movement analysis for Python than for JavaScript or Node.js and before porting functionality to a different language it is easier to set up a separate microservice or tool and use a standardised messaging protocol to communicate with the rest of the application.
+The partitioning of the application into several components was also highly beneficial because it allowed for different languages to be used where appropriate.
+There are many more implementations of movement analysis for Python than for JavaScript or Node.js. Before porting functionality to a different language, it is easier to set up a separate microservice or tool and use a standardised messaging protocol to communicate with the rest of the application.
 Another benefit of the partitioning design pattern is that components can be discarded and replaced with different technologies and supporting libraries without necessarily influencing the application\textquotesingle s overall functionality.
 It is important to note, though, that while the \ac{UI} is thought of as transient and unstable, unit testing is still highly recommended for the stable components that should keep being used outside of the specific implementation.
-While it could be beneficial to develop the the core \ac{SDK} using test-driven development and, once stable, working on the implementation, it would add a period of time during which there would be only theoretical planning and development.
+While it could be beneficial to develop the core \ac{SDK} using test-driven development and, once stable, working on the implementation, it would add a period during which there would be only theoretical planning and development.
 This seems out of place for small creative projects that work interdisciplinary, like a dance production that needs its own remote collaboration tool and that needs to get started as quickly as possible.
-Nonetheless, it is still important that there is a finalising phase in which the core functionality is extracted, documented and outfitted with tests, in order to keep the \ac{SDK} as an artifact to base further projects on.
+Nonetheless, it is still important to have a finalising phase in which the core functionality is extracted, documented and outfitted with tests to keep the \ac{SDK} as an artefact on which to base further projects.

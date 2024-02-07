@@ -3,46 +3,46 @@
 
 \section{Background}
 
-Remote collaboration has become increasingly prevalent in various professional environments, both through broader digitalisation efforts, but especially accelerated during the Covid pandemic.
-As a result, teleconferencing and telepresence platforms that were initally used mostly in international business relations are now much more common in many work environments.
-These technologies allow people to work together remotely in real-time, usually focusing on streaming video and audio, document sharing and collaborative whiteboarding.
-While this covers most use cases in desk-based workplaces, it lacks immersive qualities required for practices such as contemporary dance, where people relate to physical presence and shared space.
+Remote collaboration has become increasingly prevalent in various professional environments through broader digitalisation efforts and significantly accelerated during the COVID-19 pandemic.
+As a result, teleconferencing and telepresence platforms that were initially used primarily for international business relations are now much more common in many work environments.
+These technologies allow people to work together remotely in real time, usually focusing on streaming video and audio, document sharing and collaborative whiteboarding.
+While this covers most use cases in desk-based workplaces, it lacks the immersive qualities required for practices such as contemporary dance, where people relate to physical presence and shared space.
 This became apparent in March 2020, when dancers could no longer rehearse and work together due to the lockdown.
 Despite this, there were attempts at using videoconferencing to stream and record collaborative rehearsals or dance classes.
 Still, these were confined to a screen-centric interface and limited to audio and video.
 
-While commercial conferencing tools dominate in popularity among conferencing applications \parencite{mostPopularConferencingPlatforms}, there are a number of free and open-source alternatives.
+While commercial conferencing tools dominate in popularity among conferencing applications \parencite{mostPopularConferencingPlatforms}, there are several free and open-source alternatives.
 However, these all focus on the most basic form of screen-based conferencing.
-There are various domain-specific solutions for specialised applications, mainly in telemedicine, industry and the military, that support more immersive remote collaboration, but these are task-specific and difficult to afford for smaller creative or artistic project setups.
+Various domain-specific solutions for specialised applications, mainly in telemedicine, industry and the military, support more immersive remote collaboration. Still, these are task-specific and difficult to afford for smaller creative or artistic project setups.
 
 Support for web standards is driven by key industry players \parencite{pushingInteroperabilityForward}, making a wide range of basic functionality accessible in web browsers, as well as access to display and sensor technology and cross-platform deployment on desktop and mobile devices.
-This development now provides an increased potential for smaller and more task-specific applications to be built and deployed with relative ease.
-It opens up new possibilities for niche cases of remote collaboration, such as dance practice, where collaborative agency could be extended from a composite of video streams to the creation of shared virtual environments that facilitate a more personal form of mediating a sense of shared presence.
+This development now provides an increased potential for smaller and more task-specific applications to be built and deployed relatively quickly.
+It opens up new possibilities for niche cases of remote collaboration, such as dance practice, where the collaborative agency could be extended from a composite of video streams to the creation of shared virtual environments that facilitate a more personal form of mediating a sense of shared presence.
 
 The standard for \ac{RTC} in Browsers or \ac{WebRTC} \parencite{webRtcSpec} was first proposed by Google in 2011 and became an official \ac{W3C} standard in 2021 \parencite{webRtcOfficialWebStandard}.
 It has become the basis for numerous applications, such as some of the conferencing tools mentioned above, media streaming servers such as Wowza or Ant, or real-time frameworks and servers such as Mediasoup, Janus or LiveKit.
-In its most basic form, \ac{WebRTC} establishes peer-to-peer connections between devices, allowing low-latency exchange of media streams and arbitrary messages over data channels, but can accommodate other more complex and versatile scenarios.
+In its most basic form, \ac{WebRTC} establishes peer-to-peer connections between devices, allowing low-latency exchange of media streams and arbitrary messages over data channels. However, it can accommodate other more complex and versatile scenarios.
 
 \section{Proposal}
 
 The proposed study examines the feasibility of creating a customised telepresence experience that explicitly covers a specific task not provided by common platforms or products.
-A potential target audience for such an application would be very small and hardly warrants a commercial strategy of external product development, marketing and support.
-Extensive software development budgets are also rare in funding schemes supporting smaller cultural production endeavours and it is rather common for paracticioners themselves to dabble in experimental development or to have a creative coder on the team.
-In order keep the budgetary requirements for such an implementation at a minimum, it is imperative to rely on open standards and non-proprietary components.
-While the implementation has to fulfill a very specific task, some level of abstraction, modular composition and separation of concerns are important design factors that would ideally allow to establish a technological base that can be reused in multiple contexts with less work in subsequent instances of deployment.
+A potential target audience for such an application would be tiny and hardly warrants a commercial strategy of external product development, marketing and support.
+Extensive software development budgets are also rare in funding schemes supporting smaller cultural production endeavours, and it is relatively common for practitioners themselves to dabble in experimental development or to have a creative coder on the team.
+To keep the budgetary requirements for such an implementation at a minimum, relying on open standards and non-proprietary components is imperative.
+While the implementation has to fulfil a particular task, some level of abstraction, modular composition and separation of concerns are important design factors that allow for establishing a technological base that can be reused in multiple contexts with less work in subsequent deployment instances.
 
 To support a broad range of scenarios, the application core should support the real-time streaming of any type of sensor data in addition to the usual video and audio streams.
 This would allow augmenting the telepresence environment with spatial data, sensor readings or generative data sources.
-The data could then be streamed as is, but visualised, sonified or otherwise analysed and processed on the receiving devices as required by the implement use-case.
-In this particular example, movement sonification is implemented as an alternative to the visually-centered conferencing paradigms.
-As movement in front of a screen or with headsets can be rather limiting, the idea is to provide spatial audio as a medium for verbal communication, transmission of audible representations of movement and a sense of positional orientation in relation to the virtual presence in the space.
-Focused on a scenario of two participants moving at remote locations, but in virtually overlayed spatial dimensions, this setup could enable exploration of moving together by attempting to achieve some form of acoustic harmony or rhythm to supplant the lack of an actual shared pyhsical presence.
-This implementation targets only a small audience in that it requires practice and a deep engagement with the sonification method, as it would be specifically built to express a certain style of movment that would not be inituitive for every potential user alike.
-It should also be used by dancers that already have a shared experience of moving together so that verbal communication can support navigating a shared movement vocabulary and connects to the memory of shared physical practice.
-Creative design processes and user experience are deemed outside the scope of this study, as the focus lies on examining the general feasibility and affordability of using open standards and free software to enable the creation of a task-specifc real-time application, exemplified by the proposed example and examined in its general functionality instead of usablity or user experience.
+The data could then be streamed as is but visualised, sonified, or otherwise analysed and processed on the receiving devices as required by the implemented use case.
+In this particular example, movement sonification is implemented as an alternative to the visually-centred conferencing paradigms.
+As movement in front of a screen or with headsets can be somewhat limiting, the idea is to provide spatial audio as a medium for verbal communication, transmission of audible representations of movement and a sense of positional orientation in relation to the virtual presence in the space.
+Focused on a scenario of two participants moving at remote locations but in virtually overlayed spatial dimensions, this setup could enable exploration of moving together by attempting to achieve some form of acoustic harmony or rhythm to supplant the lack of an actual shared physical presence.
+This implementation targets only a small audience in that it requires practice and a deep engagement with the sonification method, as it would be specifically built to express a specific style of movement that would not be intuitive for every potential user alike.
+It should also be used by dancers with a shared experience of moving together so that verbal communication can support navigating a shared movement vocabulary and connect to the memory of shared physical practice.
+Creative design processes and user experience are deemed outside the scope of this study, as the focus lies on examining the general feasibility and affordability of using open standards and free software to enable the creation of a task-specific real-time application, exemplified by the proposed example and examined in its general functionality instead of usability or user experience.
 
 \section{Method}
 
 The study starts from a survey of \emph{conceptual foundations} presenting existing paradigms and technologies to support the development of web-based real-time applications, establishes a \emph{methodology} and presents an \emph{application concept} as well as the resulting {reference implementation}.
 The reference implementation is the basis for a quantitative \emph{evaluation} of its general functionality and a \emph{critical reflection} on the development process.
-The study concludes with a general recommendation on the feasibility of creating such a \textquote{single-use} application for a specific task as well as an outlook for future implications and possibilites resulting from this research.
+The study concludes with a general recommendation on the feasibility of creating such a \textquote{single-use} application for a specific task and an outlook for future implications and possibilities resulting from this research.

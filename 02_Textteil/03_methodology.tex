@@ -2,8 +2,8 @@
 \label{ch:methodology}
 
 This feasibility study was based on two essential parts.
-The first was a reference implementation, providing insights into the work necessary to arrive at a basic functional implementation.
-Based on this implementation, an analysis of the application's functionality was made, an overview of the time spent on development and there was a qualitative review of the resulting codebase and a reflection on the work process.
+The first was a reference implementation, providing insights into the work necessary for a basic functional implementation.
+Based on this implementation, an analysis of the application's functionality was made, an overview of the time spent on development, a qualitative review of the resulting codebase, and a reflection on the work process.
 
 \section{Reference implementation}
 \label{sec:reference-implementation}
@@ -11,44 +11,44 @@ Based on this implementation, an analysis of the application's functionality was
 To produce a valid test subject for the proposal, the reference implementation was created according to a prior selection of tools and methods deemed appropriate for the project.
 The choices were made from the concepts and tools presented in \autoref{ch:conceptualfoundations}.
 
-First, possible candidates were identified through internet research and then at least three candidates were selected using the number of \textquote{Stars} received on GitHub as an indicator of popularity.
-In some cases, other data sources had to be used where the technology itself predates GitHub (e.g.\ databases or programming languages) and its popularity should be judged by other means.
-There are developer surveys being conducted by the popular technology forum Stack Overflow with over 90.000 participants for 2023~\parencite{stackOverflowPoll} and the \textquote{State Of JS} survey with over 20.000 participants that is more focused on web development~\parencite{stateOfJSSurvey}.
-Additionally, GitHub is publishing a yearly statistic on its public repositories, which is helpful for identifying technological trends and popularity among millions of open-source repositories~\parencite{stateOfTheOctoverse23}.
-These sources provided additional input on popularity among a specific professional field and a general overview of technologies that are actually in use.
+First, possible candidates were identified through internet research, and then at least three candidates were selected using the number of \textquote{Stars} received on GitHub as an indicator of popularity.
+In some cases, other data sources had to be used where the technology predates GitHub (e.g.\ databases or programming languages), and its popularity should be judged by other means.
+Developer surveys are being conducted by the popular technology forum Stack Overflow with over 90.000 participants for 2023~\parencite{stackOverflowPoll} and the \textquote{State Of JS} survey with over 20.000 participants that is more focused on web development~\parencite{stateOfJSSurvey}.
+Additionally, GitHub publishes a yearly statistic on its public repositories, which helps identify technological trends and popularity among millions of open-source repositories~\parencite{stateOfTheOctoverse23}.
+These sources provided additional input on popularity among a specific professional field and a general overview of technologies actively used.
 The decision on choosing a candidate was made not by popularity alone, but with a stronger weight on a good fit to the project\textquotesingle s specific requirements and needs.
-If a less popular framework fit the specific style of development, it was still be preferred to the popular status quo.
-Another case might be a more recent project that hasn't collected as high of a rating on GitHub, but presents a promising new approach or feature set.
+If a less popular framework did fit the specific development style, it would still be preferred to the popular status quo.
+Another case might be a more recent project that has yet to collect as high of a rating on GitHub but presents a promising new approach or feature set.
 
-The application development works from the most basic boilerplate code towards finding the appropriate structure for the specific use-case.
-Well-known and easily defined components are built first and the special functionality is then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
-As there is only a rough architectural model for the project defined beforehand, tests and documentation is written later in the process, as the parts stabilise on their own and in their relationship amongst each other.
-This method does not strictly adhere to common development procedures, but borrows loosely from agile development (sprints, reviews, adjustment) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
-A more systemic approach for the development process like application modeling using \ac{UML} and test-driven development might be desirable for teams, but the various and disparate \textquote{moving parts} in conjunction with heavy reliance on browser-only \ac{API}s complicate the creation of a well-simulated testing environment using either real or mock-data, especially for a single developer.
+The application development worked from the most basic boilerplate code towards finding the appropriate structure for the specific use case.
+Well-known and easily defined components were built first. The special functionality was then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
+As only a rough architectural model for the project was defined beforehand, tests and documentation were written later in the process, as the parts stabilised on their own and in their relationship with each other.
+This method does not strictly adhere to common development procedures but borrows loosely from agile development (sprints, reviews, adjustment) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partitioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
+A more systemic approach for the development process, like application modelling using \ac{UML} and test-driven development, might be desirable for teams, but the various and disparate \textquote{moving parts} in conjunction with heavy reliance on browser-only \ac{API}s complicate the creation of a well-simulated testing environment using either real or mock-data, especially for a single developer.
 
-The application is implemented in its entirety, documented and packaged.
-Appropriate test coverage is provided for the core functionality in the API and the messaging components, and the overall time spent is logged in timesheets and categorised by the general work areas.
-The application's server components are deployed early on to university hardware and made available over the internet.
-The client application is then run and tested on exemplary computer systems both in the university network and outside of it.
+The application was implemented in its entirety, documented and packaged.
+Appropriate test coverage was provided for the core functionality in the API and the messaging components, and the overall time spent was logged in timesheets and categorised by the general work areas.
+The application\textquotesingle s server components were deployed early on to university hardware and made available over the internet.
+The client application was then run and tested on exemplary computer systems in and outside the university network.
 
 \section{Analysis and evaluation}
 \label{sec:analysis-evaluation}
 
-A statistical analysis of the timesheets provides insight into the time spent on various aspects of the software.
-It should differentiate between basic boilerplate code that can be reused and custom code used for the actual use case, in order to provide insights both into the feasibility of setting up such a system from scratch with only a single developer, as well as the potential cost of just reworking the parts deemed transient and related to the specific use-case.
+A statistical analysis of the timesheets provided insight into the time spent on various aspects of the software.
+It differentiated between basic boilerplate code that can be reused and custom code used for the actual use case to provide insights both into the feasibility of setting up such a system from scratch with only a single developer, as well as the potential cost of just reworking the parts deemed transient and related to the specific use case.
 
-The application's performance is tested regarding the load put on the \ac{CPU} (server and client) as well as the network throughput and latency.
+The application\textquotesingle s performance was tested regarding the load put on the \ac{CPU} (server and client) and the network throughput and latency.
 It is verified that all message processing works as expected through unit testing and simple testing tasks performed on the application.
-A practical test that analyses the actual user experience and using performers and real dance interaction is beyond the scope of this study.
+A practical test that analyses the actual user experience and uses performers and real dance interaction is beyond the scope of this study.
 
-The \emph{code quality} is assessed based on volume (lines of code without comments) and cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code \parencite[see][]{mcCabeComplexity}.
-Both metrics should be kept low, as code with a high number lines makes it harder to read and a high complexity is harder to follow and understand.
-It is recommended to limit the cyclomatic complexity to a value of 10, with special justified exceptions going up to 15 as a maximum \parencite[15]{testingCyclomaticComplexity}, in order to facilitate a development style that aims to reduce the danger of potential errors caused by excessive complexity.
-The code volume is difficult to reduce to a static maximum, but \textquote{the [\ac{SATC}] has found the most effective evaluation is a combination of size and complexity} \parencite[6]{softwareMetricsReliability}, so a self-imposed threshold should be set, even if exceptions are made later on.
-For \ac{OOP}, it is often advised to limit a file to a single class, but depending on the language used, the file can also just contain multiple functions that are better grouped together instead of scattered across multiple files.
-A general rule of thumb that has proven to be a good measurement from past experience is that a single file should not exceed 160-200 lines of code (without comments), in order to be able to quickly skim it and get a general overview.
-There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand. In those cases, there can either be a discussion about how to change the general application design to partition the functionality differently, or it can be decided to keep this code as is and improve documentation.
-Reducing volume and complexity is especially important if the code should be passed on to other people that want to maintain and modify it for further use. Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity, and the more static and stable core parts can be the location where the more complex parts is moved to (e.g. the core \ac{SDK}).
+The \emph{code quality} was assessed based on volume (lines of code without comments) and cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code \parencite[see][]{mcCabeComplexity}.
+Both metrics should be kept low, as code with many lines makes it harder to read, and high complexity is more challenging to follow and understand.
+It is recommended to limit the cyclomatic complexity to a value of 10, with special justified exceptions going up to 15 as a maximum \parencite[15]{testingCyclomaticComplexity}, to facilitate a development style that aims to reduce the danger of potential errors caused by excessive complexity.
+The code volume is difficult to reduce to a static maximum, but \textquote{the [\ac{SATC}] has found the most effective evaluation is a combination of size and complexity} \parencite[6]{softwareMetricsReliability}, so a self-imposed threshold should be set, even if exceptions are made later.
+For \ac{OOP}, limiting a file to a single class is often advised. Still, depending on the language used, the file can also contain multiple functions that are better grouped instead of scattered across various files.
+A general rule of thumb that has proven to be a good measurement from past experience is that a single file should not exceed 160-200 lines of code (without comments) to skim it and get a general overview quickly.
+There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand. In those cases, there can be a discussion about changing the general application design to partition the functionality differently. Alternatively, it can be decided to keep this code and improve documentation.
+Reducing volume and complexity is especially important if the code should be passed on to others who want to maintain and modify it for further use. Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity, and the more static and stable core parts can be the location where the more complex parts are moved to (e.g. the core \ac{SDK}).
 
-Additionally, a \emph{critical reflection} and analysis of the development process should weigh the expectations against the experiences made during the implementation of the decisions made in planning the application.
-It should evaluate the notion of general reproducibility, feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.
+Additionally, a \emph{critical reflection} and analysis of the development process was created to weigh the expectations against the experiences while implementing the decisions made in planning the application.
+It should evaluate general reproducibility and feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.
