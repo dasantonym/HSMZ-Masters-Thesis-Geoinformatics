@@ -1,7 +1,8 @@
 \chapter{Conceptual foundations}
 \label{ch:conceptualfoundations}
 
-\section{Telepresence}\label{sec:telepresence}
+\section{Telepresence}
+\label{sec:telepresence}
 
 The term \emph{telepresence} first appears in an article by Marvin Minsky, roughly defined as a form of remote robotic operation, that \textquote{emphasises the importance of high‑quality sensory feedback} and the author posits that its realisation's biggest challenge is \textquote{achieving that sense of \textquote{being there.}}~\parencite{minskyTelepresence}.
 Considering the general technological development at that time, Minsky argued from a standpoint concerned primarily with robotic manipulators that perform remote labour, enhancing the operator's physical abilities and safety.
@@ -25,7 +26,8 @@ Again, the survey presents two concepts of interest for this study.
 The terms \textquote{\emph{Involvement and Engagement}}~\parencite[8]{surveyOfPresence} are introduced as mainly relating to the same concept in games and virtual environments alike~\parencite[8]{surveyOfPresence}.
 They are roughly defined as \textquote{a state of focused attention or interest}~\parencite[8]{surveyOfPresence}, and, citing Witmer and Singer, \textquote{a psychological state experienced as a consequence of focusing one’s energy and attention on a coherent set of stimuli or meaningfully related activities and events.}~\parencite[8]{surveyOfPresence}
 A third related concept is that of \emph{flow}, defined as, citing Csikszentmihalyi, \textquote{an optimal state of concentration, \textquote{the state in which individuals are so involved in an activity that nothing else seems to matter}.}~\parencite[9]{surveyOfPresence}
-Furthermore, they cite Brockmeyer et al. in \textquote{argu[ing] that flow, since it involves experiencing an altered state, may be a deeper state of engagement with media than presence}~\parencite[9]{surveyOfPresence}.
+Furthermore, they cite Brockmeyer et al.
+in \textquote{argu[ing] that flow, since it involves experiencing an altered state, may be a deeper state of engagement with media than presence}~\parencite[9]{surveyOfPresence}.
 These alternative concepts to the idea of immersion shaping the experience within a virtual or mediated environment are a guiding conceptual basis for the design processes of the modes of expression and interaction within the telepresence application, as a deep involvement or flow would be beneficial to shape a feeling of \textquote{togetherness} in a shared task of creating sound or music.
 
 \section{Motion capture}
@@ -46,7 +48,8 @@ Other low-cost 3D cameras are on the market, like the Oak-D\footnote{\url{https:
 These systems produce relatively low accuracy but can be used as multi-camera setups or to analyse more general dynamics in the movement data.
 
 Deep learning models for motion capture like PoseNet~\parencite{kendall2016posenet} or BlazePose~\parencite{bazarevsky2020blazepose} have also become available and, while primarily used on \ac{2D} (surveillance) footage, can be extended into \ac{3D} if combined with the proper calibration data (e.g.\ depth images).
-These models are fast and can be run on a regular webcam. However, they also tend to produce relatively coarse movement data and do not generate reliable depth information when used on \ac{2D} information only.
+These models are fast and can be run on a regular webcam.
+However, they also tend to produce relatively coarse movement data and do not generate reliable depth information when used on \ac{2D} information only.
 
 \section{Movement data sonification}
 \label{sec:movement-data-sonification}
@@ -89,6 +92,7 @@ As the browser is the mediator between the \ac{OS} and the web page, the idea of
 Several organisations standardise web technologies, with the most prominent of them being the \ac{W3C}, \ac{WHATWG}, Ecma, Khronos and the \ac{IETF}.
 
 \subsection{WebRTC}
+\label{subsec:webrtc}
 
 In 2010, Google acquired Global IP Solutions, a Swedish company developing real-time communication over internet protocol~\parencite{googleGlobalIpAcquisition}.
 Their technology became the basis for \ac{WebRTC}~\parencite{webRtcGlobalIPSolutions}, which was subsequently proposed as a web standard and further developed by Google.
@@ -116,6 +120,7 @@ This allows for building entirely decentralised peer-to-peer applications as wel
 It was developed by a small team of contributors around its leading developers, Iñaki Baz Castillo and José Luis Millán.
 
 \subsection{WebSockets}
+\label{subsec:websockets}
 
 The transmission protocol \emph{WebSockets}, which was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011~\parencite{webSocketsProtocolRfc}, allows full-duplex communication between client and server, running on the same ports and transport layer seven as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure.
 As the \emph{WebSockets} standard was not fully supported across browsers for some time, there have been various approaches to providing real-time functionality to web applications more or less loosely based on the \emph{WebSockets} specification.
@@ -134,6 +139,7 @@ It is written in C++ to provide good performance, and it supports compression vi
 Like WS, it is implemented in C++, used via Node.js on the server side, and does not require a specific client library.
 
 \subsection{WebAudio}
+\label{subsec:webaudio}
 
 \emph{WebAudio}, the standard for handling audio in the browser, takes care of basic mixing of channels and different sources (e.g.\ media streams, audio files).
 It can also be used for generating sound via synthesis nodes, and entirely custom audio nodes can also be developed.
@@ -145,7 +151,8 @@ It has roughly half the rating of \emph{Flocking} but has been around only since
 \input{04_Artefakte/02_Tabellen/github_audio_frameworks}
 
 \emph{Howler.js}\footnote{\url{https://howlerjs.com}} is a complete audio framework that builds on the \emph{WebAudio} \ac{API} and provides easy access to audio functionality, focusing primarily on interactive audio for web applications or games.
-It offers various modes of sound playback, mixing, and spatial audio as a plugin. Still, at the time of writing, it only supports connecting live audio sources through a yet unmerged pull request on GitHub~\parencite{githubHowlerPullRequest}.
+It offers various modes of sound playback, mixing, and spatial audio as a plugin.
+Still, at the time of writing, it only supports connecting live audio sources through a yet unmerged pull request on GitHub~\parencite{githubHowlerPullRequest}.
 
 \emph{Tone.js}\footnote{\url{https://tonejs.github.io}} is explicitly focused on musical application, working much like a digital audio workstation software, providing various modes of sound synthesis, as well as transport controls, a meter and scales.
 It supports spatialisation using a \ac{3D} panner node and, while not explicitly documented, should support external audio stream input through its \textquote{UserMedia} node.
@@ -167,13 +174,15 @@ Custom sound sources can be defined, connected to web audio nodes, and positione
 The library hooks into any existing audio context, thus allowing a combination with virtually any other WebAudio-compliant audio framework.
 
 \subsection{WebXR}
+\label{subsec:webxr}
 
-The various virtual and augmented reality devices available are accessible via the \ac{WebXR} \ac{API}, with the browser bridging the communication with the headset and controllers. A \ac{3D} scene created in a web-based graphics framework like THREE.js or A-Frame can be instantly experienced on a \ac{VR} headset like the HTC Vive or Oculus Quest.
+The various virtual and augmented reality devices available are accessible via the \ac{WebXR} \ac{API}, with the browser bridging the communication with the headset and controllers.
+A \ac{3D} scene created in a web-based graphics framework like THREE.js or A-Frame can be instantly experienced on a \ac{VR} headset like the HTC Vive or Oculus Quest.
 
 \input{04_Artefakte/02_Tabellen/github_3d_frameworks}
 
 \emph{Three.js}\footnote{\url{https://threejs.org}} is a \ac{3D} graphics framework with a large community of over 1800 contributors that has been around since 2010.
-It was initially developed for the ActionScript language used in Macromedia and later Adobe Flash (another Ecma standard-compliant language, see \autoref{ch:programming-languages}).
+It was initially developed for the ActionScript language used in Macromedia and later Adobe Flash (another Ecma standard-compliant language, see \autoref{sec:programming-languages}).
 It features an extensive toolset for graphics generation, rendering and effects and relies on the WebGL standard to allow performant rendering via local graphics hardware.
 
 \emph{Babylon.js}\footnote{\url{https://www.babylonjs.com}} is another fully-fledged \ac{3D} framework with a strong focus on games and realistic, high-quality rendering, which was initially developed by Microsoft employees in 2013.
@@ -185,6 +194,7 @@ It explicitly focuses on mixed reality applications, implements the WebXR standa
 It is based on Three.js, whose full low-level functionality can be accessed through A-Frame if a more complex functionality or custom behaviour is required.
 
 \subsection{WebBluetooth}
+\label{subsec:webbluetooth}
 
 This relatively simple \ac{API} provides access to the computer\textquotesingle s Bluetooth functionality.
 It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics, sending and receiving messages to and from the browser (see: \autoref{sec:embeddedcomputing}).
@@ -342,5 +352,6 @@ The Docker team eventually launched the \ac{OCI} in 2015, which serves as \textq
 It has recently become the de facto standard for packaging and delivering applications in web development and beyond.
 GitHub reports that~\textquote[\cite{stateOfTheOctoverse23}]{in 2023, 4.3 million public and private repositories used Dockerfiles --- and more than 1 million public repositories used Dockerfiles for creating containers.}
 
-\emph{Container orchestration} builds on the concept of containerisation. \textquote[\cite{orchestrationDefinition}]{Container orchestration automates the provisioning, deployment, networking, scaling, availability, and lifecycle management of containers.} The concept first gained popularity as Docker \textquote{swarm mode}, a functionality of the Docker software. Still, its most successful instance so far is the software package Kubernetes\footnote{\url{https://kubernetes.io}}, which originated at Google in late 2013~\parencite{kubernetesHistory} and went on to be included in the \ac{CNCF}, a project by the Linux Foundation, that~\textquote[\cite{cloudNativeComputingFoundation}]{aims to advance the state-of-the-art for building cloud-native applications and services}.
+\emph{Container orchestration} builds on the concept of containerisation. \textquote[\cite{orchestrationDefinition}]{Container orchestration automates the provisioning, deployment, networking, scaling, availability, and lifecycle management of containers.} The concept first gained popularity as Docker \textquote{swarm mode}, a functionality of the Docker software.
+Still, its most successful instance so far is the software package Kubernetes\footnote{\url{https://kubernetes.io}}, which originated at Google in late 2013~\parencite{kubernetesHistory} and went on to be included in the \ac{CNCF}, a project by the Linux Foundation, that~\textquote[\cite{cloudNativeComputingFoundation}]{aims to advance the state-of-the-art for building cloud-native applications and services}.
 It can be extended, highly customised and deployed on anything from an embedded device to a large-scale cloud infrastructure, providing a versatile deployment and management tool for many application infrastructures.

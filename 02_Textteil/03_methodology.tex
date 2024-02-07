@@ -21,7 +21,8 @@ If a less popular framework did fit the specific development style, it would sti
 Another case might be a more recent project that has yet to collect as high of a rating on GitHub but presents a promising new approach or feature set.
 
 The application development worked from the most basic boilerplate code towards finding the appropriate structure for the specific use case.
-Well-known and easily defined components were built first. The special functionality was then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
+Well-known and easily defined components were built first.
+The special functionality was then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
 As only a rough architectural model for the project was defined beforehand, tests and documentation were written later in the process, as the parts stabilised on their own and in their relationship with each other.
 This method does not strictly adhere to common development procedures but borrows loosely from agile development (sprints, reviews, adjustment) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partitioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
 A more systemic approach for the development process, like application modelling using \ac{UML} and test-driven development, might be desirable for teams, but the various and disparate \textquote{moving parts} in conjunction with heavy reliance on browser-only \ac{API}s complicate the creation of a well-simulated testing environment using either real or mock-data, especially for a single developer.
@@ -41,14 +42,18 @@ The application\textquotesingle s performance was tested regarding the load put 
 It is verified that all message processing works as expected through unit testing and simple testing tasks performed on the application.
 A practical test that analyses the actual user experience and uses performers and real dance interaction is beyond the scope of this study.
 
-The \emph{code quality} was assessed based on volume (lines of code without comments) and cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code \parencite[see][]{mcCabeComplexity}.
+The \emph{code quality} was assessed based on volume (lines of code without comments) and cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code~\parencite[see][]{mcCabeComplexity}.
 Both metrics should be kept low, as code with many lines makes it harder to read, and high complexity is more challenging to follow and understand.
-It is recommended to limit the cyclomatic complexity to a value of 10, with special justified exceptions going up to 15 as a maximum \parencite[15]{testingCyclomaticComplexity}, to facilitate a development style that aims to reduce the danger of potential errors caused by excessive complexity.
-The code volume is difficult to reduce to a static maximum, but \textquote{the [\ac{SATC}] has found the most effective evaluation is a combination of size and complexity} \parencite[6]{softwareMetricsReliability}, so a self-imposed threshold should be set, even if exceptions are made later.
-For \ac{OOP}, limiting a file to a single class is often advised. Still, depending on the language used, the file can also contain multiple functions that are better grouped instead of scattered across various files.
+It is recommended to limit the cyclomatic complexity to a value of 10, with special justified exceptions going up to 15 as a maximum~\parencite[15]{testingCyclomaticComplexity}, to facilitate a development style that aims to reduce the danger of potential errors caused by excessive complexity.
+The code volume is difficult to reduce to a static maximum, but \textquote{the [\ac{SATC}] has found the most effective evaluation is a combination of size and complexity}~\parencite[6]{softwareMetricsReliability}, so a self-imposed threshold should be set, even if exceptions are made later.
+For \ac{OOP}, limiting a file to a single class is often advised.
+Still, depending on the language used, the file can also contain multiple functions that are better grouped instead of scattered across various files.
 A general rule of thumb that has proven to be a good measurement from past experience is that a single file should not exceed 160-200 lines of code (without comments) to skim it and get a general overview quickly.
-There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand. In those cases, there can be a discussion about changing the general application design to partition the functionality differently. Alternatively, it can be decided to keep this code and improve documentation.
-Reducing volume and complexity is especially important if the code should be passed on to others who want to maintain and modify it for further use. Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity, and the more static and stable core parts can be the location where the more complex parts are moved to (e.g. the core \ac{SDK}).
+There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand.
+In those cases, there can be a discussion about changing the general application design to partition the functionality differently.
+Alternatively, it can be decided to keep this code and improve documentation.
+Reducing volume and complexity is especially important if the code should be passed on to others who want to maintain and modify it for further use.
+Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity, and the more static and stable core parts can be the location where the more complex parts are moved to (e.g.\ the core \ac{SDK}).
 
 Additionally, a \emph{critical reflection} and analysis of the development process was created to weigh the expectations against the experiences while implementing the decisions made in planning the application.
 It should evaluate general reproducibility and feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.

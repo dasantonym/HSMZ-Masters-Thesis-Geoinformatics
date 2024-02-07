@@ -5,7 +5,7 @@
 \section{Application performance}
 \label{sec:statistics}
 
-The statistical evaluation focused both on the extrinsic properties of the application and the development process itself (e.g. code volume, complexity, time spent on development), as well as the intrinsic functional properties of the core functionality that are reflected in the cost of \ac{CPU}-, network-usage and message latency.
+The statistical evaluation focused both on the extrinsic properties of the application and the development process itself (e.g.\ code volume, complexity, time spent on development), as well as the intrinsic functional properties of the core functionality that are reflected in the cost of \ac{CPU}-, network-usage and message latency.
 The cost of rendering audio and video, as well as general user experience metrics, were beyond the scope of the study, as these are highly specific to the task being implemented and are considered transient.
 
 Two computers used in the performance evaluation were end-user laptops with the following specifications:
@@ -24,7 +24,8 @@ Another pairing of test computers was two desktop \acp{PC} with the following sp
 Both systems were located at Mainz University of Applied Sciences, used the Google Chrome browser (version 121.0.6167.85), ran on Ubuntu Linux version 22.04.3 and were connected over a one-gigabit Ethernet connection.
 
 The \emph{latency measurements} were conducted for the data channels and over a consumer 50Mbit \ac{DSL} connection, as well as the Mainz University design department\textquotesingle s gigabit Ethernet connection.
-All computers synchronised clocks using the same \ac{NTP} server. The synchronisation was continuously refreshed during each data sampling to provide at least a low single-digit millisecond clock accuracy.
+All computers synchronised clocks using the same \ac{NTP} server.
+The synchronisation was continuously refreshed during each data sampling to provide at least a low single-digit millisecond clock accuracy.
 They were repeated multiple times to account for overall network service quality variance.
 The measurements always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29 key points at a rate of 25 messages per second.
 The payload size was 453 bytes for each message, amounting to a required bandwidth of about 11.3 kilobytes per second for each motion capture data stream.
@@ -54,15 +55,17 @@ Here, the jittering happens at a variance of about 7ms for the remote connection
 
 The \ac{CPU} load and network throughput was low at an average of !!! and !!!.
 
-Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained under 40ms, which is well below the lower tolerance limit of 160ms proposed in a study by \cite{audioLatency}.
+Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained under 40ms, which is well below the lower tolerance limit of 160ms proposed in a study by~\cite{audioLatency}.
 On the server side, the impact on the computing resources was barely registering at a rate of !!!! and the network throughput of !!!! left significant headroom on a gigabit connection.
 
-\section{Workload evaluation}
+\section{Workload evaluation}\label{sec:workload-evaluation}
 
-The evaluation of time spent on the development work was based on the timesheets kept during the process. Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be adequately separated from the work on the study itself.
-All recorded tasks were categorised by the language used (e.g. JavaScript vs. Python), the component worked on (e.g. \ac{UI} vs. \ac{API}) and the type of work (e.g. programming vs. administration).
+The evaluation of time spent on the development work was based on the timesheets kept during the process.
+Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be adequately separated from the work on the study itself.
+All recorded tasks were categorised by the language used (e.g.\ JavaScript versus Python), the component worked on (e.g. \ac{UI} vs. \ac{API}) and the type of work (e.g.\ programming versus administration).
 
-In total, 96 work hours were spent creating the reference implementation and its deployment on the test infrastructure. This would amount to 12 workdays, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
+In total, 96 work hours were spent creating the reference implementation and its deployment on the test infrastructure.
+This would amount to 12 workdays, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
 
 \begin{figure}[h]
 \centering
@@ -82,11 +85,13 @@ C and C++ required only a marginal amount of work with under 4\% of the time spe
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
 
-The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker's hardware implementation (\ref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) was spent on programming and the latter two factors were marginal in the effort needed to be put in.
+The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker\textsinglequote s hardware implementation (\ref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) was spent on programming and the latter two factors were marginal in the effort needed to be put in.
 
-Considering this setup could be modified and reused for later projects, the initial setup cost of under a month of work for a single developer is manageable. It provides another positive argument for the feasibility of such an endeavour.
+Considering this setup could be modified and reused for later projects, the initial setup cost of under a month of work for a single developer is manageable.
+It provides another positive argument for the feasibility of such an endeavour.
 
 \section{Code quality}
+\label{sec:code-quality}
 
 \begin{figure}[h]
 \centering
@@ -108,7 +113,8 @@ However, the \ac{UI} and \ac{API} show a very low overall complexity, which was 
 \label{fig:fileCount}
 \end{figure}
 
-In terms of weight measured by the number of files (\ref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept. It generally shows a relatively moderate weight for the entire application, with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
+In terms of weight measured by the number of files (\ref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
+It generally shows a relatively moderate weight for the entire application, with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
 
 \begin{figure}[h]
 \centering
@@ -154,7 +160,8 @@ While it is always a good choice to use a library with a large community and a l
 For the development process itself, the strategy of getting something up and running as quickly as possible, working on that while regularly refactoring and restructuring, was a gratifying experience.
 While this approach might be perceived as not exactly team-friendly due to the danger of conflicting work, it can still be pursued in very small teams by agreeing on basic protocols and then working on separate components.
 The partitioning of the application into several components was also highly beneficial because it allowed for different languages to be used where appropriate.
-There are many more implementations of movement analysis for Python than for JavaScript or Node.js. Before porting functionality to a different language, it is easier to set up a separate microservice or tool and use a standardised messaging protocol to communicate with the rest of the application.
+There are many more implementations of movement analysis for Python than for JavaScript or Node.js.
+Before porting functionality to a different language, it is easier to set up a separate microservice or tool and use a standardised messaging protocol to communicate with the rest of the application.
 Another benefit of the partitioning design pattern is that components can be discarded and replaced with different technologies and supporting libraries without necessarily influencing the application\textquotesingle s overall functionality.
 It is important to note, though, that while the \ac{UI} is thought of as transient and unstable, unit testing is still highly recommended for the stable components that should keep being used outside of the specific implementation.
 While it could be beneficial to develop the core \ac{SDK} using test-driven development and, once stable, working on the implementation, it would add a period during which there would be only theoretical planning and development.

@@ -3,7 +3,7 @@
 
 The reference implementation was named \emph{Sensorama}, a reference to the early immersive experience patented by filmmaker Morton Heilig in 1962~\parencite{Heilig_1962}.
 It is said to be the first virtual reality systems~\parencite[5][]{vrHistoryGigante} and features stereoscopic video and audio, simulated wind and even olfactory stimuli.
-The name is a nod to the longstanding history of ideas around immersive experiences mediated through machinic technology and the multi-sensory approach that, in this case, refers to the possible input and output methods.
+The name is a nod to the longstanding history of ideas around immersive experiences mediated through machinic technology and the multisensory approach that, in this case, refers to the possible input and output methods.
 While the application\textquotesingle s base functionality could theoretically be used for any number of participants, only limited by the infrastructure\textquotesingle s resources, it was specifically designed for only two active participants at a time.
 This decision was made because it would already be a challenge to adapt to relating to a mediated presence only by localising it acoustically and at the same time focusing on sound cues to base one\textquotesingle s own movement on.
 However, a passive option of viewing the virtual space was included, allowing the use of \ac{WebXR} functionality to join as a spectator.
@@ -24,7 +24,8 @@ No special hardware is needed, and the system can run in any environment that pr
 
 While all the frameworks presented in \autoref{fig:mostUsedFrameworks} could be used to build an application as envisioned in this study, Vue was selected due to the relatively high acceptance and the comparably easy learning curve.
 While it might not be the choice for large-scale or enterprise apps, the low entry barrier and the simple structure make it ideal to get an app up and running quickly, experiment with it and pass it on to others for hacking and custom modifications.
-The Quasar framework was used to accelerate and simplify the initial development. It extends Vue\textquotesingle s basic functionality with a \ac{UI} library complete with layout tools, common interface elements and a comfortable development and deployment environment.
+The Quasar framework was used to accelerate and simplify the initial development.
+It extends Vue\textquotesingle s basic functionality with a \ac{UI} library complete with layout tools, common interface elements and a comfortable development and deployment environment.
 
 The choice for a backend framework landed on Feathers and, by extension, Koa.
 The simple structure and code generators allow for a speedy setup and deployment of a simple WebSockets \ac{API} that provides authentication and resource management.
@@ -50,7 +51,8 @@ While this might usually be considered bad practice in terms of maintainability 
 
 An essential part of the development concept was the sequence of development phases.
 As there was no explicit definition beforehand, the development started by establishing a functional skeleton first and worked within that to carve out the actual functionality.
-Initially, monolithic large blocks of code were built. Various approaches to desired functionality were quickly tried and discarded or kept and subsequently extracted into separate components grouped by functional association.
+Initially, monolithic large blocks of code were built.
+Various approaches to desired functionality were quickly tried and discarded or kept and subsequently extracted into separate components grouped by functional association.
 Using this strategy, it was essential to review and refactor regularly and often to solidify the application structure and prevent it from dissolving into \textquote{spaghetti code} and to avoid unnecessary side-effects among the components.
 The core features were extracted into a separate \ac{SDK} module towards the end of the development process, and appropriate unit tests were written.
 As the application could now move into practical testing and, thus, some sort of \textquote{production} deployment, the core functionality needed to become more rigid and covered by test cases.
@@ -67,12 +69,14 @@ This way, basic tests to base work on were already available and, to keep the pr
 \input{04_Artefakte/02_Tabellen/github_testing_frameworks_stars}
 
 \section{Movement quality extraction}
+\label{sec:movement-quality-extraction}
 
 One quality chosen was the \textquote{average velocity}, generally defined as the distance travelled over time (e.g.\ m/s).
 Additionally, two more specialised concepts, developed for expressive movement analysis, were selected: \textquote{Quantity of Movement}~\parencite[96-97]{movementQualities}, describing the amount of difference between poses over time, and the \textquote{Contraction Index}~\parencite[97]{movementQualities} which observes the density of space used by a pose.
 While the former is easily defined as the velocity calculated for a singular point (the centre of mass with an equal distribution), the latter two have been initially developed to observe pixelated \ac{2D} camera images and needed to be translated to \ac{3D} space.
 
 \section{Sonification method and sound spatialisation}
+\label{sec:sonification-method-and-sound-spatialisation}
 
 The three basic movement qualities extracted provided the basis for a reference pipeline implementing parameter mapping sonification (see \autoref{sec:movement-data-sonification}).
 The movement qualities were made available to the application, enabling an event-based system where thresholds that switch a boolean value at the crossing time can be defined.
@@ -80,8 +84,8 @@ As these values are watched, events can be triggered depending on their on- or o
 At the time of an event, the current value of a quality or a combination of them can be used to determine the magnitude of the event\textquotesingle s impact.
 
 A simple system of scales, chords, and note selection was introduced to create an example sonification algorithm.
-The system was based on selecting a specific scale (e.g. E-minor) for which a list of possible chords could then be produced.
-Each time an event is triggered on one of the qualities (e.g. Quantity of Movement), the actual value can be used to decide which chord to select from the list using the normalised value.
+The system was based on selecting a specific scale (e.g.\ E-minor) for which a list of possible chords could then be produced.
+Each time an event is triggered on one of the qualities (e.g.\ Quantity of Movement), the actual value can be used to decide which chord to select from the list using the normalised value.
 The notes selected from the chord are then transposed using another quality (Contraction Index), selecting the root note for the chord across the octaves.
 The average velocity was used to set the note length, triggering shorter notes when standing relatively still and more extended notes while travelling in space.
 It must be noted that while this is a valid example for a parameter mapping sonification and will produce largely harmonic notes, it falls short of producing an output of a more complex musical quality because it lacks the ability to construct deeper structures and dramaturgic variance.
@@ -112,7 +116,7 @@ The \ac{API} server uses the WebSockets protocol to relay updates on persisted d
 \section{Data modeling}
 \label{sec:datamodeling}
 
-Four core data models were defined for the application (see \autoref{fig:apiDataModel}.
+Four core data models were defined for the application (see \autoref{fig:apiDataModel}).
 The two models persisted by the \ac{API} server are \emph{Spaces} and \emph{Users}.
 These were modelled as simple reference objects providing the basis for connecting users to virtual spaces, akin to spatial chat rooms, and each User can own multiple Space objects.
 A Space is a container object representing a shared space populated with multiple participants\textquotesingle sensor readings.
@@ -158,12 +162,14 @@ The \emph{type} could be a \textquote{Uint8}, \textquote{Float32} or a \textquot
 The application comprises several third-party components merely deployed as-is (WebRTC, databases, static web server) and the custom-developed parts described in the following section.
 
 \subsection{Core SDK module}
+\label{subsec:core-sdk-module}
 
 The core functionality was built into a separate module to enable integration into other setups using different frameworks or architectures.
 The module uses the \ac{NPM}\textquotesingle s package format and can be utilised in the browser and Node.js.
 While this module carries the most fundamental functionality, it was created last in the development process, as the essential parts only crystallised during the initial development phase.
 
 \subsection{Web frontend}
+\label{subsec:web-frontend}
 
 The web frontend provides the main entry point for the users.
 It allows authentication via a local username and password combination and provides objects modelled as virtual \textquote{spaces} that are the central anchor to organise all communications, as defined in \autoref{fig:apiDataModel}.
@@ -178,16 +184,19 @@ The frontend was designed to coordinate the connections between the WebRTC serve
 It also implements the various web standard \ac{API}s needed for sound, graphics and communication.
 
 \subsection{API backend}
+\label{subsec:api-backend}
 
 In the backend, the \ac{API} server was tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server.
 Through its real-time implementation, it can notify connected clients of changes like other connecting users or updates to data.
-The Feathers framework exports its own client library that is specifically generated for the current server configuration. It can be directly integrated into Vue using a client adapter module that handles authentication and basic \ac{CRUD} operations.
+The Feathers framework exports its own client library that is specifically generated for the current server configuration.
+It can be directly integrated into Vue using a client adapter module that handles authentication and basic \ac{CRUD} operations.
 
 \subsection{Native utilities}
+\label{subsec:native-utilities}
 
 Three different native utilities were additionally implemented.
 
-The general \emph{data producer} was set up as a \ac{CLI} utility in Python, implementing various Python-specific extensions: the DepthAI framework\footnote{\url{https://github.com/luxonis/depthai}}, used to work with the Luxonis Oak-D line of \ac{3D}-cameras, Intel\textquotesingle s OpenVino\footnote{\url{https://github.com/openvinotoolkit/openvino}} for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D \parencite{open3DZhou2018} for working with point cloud data and general spatial operations and PyMotion \parencite{githubPyMotion}, a library for working with recorded \ac{BVH} motion capture data files.
+The general \emph{data producer} was set up as a \ac{CLI} utility in Python, implementing various Python-specific extensions: the DepthAI framework\footnote{\url{https://github.com/luxonis/depthai}}, used to work with the Luxonis Oak-D line of \ac{3D}-cameras, Intel\textquotesingle s OpenVino\footnote{\url{https://github.com/openvinotoolkit/openvino}} for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D~\parencite{open3DZhou2018} for working with point cloud data and general spatial operations and PyMotion~\parencite{githubPyMotion}, a library for working with recorded \ac{BVH} motion capture data files.
 Python also allowed for easy statistical data analysis using NumPy, which was used to perform movement quality extraction.
 
 For real-time streaming of live motion capture data from the Captury Live system, there currently only exists a C++ client library provided by the system's manufacturer.
