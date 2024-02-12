@@ -92,6 +92,7 @@
 \setminted[java]{linenos, fontsize=\footnotesize, frame=lines, breaklines, breakbefore={.}}
 \setminted[js]{linenos, fontsize=\footnotesize, frame=lines, breaklines, breakbefore={.}}
 \setminted[json]{linenos, fontsize=\footnotesize, frame=lines, breaklines, breakbefore={.}}
+\setminted[text]{fontsize=\footnotesize, frame=lines}
 \usemintedstyle{friendly}
 % new environment for listings longer than one page; https://tex.stackexchange.com/a/53540
 \newenvironment{longlisting}{\captionsetup{type=listing}}{}
@@ -217,5 +218,15 @@
 \newlength{\mylen}
 \setlength{\mylen}{\widthof{XVIII}} %TODO hier Text eintragen, der der breitesten Seitennummer im Inhaltsverzeichnis oder einem der anderne Verzeichnisse entspricht
 \renewcommand*\@pnumwidth{\the\mylen}
+}
+\makeatother
+
+% Allow a chapter to occur without a headline to be able to cram both language abstracts on page
+\makeatletter
+\newcommand{\unchapter}[1]{%
+  \begingroup
+  \let\@makechapterhead\@gobble % make \@makechapterhead do nothing
+  \chapter{#1}
+  \endgroup
 }
 \makeatother

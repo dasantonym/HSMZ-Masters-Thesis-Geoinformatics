@@ -48,7 +48,13 @@ The channels feature provided by Feathers was used to automatically subscribe, c
 The basic functionality was bundled in an \ac{NPM} module to make the base code independent of the use case, which could later be used in other projects.
 This module contains the abstract classes \textquote{DataProducer}, \textquote{HeadTracker} and \textquote{SonificationController} alongside the message specification for the various types of transmitted data.
 It was written to propagate updates via events instead of the reactive patterns used in Vue so that it can also be used independently from the framework used for the study.
-Unit tests were added to the module to maintain a stable implementation.
+Unit tests were added to the module to maintain a stable implementation, providing sufficient test coverage with only a few branches left uncovered that were deemed insignificant (see \autoref{listing:sdkCoverage}).
+
+\begin{listing}[!ht]
+\inputminted{text}{04_Artefakte/03_Listings/sdk-test-coverage.txt}
+\caption{SDK test coverage report\protect}
+\label{listing:sdkCoverage}
+\end{listing}
 
 \section{User interface}
 \label{sec:user-interface}
