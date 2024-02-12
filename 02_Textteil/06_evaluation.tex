@@ -73,7 +73,7 @@ On the server side, the impact on the computing resources was barely registering
 
 Another pairing of test computers was attempted using a local Ethernet connection on campus at Mainz University of Applied Sciences, but was discarded, because latencies were in the single digit to sub-milliseconds range and thus could not be properly measured due lack of a precision clock system.
 
-\section{Workload analyis}\label{sec:workload-evaluation}
+\section{Workload}\label{sec:workload-evaluation}
 
 The evaluation of time spent on the development work was based on the timesheets kept during the process.
 Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be adequately separated from the work on the study itself.
@@ -162,11 +162,10 @@ Here, it becomes even more apparent that the data producer using the external co
 Summarily, the results for the code quality of such a somewhat non-standard development process provide further encouragement to pursue more projects based on the same strategy or even on the study\textquotesingle s resulting source code.
 The average complexity and weight of the code, along with the documentation and comments added, should enable third-party developers to engage with the results by reviewing and modifying specific parts to introduce their own experimental data capture, visualisation or sonification methods.
 
-\section{Critical evaluation}
+\section{Critical reflection}
 \label{sec:critical-evaluation}
 
-The development process followed the guiding principles defined in the application concept (see \autoref{ch:concept}).
-It was a pleasant experience with the selected frameworks delivering on their promised functionality and ease of use.
+The development process followed the guiding principles defined in the application concept (see \autoref{ch:concept}) and the selected frameworks delivered as anticipated on their promised functionality and ease of use.
 The initial setup was quick and simple due to the ease of setup of the LiveKit \ac{WebRTC} server and the generation of boilerplate code for the \ac{API} and the \ac{UI}.
 A development environment was set up equally quickly, and work immediately started with practical experimentation, providing a motivational boost by quickly establishing tangible results.
 Web standards integration was simple and efficient through directly implemented standards such as WebSockets and WebBluetooth and the other ones integrated through third-party libraries.
@@ -174,12 +173,14 @@ However, the implementation of the web audio standard still leaves a lot to desi
 Currently, there is no built-in way to load custom \ac{HRTF} data, which would drastically improve the accuracy of spatial positioning for sound.
 There are approaches using a custom build of the Chromium browser~\parencite{chromiumCustomHrtf} or a custom audio node~\parencite{customHrtfAudioNode}, which unfortunately does not work with the \ac{SOFA} file format, and due to the study's time constraints did not make it into the reference implementation.
 
-The selection of appropriate tools and libraries might be a challenge for many beginners with basic programming knowledge who are not primarily working in web development.
+The selection of appropriate tools and libraries is daunting for many beginners with basic programming knowledge who are not primarily working in web development.
 As the libraries and frameworks that make up the broad spectrum of available web development technologies tend to favour different paradigms that, in turn, are also subject to frequent change due to trends and \textquote{hype cycles}, it can be challenging to keep up and daunting to make an informed choice among the available options.
+This means that there should at best be either someone with current practical experience involved, or a considerable amount of time needs to be invested in surveying and trying out the various available tools.
 Looking at the options evaluated throughout this study, there are a few factors to consider when deciding which framework to prefer for a specific type of project.
 It is vital to decide if a project will be maintained in the long run.
 If, as in this case, the implementation is transient and does not require long-term maintenance, then the choice should be guided by the provided feature set and the paradigms implemented.
 While it is always a good choice to use a library with a large community and a longstanding presence, a more experimental and niche case might require something newer or less popular.
+However, for beginners, choosing frameworks with a large and active community might be more beneficial than betting on the most experimental newcomers.
 
 For the development process itself, the strategy of getting something up and running as quickly as possible, working on that while regularly refactoring and restructuring, was a gratifying experience.
 While this approach might be perceived as not exactly team-friendly due to the danger of conflicting work, it can still be pursued in very small teams by agreeing on basic protocols and then working on separate components.

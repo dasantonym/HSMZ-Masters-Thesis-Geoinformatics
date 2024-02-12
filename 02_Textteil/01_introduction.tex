@@ -38,15 +38,15 @@ While the implementation has to fulfil a particular task, some level of abstract
 To support a broad range of scenarios, the application core should support the real-time streaming of any type of sensor data in addition to the usual video and audio streams.
 This would allow augmenting the telepresence environment with spatial data, sensor readings or generative data sources.
 The data could then be streamed as is but visualised, sonified, or otherwise analysed and processed on the receiving devices as required by the implemented use case.
-In this particular example, movement sonification is implemented as an alternative to the visually-centred conferencing paradigms.
-As movement in front of a screen or with headsets can be somewhat limiting, the idea is to provide spatial audio as a medium for verbal communication, transmission of audible representations of movement and a sense of positional orientation in relation to the virtual presence in the space.
+In this reference implementation, movement sonification is implemented as an alternative to the visually-centred conferencing paradigms.
+As movement in front of a screen or with headsets can be somewhat limiting, the idea is to use spatial audio for movement sonification and voice communication to provide a sense of positional orientation in relation to the virtual presence in the space.
 Focused on a scenario of two participants moving at remote locations but in virtually overlayed spatial dimensions, this setup could enable exploration of moving together by attempting to achieve some form of acoustic harmony or rhythm to supplant the lack of an actual shared physical presence.
-This implementation targets only a small audience in that it requires practice and a deep engagement with the sonification method, as it would be specifically built to express a specific style of movement that would not be intuitive for every potential user alike.
+This implementation targets only a small audience in that it requires practice and a deep engagement with the sonification method, explained in detail in \autoref{sec:sonification-method-and-sound-spatialisation}, as it would be specifically built to express a specific style of movement that would not be intuitive for every potential user alike.
 It should also be used by dancers with a shared experience of moving together so that verbal communication can support navigating a shared movement vocabulary and connect to the memory of shared physical practice.
 Creative design processes and user experience are deemed outside the scope of this study, as the focus lies on examining the general feasibility and affordability of using open standards and free software to enable the creation of a task-specific real-time application, exemplified by the proposed example and examined in its general functionality instead of usability or user experience.
 
-\section{Method}
-\label{sec:method}
+\section{Outline}
+\label{sec:outline}
 
 The study starts from a survey of \emph{conceptual foundations} presenting existing paradigms and technologies to support the development of web-based real-time applications, establishes a \emph{methodology} and presents an \emph{application concept} as well as the resulting {reference implementation}.
 The reference implementation is the basis for a quantitative \emph{evaluation} of its general functionality and a \emph{critical reflection} on the development process.
