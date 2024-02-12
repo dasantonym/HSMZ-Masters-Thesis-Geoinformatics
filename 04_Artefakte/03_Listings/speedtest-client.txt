@@ -1,0 +1,7 @@
+      Server: Deutsche Glasfaser - Kaiserslautern (id: 53558)
+         ISP: Inexio
+Idle Latency:    25.60 ms   (jitter: 0.08ms, low: 25.41ms, high: 25.73ms)
+    Download:    58.02 Mbps (data used: 57.7 MB)
+                 43.56 ms   (jitter: 1.87ms, low: 24.36ms, high: 47.92ms)
+      Upload:    14.19 Mbps (data used: 11.4 MB)
+                 26.30 ms   (jitter: 0.93ms, low: 23.86ms, high: 33.05ms)

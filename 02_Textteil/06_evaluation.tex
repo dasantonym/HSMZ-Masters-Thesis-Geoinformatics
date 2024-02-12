@@ -10,53 +10,67 @@ The cost of rendering audio and video, as well as general user experience metric
 
 Two computers used in the performance evaluation were end-user laptops with the following specifications:
 
-\emph{Computer A} was equipped with an 3.1GHz dual-core Intel Core i5 \ac{CPU}, 16 \ac{GB} of \ac{RAM} and a 500 \ac{GB} \ac{SSD}.
+\emph{Computer A} was equipped with a dual-core Intel Core i5 \ac{CPU}, 16~\ac{GB} of \ac{RAM} and a 500~\ac{GB} \ac{SSD}.
+\emph{Computer B} was equipped with an Apple M1 Max \ac{CPU} with ten cores, 64~\ac{GB} of \ac{RAM} and a 1~\ac{TB}~\ac{SSD}.
 
-\emph{Computer B} was equipped with an Apple M1 Max \ac{CPU} with ten cores, 64 \ac{GB} of \ac{RAM} and a 1 \ac{TB} \ac{SSD}.
-Both systems were located outside Mainz but within the Rhineland-Palatinate, used the Google Chrome browser (version 121.0.6167.85), ran macOS 13.6.4 and connected to the network via an 802.11ac wireless connection.
+The test systems were located in a rural area 80~\acp{km} outside Mainz, used the Google Chrome browser (version 121.0.6167.85), ran macOS~13.6.4 and connected to a consumer \ac{ADSL} connection (60~\ac{Mbit} download and 15~\ac{Mbit} upload) via an 802.11ac wireless connection (\autoref{listing:speedtestClient}).
 
-Another pairing of test computers was two desktop \acp{PC} with the following specifications:
+\begin{listing}[!ht]
+\inputminted{text}{04_Artefakte/03_Listings/speedtest-client.txt}
+\caption{Speedtest: connection statistics for the test clients\protect}
+\label{listing:speedtestClient}
+\end{listing}
 
-\emph{Computer C} was equipped with an 3.60GHz eight-core Intel Core i7-7700 \ac{CPU}, 32 \ac{GB} \ac{RAM} and a 256 \ac{GB} \ac{SSD}.
-
-\emph{Computer D} was equipped with an 3.60GHz eight-core Intel Core i7-7700 \ac{CPU}, 16 \ac{GB} \ac{RAM} and a 256 \ac{GB} \ac{SSD}.
-
-Both systems were located at Mainz University of Applied Sciences, used the Google Chrome browser (version 121.0.6167.85), ran on Ubuntu Linux version 22.04.3 and were connected over a one-gigabit Ethernet connection.
-
-The \emph{latency measurements} were conducted for the data channels and over a consumer 50Mbit \ac{DSL} connection, as well as the Mainz University design department\textquotesingle s gigabit Ethernet connection.
-All computers synchronised clocks using the same \ac{NTP} server.
-The synchronisation was continuously refreshed during each data sampling to provide at least a low single-digit millisecond clock accuracy.
-They were repeated multiple times to account for overall network service quality variance.
-The measurements always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29 key points at a rate of 25 messages per second.
-The payload size was 453 bytes for each message, amounting to a required bandwidth of about 11.3 kilobytes per second for each motion capture data stream.
+Both computers synchronised their clocks using the same \ac{NTP} server on the local netork.
+The synchronisation was continuously refreshed during the data sampling to continously provide sub-millisecond clock accuracy.
+The measurements ran for ten minutes each and always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29~key points at a rate of 25~messages per second.
+The payload size was 453~bytes for each message, amounting to a required bandwidth of about 11.3~\ac{KB/s} for each motion capture data stream.
+They were repeated ten times to account for overall network service quality variance.
 The audio streams were published alongside the data packets but were not measured for latency.
+The \ac{CPU}, \ac{RAM} and bandwidth usage for LiveKit on the server was recorded as well.
+The results of the latency analysis are shown in separate graphs for each computer containing an average across all datasets for the local and remote messages on each device.
 
-The results of the latency analysis are shown in separate graphs for each computer containing the datasets for the local and remote messages on each device.
-
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
-\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a-average}
+\includesvg[width=\textwidth]{04_Artefakte/01_Abbildungen/latency-computer-a-average}
 \caption[Message latency on Computer A]{Computer A: Average latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerA}
 \end{figure}
 
-Results for computer A (\ref{fig:latencyComputerA}) show a median latency of 32ms for remote messages received over the WebRTC connection and 2ms for the connection from the local data producer to the browser.
-Both values show a jitter at a variance of about 25ms for the remote connection and about 5ms for the local connection.
+Results for computer A (\autoref{fig:latencyComputerA}) show an overall average latency of ca.~30~\ac{ms} for remote messages received over the \ac{WebRTC} connection and ca.~2~\ac{ms} for the connection from the local data producer to the browser.
+The averages show a standard deviation of ca.~1.4~\ac{ms} for the remote connection and about ca.~0.2~\ac{ms} for the local connection.
 
-\begin{figure}[h]
+\begin{figure}[!h]
 \centering
-\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b-average}
+\includesvg[width=\textwidth]{04_Artefakte/01_Abbildungen/latency-computer-b-average}
 \caption[Message latency on Computer B]{Computer B: Average latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerB}
 \end{figure}
 
-The results gathered on computer B (\ref{fig:latencyComputerB}) show a median latency of 31ms for the remote messages and 1ms for the local data producer connection.
-Here, the jittering happens at a variance of about 7ms for the remote connection and about 1ms for the local connection.
+The results gathered on computer B (\autoref{fig:latencyComputerB}) also show an average latency of ca.~30~\ac{ms} for the remote messages and ca.~1.7~\ac{ms} for the local data producer connection.
+Here, the standard deviation is ca.~2.1~\ac{ms} for the remote connection and ca.~0.6~\ac{ms} for the local connection.
 
-The \ac{CPU} load and network throughput was low at an average of !!! and !!!.
+On the server, the average overall network consumption for the LiveKit server was at ca.~106~\ac{KB/s} for incoming and ca.~156~KB/s for outgoing traffic, moderately fluctuating with a peak of ca.~122~\ac{KB/s} incoming and ca.~198~\ac{KB/s}, while the isolated packet traffic remained relatively stable at an average of ca.~32~\ac{KB/s} (in) and ca.~33~\ac{KB/s} (out) with respective maxima of ca.~35~\ac{KB/s} and ca.~36~\ac{KB/s} (\autoref{fig:serverNetworkUsage}).
+The server compute resource usage was minimal with only an average of ca.~0.04~\ac{CPU} cores and ca.~81~\ac{MB}~\ac{RAM} usage (\autoref{fig:serverComputeResources}).
 
-Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained under 40ms, which is well below the lower tolerance limit of 160ms proposed in a study by~\cite{audioLatency}.
-On the server side, the impact on the computing resources was barely registering at a rate of !!!! and the network throughput of !!!! left significant headroom on a gigabit connection.
+\begin{figure*}[!ht]
+\includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/server-bandwidth-average}\hfill
+\includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/server-packet_bytes-average}
+\caption[Server network usage during tests]{Average network usage for the LiveKit server during tests (\ac{KB/s})\protect}
+\label{fig:serverNetworkUsage}
+\end{figure*}
+
+\begin{figure*}[!ht]
+\includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/server-cpu-average}\hfill
+\includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/server-ram-average}
+\caption[Server compute resources usage during tests]{Average \ac{CPU} and \ac{RAM} usage for the LiveKit server during tests\protect}
+\label{fig:serverComputeResources}
+\end{figure*}
+
+Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained under 40~\ac{ms}, which is well below the lower tolerance limit of 160~\ac{ms} proposed in a study by~\cite{audioLatency} on tolerable audio latency for live music creation.
+On the server side, the impact on the computing resources was barely registering, the network throughput left significant headroom for more connections over the server's a gigabit connection and would most likely work as well on a 100~\ac{Mbit} connection and a server with fewer cores than the test setup.
+
+Another pairing of test computers was attempted using a local Ethernet connection on campus at Mainz University of Applied Sciences, but was discarded, because latencies were in the single digit to sub-milliseconds range and thus could not be properly measured due lack of a precision clock system.
 
 \section{Workload evaluation}\label{sec:workload-evaluation}
 
@@ -74,7 +88,7 @@ This would amount to 12 workdays, assuming eight hours for each day, which would
 \label{fig:timeSpentLanguages}
 \end{figure}
 
-The time spent on programming languages (\ref{fig:timeSpentLanguages}) shows an apparent majority for \ac{JS}, given that it was chosen as the language for the \ac{UI} and the \ac{API} and the project\textquotesingle s primary language.
+The time spent on programming languages (\autoref{fig:timeSpentLanguages}) shows an apparent majority for \ac{JS}, given that it was chosen as the language for the \ac{UI} and the \ac{API} and the project\textquotesingle s primary language.
 However, Python still takes up almost a third of the work hours spent on programming.
 C and C++ required only a marginal amount of work with under 4\% of the time spent.
 
@@ -85,7 +99,7 @@ C and C++ required only a marginal amount of work with under 4\% of the time spe
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
 
-The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker\textquotesingle s hardware implementation (\ref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) was spent on programming and the latter two factors were marginal in the effort needed to be put in.
+The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker\textquotesingle s hardware implementation (\autoref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) was spent on programming and the latter two factors were marginal in the effort needed to be put in.
 
 Considering this setup could be modified and reused for later projects, the initial setup cost of under a month of work for a single developer is manageable.
 It provides another positive argument for the feasibility of such an endeavour.
@@ -115,7 +129,7 @@ However, the \ac{UI} and \ac{API} show a very low overall complexity, which was 
 \label{fig:fileCount}
 \end{figure}
 
-In terms of weight measured by the number of files (\ref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
+In terms of weight measured by the number of files (\autoref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
 It generally shows a relatively moderate weight for the entire application, with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
 
 \begin{figure}[h]
@@ -134,7 +148,7 @@ The distribution of weight regarding the total lines of code without comments pr
 \label{fig:linesOfCode}
 \end{figure}
 
-Median and maximum amounts of lines of code across files for each component (\ref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maximum value and below the recommended thresholds (see \autoref{ch:methodology}).
+Median and maximum amounts of lines of code across files for each component (\autoref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maximum value and below the recommended thresholds (see \autoref{ch:methodology}).
 Again, the only exception is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
 
 Summarily, the results for the code quality of such a somewhat non-standard development process provide further encouragement to pursue more projects based on the same strategy or even on the study\textquotesingle s resulting source code.
