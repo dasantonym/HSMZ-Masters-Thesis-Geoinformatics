@@ -35,8 +35,8 @@ The results of the latency analysis are shown in separate graphs for each comput
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a-02}
-\caption[Message latency on Computer A]{Computer A: Latency in milliseconds for local and remote messages\protect}
+\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-a-average}
+\caption[Message latency on Computer A]{Computer A: Average latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerA}
 \end{figure}
 
@@ -45,8 +45,8 @@ Both values show a jitter at a variance of about 25ms for the remote connection 
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b-02}
-\caption[Message latency on Computer B]{Computer B: Latency in milliseconds for local and remote messages\protect}
+\includesvg[scale=0.4]{04_Artefakte/01_Abbildungen/latency-computer-b-average}
+\caption[Message latency on Computer B]{Computer B: Average latency in milliseconds for local and remote messages\protect}
 \label{fig:latencyComputerB}
 \end{figure}
 
@@ -69,7 +69,7 @@ This would amount to 12 workdays, assuming eight hours for each day, which would
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-languages}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-languages-hours}
 \caption[Time spent on languages]{Time spent on various programming languages\protect}
 \label{fig:timeSpentLanguages}
 \end{figure}
@@ -80,7 +80,7 @@ C and C++ required only a marginal amount of work with under 4\% of the time spe
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-on-types-of-work}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-areas-hours}
 \caption[Time spent on areas of work]{Time spent on areas of work\protect}
 \label{fig:timeSpentTypeOfWork}
 \end{figure}
@@ -95,12 +95,14 @@ It provides another positive argument for the feasibility of such an endeavour.
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-complexity}
-\caption[Cyclomatic complexity]{Cyclomatic complexity per component\protect}
-\label{fig:cyclomaticComplexity}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-cognitive_complexity}
+\caption[Cognitive complexity]{Cognitive complexity per component\protect}
+\label{fig:cognitiveComplexity}
 \end{figure}
 
-The cyclomatic complexity (\ref{fig:cyclomaticComplexity}) was only calculated for the core \ac{SDK}, the \ac{UI}, \ac{API} and the general data producer.
+Code quality was analysed using the free service SonarCloud\footnote{\url{https://sonarcloud.io}}.
+The default recommended limit for cognitive complexity set by the SonarCloud code analysis setup is 15 for \ac{JS} and Python and 25 for C++.
+The cognitive complexity (\ref{fig:cognitiveComplexity}) was only calculated for the core \ac{SDK}, the \ac{UI}, \ac{API} and the general data producer.
 The Arduino code does not use any branching, and the C++ code for the Captury producer was deemed a workaround since it should be integrated into the Python structure for proper use.
 The maximum complexity shows a significant overhead exceeding the recommended thresholds (see \autoref{ch:methodology}) on behalf of the core \ac{SDK} with 15 and for the data producer with 19, although the median values show a distinct concentration of complexity with the data producer (6 versus 1 for the \ac{SDK}).
 This shows that the massive complexity value of 15 is an outlier for the \ac{SDK} but seems more intrinsic to the \textquote{DataProducer} class structure.
@@ -108,7 +110,7 @@ However, the \ac{UI} and \ac{API} show a very low overall complexity, which was 
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-filecount}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-filecount}
 \caption[File count]{Number of source files per application component\protect}
 \label{fig:fileCount}
 \end{figure}
@@ -118,7 +120,7 @@ It generally shows a relatively moderate weight for the entire application, with
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc-total}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_sum}
 \caption[Lines of code (total)]{Total lines of code per application component\protect}
 \label{fig:linesOfCodeTotal}
 \end{figure}
@@ -127,7 +129,7 @@ The distribution of weight regarding the total lines of code without comments pr
 
 \begin{figure}[h]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/code-stats-loc}
+\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_files}
 \caption[Lines of code]{Maximum and median number of lines of code per application component\protect}
 \label{fig:linesOfCode}
 \end{figure}
