@@ -56,7 +56,13 @@ Unit tests were added to the module to maintain a stable implementation.
 The Quasar framework provides a \ac{CLI} to generate new projects, which allows selecting basic implementation details (e.g.\ language, state management) and producing a complete and working empty Vue project with sample components that served as the starting point for the \ac{UI} implementation.
 The first thing added to the project was the library \textquote{feathers-pinia}\footnote{\url{https://feathers-pinia.pages.dev}}, which is provided by the Feathers developer community and promises easy integration of an existing Feathers \ac{API} with any Vue project using the Pinia\footnote{\url{https://pinia.vuejs.org/}} state management system used by Vue.
 The extension was integrated by linking the client library that the Feathers server project automatically generates by referencing the \ac{API}\textquotesingle s project folder and configuring basic authentication settings.
-The routing configuration and page components were set up according to the sitemap (see !!!autoref{fig:sitemap}).
+The routing configuration and page components were set up according to the sitemap (\autoref{fig:uiSitemap}).
+
+\begin{figure}[!ht]
+\includesvg[width=\textwidth]{04_Artefakte/01_Abbildungen/ui-sitemap}
+\caption[Sensorama UI sitemap]{Sitemap for the Sensorama UI\protect}
+\label{fig:uiSitemap}
+\end{figure}
 
 The overview page for the spaces presents a list of the names alongside the currently connected users and buttons to either join as a participant or passively view it as a spectator.
 On joining a space, the user first needs to activate their microphone to activate the audio context.
@@ -90,5 +96,12 @@ The hardware implementation was created using the \textquote{Arduino Connect RP2
 The \ac{IMU} module used was the \textquote{9-DOF Absolute Orientation IMU Fusion Breakout}\footnote{\url{https://www.adafruit.com/product/4646}} which uses the BNO055\footnote{\url{https://www.bosch-sensortec.com/products/smart-sensor-systems/bno055/}} chip produced by Bosch.
 This chip has the benefit of already pre-processing the data from the gyroscope, accelerometer and magnetometer into an absolute world position that can be directly read from the breakout board via the \ac{I2C} bus.
 As a third component, a small 3.7V lithium battery was added alongside a charging module\footnote{\url{https://www.adafruit.com/product/1905}}.
-Only six connections needed to be soldered between the three modules (2x charger and 4x \ac{IMU}), and the resulting circuit was ready to function as a custom head tracker.
+Only six connections needed to be soldered between the three modules (2x charger and 4x \ac{IMU}), and the resulting circuit was ready to function as a custom head tracker (\autoref{fig:headTrackerWiring}).
 For the software implementation, the basic example code for the Adafruit module was used to set up continuous polling of the positioning module, reading the values for position and device calibration status and sending them as byte sequences at a fixed rate of ~25fps over BluetoothLE\@.
+
+\begin{figure}[!ht]
+\centering
+\includesvg[scale=1.0]{04_Artefakte/01_Abbildungen/head-tracker-wiring}
+\caption[Head tracker wiring diagram]{Wiring diagram for the custom head tracker\protect}
+\label{fig:headTrackerWiring}
+\end{figure}

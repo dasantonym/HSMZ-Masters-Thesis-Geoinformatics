@@ -11,16 +11,20 @@ However, a passive option of viewing the virtual space was included, allowing th
 \section{Architecture}
 \label{sec:architecture}
 
-\begin{figure}[h]
-\centering
-\includegraphics[scale=0.5]{04_Artefakte/01_Abbildungen/sensorama-stack}
-\caption[Sensorama stack diagram]{The main components comprising the application architecture\protect}
-\label{fig:sensoramaStack}
-\end{figure}
-
 Due to the containerised packaging and deployment, the application can be deployed in any cloud environment or other hosting platform providing virtual or dedicated hosts with root access.
 The underlying software infrastructure requirement is minimal, and the required components are a Linux \ac{OS} with installations of Docker (with ContainerD) and Kubernetes.
 No special hardware is needed, and the system can run in any environment that provides network access, storage space and standard computing resources.
+The underlying general architecture was partitioned into three basic parts (\autoref{fig:sensoramaStack}).
+The general infrastructure is thought of as any kind of Kubernetes installation, either on bare-metal or a virtual server instance.
+Running on top of that is a set of base applications (\ac{API} and \ac{WebRTC} server), which would ideally be the same across multiple deployments of the actual implementation.
+The \ac{UI}, which holds the use-case specific fucntionality, could then be forked, modified and duplicated multiple times, but using the same basic architecture.
+
+\begin{figure}[!ht]
+\centering
+\includesvg[scale=0.8]{04_Artefakte/01_Abbildungen/sensorama-stack}
+\caption[Sensorama stack diagram]{Partitioning the Sensorama technology stack\protect}
+\label{fig:sensoramaStack}
+\end{figure}
 
 While all the frameworks presented in \autoref{fig:mostUsedFrameworks} could be used to build an application as envisioned in this study, Vue was selected due to the relatively high acceptance and the comparably easy learning curve.
 While it might not be the choice for large-scale or enterprise apps, the low entry barrier and the simple structure make it ideal to get an app up and running quickly, experiment with it and pass it on to others for hacking and custom modifications.
@@ -106,9 +110,9 @@ The conferencing functionality implemented in the web application was used to se
 In the backend, the LiveKit server can push status updates as \ac{HTTP} webhook calls to the \ac{API} server to notify it about connects and disconnects.
 The \ac{API} server uses the WebSockets protocol to relay updates on persisted data and LiveKit update events to the client browser and receives authentication and general data requests.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
-\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/application-messaging-flow}
+\includesvg[scale=1.0]{04_Artefakte/01_Abbildungen/application-messaging-flow}
 \caption[Application messaging flow]{Messaging flow between the application's components\protect}
 \label{fig:messagingFlow}
 \end{figure}
@@ -123,9 +127,9 @@ A Space is a container object representing a shared space populated with multipl
 Users can request one or more \emph{Token} objects that allow them to connect to a \textquote{room} on the LiveKit server that maps to a specific ID of a Space.
 Once connected, the LiveKit server notifies the \ac{API} server of the new connection, and now the connected User\textquotesingle s ID can be found in the list retrieved from the virtual \textquote{connected} property of the Space object.
 
-\begin{figure}[h]
-\ centring
-\includegraphics[scale=0.4]{04_Artefakte/01_Abbildungen/api-datamodel}
+\begin{figure}[!ht]
+\centering
+\includesvg[scale=1.0]{04_Artefakte/01_Abbildungen/api-datamodel}
 \caption[API data model]{Basic data model used in API server\protect}
 \label{fig:apiDataModel}
 \end{figure}
@@ -136,9 +140,9 @@ Messages were structured as byte sequences, with a 64bit long integer timestamp 
 32-bit floating point numbers were used for all sensor readings as the numbers stay sufficiently small, and the precision is enough for millimetre measurements, statistical values or angles.
 The numeric values were encoded in \ac{LE} format~\parencite{cohenEndianess} that appeared consistent across all environments but should be explicitly adhered to if other components were to be added to the application.
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
-\includegraphics[width=\textwidth]{04_Artefakte/01_Abbildungen/generic-message-structure}
+\includesvg[width=\textwidth]{04_Artefakte/01_Abbildungen/generic-message-structure}
 \caption[Generic Message Structure]{The basic message structure for transmitting numeric sensor readings\protect}
 \label{fig:messageStructure}
 \end{figure}
