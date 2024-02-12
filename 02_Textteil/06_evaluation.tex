@@ -21,8 +21,9 @@ The test systems were located in a rural area 80~\acp{km} outside Mainz, used th
 \label{listing:speedtestClient}
 \end{listing}
 
+Latency was measured by time stamping each message in the data producer and then logging the arrival time in the local and the remote browser.
 Both computers synchronised their clocks using the same \ac{NTP} server on the local netork.
-The synchronisation was continuously refreshed during the data sampling to continously provide sub-millisecond clock accuracy.
+The synchronisation was refreshed every 10 seconds during the data sampling and provided sub-millisecond clock accuracy throughout the measuring process.
 The measurements ran for ten minutes each and always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29~key points at a rate of 25~messages per second.
 The payload size was 453~bytes for each message, amounting to a required bandwidth of about 11.3~\ac{KB/s} for each motion capture data stream.
 They were repeated ten times to account for overall network service quality variance.
@@ -37,8 +38,8 @@ The results of the latency analysis are shown in separate graphs for each comput
 \label{fig:latencyComputerA}
 \end{figure}
 
-Results for computer A (\autoref{fig:latencyComputerA}) show an overall average latency of ca.~30~\ac{ms} for remote messages received over the \ac{WebRTC} connection and ca.~2~\ac{ms} for the connection from the local data producer to the browser.
-The averages show a standard deviation of ca.~1.4~\ac{ms} for the remote connection and about ca.~0.2~\ac{ms} for the local connection.
+Results for computer A (\autoref{fig:latencyComputerA}) show an overall average latency of approx.~30~\ac{ms} for remote messages received over the \ac{WebRTC} connection and approx.~2~\ac{ms} for the connection from the local data producer to the browser.
+The averages show a standard deviation of approx.~1.4~\ac{ms} for the remote connection and about approx.~0.2~\ac{ms} for the local connection.
 
 \begin{figure}[!h]
 \centering
@@ -47,11 +48,11 @@ The averages show a standard deviation of ca.~1.4~\ac{ms} for the remote connect
 \label{fig:latencyComputerB}
 \end{figure}
 
-The results gathered on computer B (\autoref{fig:latencyComputerB}) also show an average latency of ca.~30~\ac{ms} for the remote messages and ca.~1.7~\ac{ms} for the local data producer connection.
-Here, the standard deviation is ca.~2.1~\ac{ms} for the remote connection and ca.~0.6~\ac{ms} for the local connection.
+The results gathered on computer B (\autoref{fig:latencyComputerB}) also show an average latency of approx.~30~\ac{ms} for the remote messages and approx.~1.7~\ac{ms} for the local data producer connection.
+Here, the standard deviation is approx.~2.1~\ac{ms} for the remote connection and approx.~0.6~\ac{ms} for the local connection.
 
-On the server, the average overall network consumption for the LiveKit server was at ca.~106~\ac{KB/s} for incoming and ca.~156~KB/s for outgoing traffic, moderately fluctuating with a peak of ca.~122~\ac{KB/s} incoming and ca.~198~\ac{KB/s}, while the isolated packet traffic remained relatively stable at an average of ca.~32~\ac{KB/s} (in) and ca.~33~\ac{KB/s} (out) with respective maxima of ca.~35~\ac{KB/s} and ca.~36~\ac{KB/s} (\autoref{fig:serverNetworkUsage}).
-The server compute resource usage was minimal with only an average of ca.~0.04~\ac{CPU} cores and ca.~81~\ac{MB}~\ac{RAM} usage (\autoref{fig:serverComputeResources}).
+On the server, the average overall network consumption for the LiveKit server was at approx.~106~\ac{KB/s} for incoming and approx.~156~KB/s for outgoing traffic, moderately fluctuating with a peak of approx.~122~\ac{KB/s} incoming and approx.~198~\ac{KB/s}, while the isolated packet traffic remained relatively stable at an average of approx.~32~\ac{KB/s} (in) and approx.~33~\ac{KB/s} (out) with respective maxima of approx.~35~\ac{KB/s} and approx.~36~\ac{KB/s} (\autoref{fig:serverNetworkUsage}).
+The server compute resource usage was minimal with only an average of approx.~0.04~\ac{CPU} cores and approx.~81~\ac{MB}~\ac{RAM} usage (\autoref{fig:serverComputeResources}).
 
 \begin{figure*}[!ht]
 \includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/server-bandwidth-average}\hfill
@@ -67,7 +68,7 @@ The server compute resource usage was minimal with only an average of ca.~0.04~\
 \label{fig:serverComputeResources}
 \end{figure*}
 
-Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained under 40~\ac{ms}, which is well below the lower tolerance limit of 160~\ac{ms} proposed in a study by~\cite{audioLatency} on tolerable audio latency for live music creation.
+Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained at around 30~\ac{ms}, which is well below the lower tolerance limit of 160~\ac{ms} proposed in a study by~\cite{audioLatency} on tolerable audio latency for live music creation.
 On the server side, the impact on the computing resources was barely registering, the network throughput left significant headroom for more connections over the server's a gigabit connection and would most likely work as well on a 100~\ac{Mbit} connection and a server with fewer cores than the test setup.
 
 Another pairing of test computers was attempted using a local Ethernet connection on campus at Mainz University of Applied Sciences, but was discarded, because latencies were in the single digit to sub-milliseconds range and thus could not be properly measured due lack of a precision clock system.
@@ -78,43 +79,56 @@ The evaluation of time spent on the development work was based on the timesheets
 Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be adequately separated from the work on the study itself.
 All recorded tasks were categorised by the language used (e.g.\ JavaScript versus Python), the component worked on (e.g. \ac{UI} vs. \ac{API}) and the type of work (e.g.\ programming versus administration).
 
-In total, 96 work hours were spent creating the reference implementation and its deployment on the test infrastructure.
-This would amount to 12 workdays, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
+In total, approx.~144 work hours were spent creating the reference implementation and its deployment on the test infrastructure.
+This would amount to approx.~18 workdays or three and a half five-day workweeks, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
 
-\begin{figure}[h]
+The distribution of time spent on software development versus documentation and setting up the infrastructure (administration) and constructing the head-tracker\textquotesingle s hardware implementation (\autoref{fig:timeSpentWorkareas}) clearly shows that the largest amount of time (approx.~93\%) was spent on programming and the latter two factors were only marginal in the effort needed to be put in.
+
+\begin{figure*}[!ht]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-languages-hours}
-\caption[Time spent on languages]{Time spent on various programming languages\protect}
+\includesvg[scale=0.8]{04_Artefakte/01_Abbildungen/time-spent-areas-percent}
+\caption[Distribution of time spent on development]{Distribution of time spent on development by work area, language and application component\protect}
+\label{fig:timeSpentWorkareas}
+\end{figure*}
+
+Of the amount of time spent in software development, the time spent by programming languages (\autoref{fig:timeSpentLanguages}) shows a clear majority of approx.~72\% for \ac{JS}, given that it was chosen as the language for the \ac{UI} and the \ac{API} and the project\textquotesingle s general primary language.
+However, Python still takes up approx.~21\% of the work hours spent on programming.
+C++ required only a marginal amount of work with approx.~7\% of the time spent.
+
+\begin{figure*}[!ht]
+\centering
+\includesvg[scale=0.8]{04_Artefakte/01_Abbildungen/time-spent-languages-percent}\hfill
+\caption[Distribution of time spent on development]{Distribution of time spent on development by programming language\protect}
 \label{fig:timeSpentLanguages}
-\end{figure}
+\end{figure*}
 
-The time spent on programming languages (\autoref{fig:timeSpentLanguages}) shows an apparent majority for \ac{JS}, given that it was chosen as the language for the \ac{UI} and the \ac{API} and the project\textquotesingle s primary language.
-However, Python still takes up almost a third of the work hours spent on programming.
-C and C++ required only a marginal amount of work with under 4\% of the time spent.
+Time spent on the different components (\autoref{fig:timeSpentComponents}) shows that about half of the time was spent on the user interface (approx.~56\%). The component using the second largest amount of time is the Python data producer (approx.~20\%).
+All other components remained under 10\% and notably, the \ac{SDK} required only 7.3\% of time as it was mostly constructed by refactoring existing code and adding tests.
+Also noteworthy is the time spent on the \ac{API} server, which was only approx.~4\% since it was mainly autogenerated and required only very litte modification.
+Equally minimal is the time spent on the deployment, also with only approx.~4\%.
 
-\begin{figure}[h]
+\begin{figure*}[!ht]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/time-spent-areas-hours}
-\caption[Time spent on areas of work]{Time spent on areas of work\protect}
-\label{fig:timeSpentTypeOfWork}
-\end{figure}
+\includesvg[scale=0.8]{04_Artefakte/01_Abbildungen/time-spent-components-percent}\hfill
+\caption[Distribution of time spent on development]{Distribution of time spent on development by programming language\protect}
+\label{fig:timeSpentComponents}
+\end{figure*}
 
-The distribution of time spent on software development versus setting up the infrastructure (administration) and constructing the head-tracker\textquotesingle s hardware implementation (\autoref{fig:timeSpentTypeOfWork}) clearly shows that almost all of the time (roughly 97\%) was spent on programming and the latter two factors were marginal in the effort needed to be put in.
-
-Considering this setup could be modified and reused for later projects, the initial setup cost of under a month of work for a single developer is manageable.
-It provides another positive argument for the feasibility of such an endeavour.
+The overall time spent of about a month should be seen in the context of an ongoing larger project and on the basis of parts of the application being meant for reuse.
+If the \ac{API} and data producers would be kept largely stable and only the \ac{UI} would be subject for modifications, extensions or even complete replacement, this would affect roughly half of time spent on the initial development.
+While an accurate prediction on the time spent on subsequent modifications cannot be made, it should equally stay under a month and thus be an approprate time investment to support future projects.
 
 \section{Code quality}
 \label{sec:code-quality}
 
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-cognitive_complexity}
 \caption[Cognitive complexity]{Cognitive complexity per component\protect}
 \label{fig:cognitiveComplexity}
 \end{figure}
 
-Code quality was analysed using the free service SonarCloud\footnote{\url{https://sonarcloud.io}}.
+Code quality was analysed using the service SonarCloud\footnote{\url{https://sonarcloud.io}}, which is free for small projects and provides an extensive set of metrics, of which the code weight (files, lines of code) and complexity were of specific interest, as defined in \autoref{ch:methodology}.
 The default recommended limit for cognitive complexity set by the SonarCloud code analysis setup is 15 for \ac{JS} and Python and 25 for C++.
 The cognitive complexity (\ref{fig:cognitiveComplexity}) was only calculated for the core \ac{SDK}, the \ac{UI}, \ac{API} and the general data producer.
 The Arduino code does not use any branching, and the C++ code for the Captury producer was deemed a workaround since it should be integrated into the Python structure for proper use.
@@ -122,34 +136,26 @@ The maximum complexity shows a significant overhead exceeding the recommended th
 This shows that the massive complexity value of 15 is an outlier for the \ac{SDK} but seems more intrinsic to the \textquote{DataProducer} class structure.
 However, the \ac{UI} and \ac{API} show a very low overall complexity, which was the desired outcome to keep these parts more hackable and easy to grasp.
 
-\begin{figure}[h]
-\centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-filecount}
-\caption[File count]{Number of source files per application component\protect}
-\label{fig:fileCount}
-\end{figure}
+In terms of weight measured by the number of files, the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
+The distribution of weight regarding the total lines of code without comments produced for each component aligns with the number of files for the \ac{UI} but shows a significant overhead for the data producer with almost as many lines of code distributed among a third of the number of files (\autoref{fig:codeWeight}).
+It generally shows a relatively moderate weight for the entire application, with a maximum of 34 files created for the \ac{UI} and a total of 83 files across all components.
 
-In terms of weight measured by the number of files (\autoref{fig:fileCount}), the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
-It generally shows a relatively moderate weight for the entire application, with 36 files created for the \ac{UI} and an average of roughly 14 files across all components.
+\begin{figure*}[!ht]
+\includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/sonarcloud-filecount}\hfill
+\includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_sum}
+\caption[Source file count and total lines of code]{Number of source files and total lines of code per application component\protect}
+\label{fig:codeWeight}
+\end{figure*}
 
-\begin{figure}[h]
-\centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_sum}
-\caption[Lines of code (total)]{Total lines of code per application component\protect}
-\label{fig:linesOfCodeTotal}
-\end{figure}
+Median and maximum amounts of lines of code across files for each component (\autoref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maximum value and below the recommended thresholds (see \autoref{ch:methodology}).
+Again, the only exception is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
 
-The distribution of weight regarding the total lines of code without comments produced for each component (\ref{fig:linesOfCodeTotal}) aligns with the number of files for the \ac{UI} but shows a significant overhead for the data producer with almost as many lines of code distributed among a third of the number of files.
-
-\begin{figure}[h]
+\begin{figure}[!ht]
 \centering
 \includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_files}
 \caption[Lines of code]{Maximum and median number of lines of code per application component\protect}
 \label{fig:linesOfCode}
 \end{figure}
-
-Median and maximum amounts of lines of code across files for each component (\autoref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maximum value and below the recommended thresholds (see \autoref{ch:methodology}).
-Again, the only exception is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
 
 Summarily, the results for the code quality of such a somewhat non-standard development process provide further encouragement to pursue more projects based on the same strategy or even on the study\textquotesingle s resulting source code.
 The average complexity and weight of the code, along with the documentation and comments added, should enable third-party developers to engage with the results by reviewing and modifying specific parts to introduce their own experimental data capture, visualisation or sonification methods.
