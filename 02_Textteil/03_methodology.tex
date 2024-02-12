@@ -22,9 +22,10 @@ Another case might be a more recent project that has yet to collect as high of a
 
 The application development worked from the most basic boilerplate code towards finding the appropriate structure for the specific use case.
 Well-known and easily defined components were built first.
-The special functionality was then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
-As only a rough architectural model for the project was defined beforehand, tests and documentation were written later in the process, as the parts stabilised on their own and in their relationship with each other.
-This method does not strictly adhere to common development procedures but borrows loosely from agile development (sprints, reviews, adjustment) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partitioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
+The particular functionality of the reference implementation was then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
+As only a rough architectural model for the project was defined beforehand, tests and documentation were written later in the process, as the parts stabilised independently and in their relationship with each other.
+This method does not strictly adhere to standard development procedures.
+Still, it borrows loosely from agile development (sprints, reviews, adjustment) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partitioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
 A more systemic approach for the development process, like application modelling using \ac{UML} and test-driven development, might be desirable for teams, but the various and disparate \textquote{moving parts} in conjunction with heavy reliance on browser-only \ac{API}s complicate the creation of a well-simulated testing environment using either real or mock-data, especially for a single developer.
 
 The application was implemented in its entirety, documented and packaged.
@@ -44,17 +45,18 @@ A practical test that analyses the actual user experience and uses performers an
 
 The \emph{code quality} was assessed based on volume (lines of code without comments) and cognitive complexity, ~\parencite[see][]{sonarSourceCognitiveComplexity}, which is an updated version of the older concept of cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code~\parencite[see][]{mcCabeComplexity}.
 It was published by the Swiss company SonarSource\footnote{\url{https://www.sonarsource.com/}} and \textquote{has been formulated to address modern language structures, and to produce values that are meaningful at the class and application levels.}~\parencite[4]{sonarSourceCognitiveComplexity}
-It accounts for modern control structures aims to facilitate legibility by rewarding a code style that benefits general understandability~\parencite[4]{sonarSourceCognitiveComplexity}.
+It accounts for modern control structures and aims to facilitate legibility by rewarding a code style that benefits general understandability~\parencite[4]{sonarSourceCognitiveComplexity}.
 Both metrics should be kept low for each source code file, as code with many lines makes it harder to read, and high complexity is more challenging to follow and understand.
 The code volume is difficult to reduce to a static maximum, but \textquote{the [\ac{SATC}] has found the most effective evaluation is a combination of size and complexity}~\parencite[6]{softwareMetricsReliability}, so a self-imposed threshold should be set, even if exceptions are made later.
 For \ac{OOP}, limiting a file to a single class is often advised.
 Still, depending on the language used, the file can also contain multiple functions that are better grouped instead of scattered across various files.
-A general rule of thumb that has proven to be a good measurement from past experience is that a single file should not exceed 160-200 lines of code (without comments) to skim it and get a general overview quickly.
+A general rule of thumb proven to be a good measurement from experience is that a single file should be at most 160-200 lines of code (without comments) to skim it and get a general overview quickly.
 There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand.
 In those cases, there can be a discussion about changing the general application design to partition the functionality differently.
 Alternatively, it can be decided to keep this code and improve documentation.
 Reducing volume and complexity is especially important if the code should be passed on to others who want to maintain and modify it for further use.
-Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity, and the more static and stable core parts can be the location where the more complex parts are moved to (e.g.\ the core \ac{SDK}).
+Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity.
+The more static and stable core parts can be where the complex code is moved to (e.g.\ the core \ac{SDK}).
 
 Additionally, a \emph{critical reflection} and analysis of the development process was created to weigh the expectations against the experiences while implementing the decisions made in planning the application.
 It should evaluate general reproducibility and feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.

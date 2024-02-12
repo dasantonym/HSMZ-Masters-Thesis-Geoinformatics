@@ -19,7 +19,7 @@ The survey presents various definitions for mediated interaction in virtual envi
 These terms are further differentiated as \emph{social presence illusion} referring \textquote{to the feeling of social presence engendered by characters in virtual or mediated environments}~\parencite[4]{surveyOfPresence} and \emph{copresence illusion} as referring \textquote{to the feeling of \textquote{being together} in a virtual or mediated space}~\parencite[5]{surveyOfPresence}.
 The authors also note that the experience of these forms of presence does not necessarily require the environment to be virtual, as can be experienced in a telephone conversation, where \textquote{you are certainly aware of the person on the other end of the line (Copresence Illusion), and you can interact with that other person (Social Presence Illusion).
 However, you do not get the impression that you have been transported to another place.}~\parencite[5]{surveyOfPresence}
-Both definitions lend themselves to support this study's approach as it attempts to establish a virtual presence in the local physical space using a sonic avatar and provides a mediated form of interaction through verbal communication to develop an illusion of social presence.
+Both definitions support this study's approach as it attempts to establish a virtual presence in the local physical space using a sonic avatar and provides a mediated form of interaction through verbal communication to develop an illusion of social presence.
 
 As the notion of immersion also rather refers to a framework within a virtual environment, a conceptual definition is required for the relation between the user and the application environment constructed in this use case.
 Again, the survey presents two concepts of interest for this study.
@@ -28,7 +28,7 @@ They are roughly defined as \textquote{a state of focused attention or interest}
 A third related concept is that of \emph{flow}, defined as, citing Csikszentmihalyi, \textquote{an optimal state of concentration, \textquote{the state in which individuals are so involved in an activity that nothing else seems to matter}.}~\parencite[9]{surveyOfPresence}
 Furthermore, they cite Brockmeyer et al.
 in \textquote{argu[ing] that flow, since it involves experiencing an altered state, may be a deeper state of engagement with media than presence}~\parencite[9]{surveyOfPresence}.
-These concepts provide a more nuanced alternative to the idea of immersion, which rather is interpretated as the degree of plausibility of artificial stimuli shaping the experience within a virtual or mediated environment.
+These concepts provide a more nuanced alternative to the idea of immersion, which rather is interpreted as the degree of plausibility of artificial stimuli shaping the experience within a virtual or mediated environment.
 They are a guiding conceptual basis for the design processes of the modes of expression and interaction within the telepresence application, as a deep involvement and flow would be beneficial to shape a feeling of \textquote{togetherness} in a shared task of creating sound or music.
 
 \section{Motion capture}
@@ -39,7 +39,7 @@ The technique is often used in \ac{CGI}, enabling puppeteering of \ac{3D} avatar
 High accuracy is required for these purposes, and the technological and financial entry barriers are relatively high.
 These applications use systems by Vicon\footnote{\url{https://www.vicon.com}} or OptiTrack\footnote{\url{https://www.optitrack.com}}, which work with visual markers to track movement in space and require a studio environment to be deployed.
 An example of a markerless optical system is Captury Live\footnote{\url{https://captury.com}}, which tracks humanoid moving actors with a 360° camera setup.
-It also features, as the name implies, real-time analysis, providing low-latency data output, while the high-end solutions primarily target offline workflows where recordings are made and then post-processed for higher accuracy and error correction.
+It is explicitly focused on real-time analysis, providing low-latency data output instead of targeting offline workflows where recordings are made and then post-processed for higher accuracy and error correction, which is often the case for movies or games.
 In the performance field, the preferred real-time methods are \ac{IMU}-based tracking systems like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of the lighting conditions.
 Both visual and inertial methods are available in variants from different manufacturers on a cost spectrum that varies from the low thousands to hundreds of thousands of euros in investment.
 
@@ -50,7 +50,7 @@ Other low-cost 3D cameras are on the market, like the Oak-D\footnote{\url{https:
 These systems produce relatively low accuracy but can be used as multi-camera setups or to analyse more general dynamics in the movement data.
 
 Deep learning models for motion capture like PoseNet~\parencite{kendall2016posenet} or BlazePose~\parencite{bazarevsky2020blazepose} have also become available and, while primarily used on \ac{2D} (surveillance) footage, can be extended into \ac{3D} if combined with the proper calibration data (e.g.\ depth images).
-These models are explicitly designed to be implemented in real-time scenarios and can be run on video coming from a regular webcam.
+These models are explicitly designed to be implemented in real-time scenarios and can be run on video from a regular webcam.
 However, they also tend to produce relatively coarse movement data and do not generate reliable depth information when used on \ac{2D} information only.
 
 \section{Movement data sonification}

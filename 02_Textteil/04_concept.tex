@@ -4,7 +4,7 @@
 The reference implementation was named \emph{Sensorama}, a reference to the early immersive experience patented by filmmaker Morton Heilig in 1962~\parencite{Heilig_1962}.
 It is said to be the first virtual reality systems~\parencite[5][]{vrHistoryGigante} and features stereoscopic video and audio, simulated wind and even olfactory stimuli.
 The name is a nod to the longstanding history of ideas around immersive experiences mediated through machinic technology and the multisensory approach that, in this case, refers to the possible input and output methods.
-Although the reference implementation was not designed to support an actual artistic process, it nonetheless is informed by past practical experience working with technology in a performance and specifically in a dance context.
+Although the reference implementation was not designed to support an actual artistic process, it is informed by past practical experience working with technology in performance, specifically in a dance context.
 While the application\textquotesingle s base functionality could theoretically be used for any number of participants, only limited by the infrastructure\textquotesingle s resources, it was specifically designed for only two active participants at a time.
 This decision was made because it would already be a challenge to adapt to relating to a mediated presence only by localising it acoustically and at the same time focusing on sound cues to base one\textquotesingle s own movement on.
 However, a passive option of viewing the virtual space was included, allowing the use of \ac{WebXR} functionality to join as a spectator.
@@ -15,10 +15,10 @@ However, a passive option of viewing the virtual space was included, allowing th
 Due to the containerised packaging and deployment, the application can be deployed in any cloud environment or other hosting platform providing virtual or dedicated hosts with root access.
 The underlying software infrastructure requirement is minimal, and the required components are a Linux \ac{OS} with installations of Docker (with ContainerD) and Kubernetes.
 No special hardware is needed, and the system can run in any environment that provides network access, storage space and standard computing resources.
-The underlying general architecture was partitioned into three basic parts (\autoref{fig:sensoramaStack}).
-The general infrastructure is thought of as any kind of Kubernetes installation, either on bare-metal or a virtual server instance.
+The underlying general architecture was partitioned into three essential parts (\autoref{fig:sensoramaStack}).
+The general infrastructure is thought of as any kind of Kubernetes installation, either on \textquote{bare metal} or a virtual server instance.
 Running on top of that is a set of base applications (\ac{API} and \ac{WebRTC} server), which would ideally be the same across multiple deployments of the actual implementation.
-The \ac{UI}, which holds the use-case specific fucntionality, could then be forked, modified and duplicated multiple times, but using the same basic architecture.
+The \ac{UI}, which holds the use-case-specific functionality, could then be forked, modified and duplicated multiple times using the same basic architecture.
 
 \begin{figure}[!ht]
 \centering
@@ -60,16 +60,16 @@ Initially, monolithic large blocks of code were built.
 Various approaches to desired functionality were quickly tried and discarded or kept and subsequently extracted into separate components grouped by functional association.
 Using this strategy, it was essential to review and refactor regularly and often to solidify the application structure and prevent it from dissolving into \textquote{spaghetti code} and to avoid unnecessary side-effects among the components.
 The core features were extracted into a separate \ac{SDK} module towards the end of the development process, and appropriate unit tests were written.
-As the application could now move into practical testing and, thus, some sort of \textquote{production} deployment, the core functionality needed to become more rigid and covered by test cases.
+The application could now move into practical testing, similar to a production deployment, and thus, the core functionality needed to become more rigid and covered by test cases.
 
 The general user interface and data producers were considered transient because they served only the singular use case and should be subject to frequent future modifications.
 These application components should be hackable and replaceable, so they were not formally tested, at least in the scope of this study.
 The unit testing focused on the data input and output for the core functionality to provide a stable foundation by keeping all components connected in a unified messaging system.
 By modelling the basic request and response cases and formulating them as tests, potential later users would also have a tangible way of understanding the application's core mechanics.
 
-For \ac{JS}, three popular testing frameworks are Jest, Mocha, and Jasmine (\ref{tab:githubTestingFrameworks}), among others, that can be used for implementing unit testing for the project.
+For \ac{JS}, three popular testing frameworks are Jest, Mocha, and Jasmine (\ref{tab:githubTestingFrameworks}), which can be used for implementing unit testing for the project.
 In this case, the selection skipped the most popular option of Jest in favour of Mocha, which is used by the Feathers \ac{API} framework in its generator for boilerplate code.
-This way, basic tests to base work on were already available and, to keep the project consistent across modules were adopted for the core \ac{SDK} module as well.
+This way, basic tests to base work on were already available and, to keep the project consistent across modules, were adopted for the core \ac{SDK} module.
 
 \input{04_Artefakte/02_Tabellen/github_testing_frameworks_stars}
 
@@ -96,7 +96,10 @@ The average velocity was used to set the note length, triggering shorter notes w
 It must be noted that while this is a valid example for a parameter mapping sonification and will produce largely harmonic notes, it falls short of producing an output of a more complex musical quality because it lacks the ability to construct deeper structures and dramaturgic variance.
 However, if engaged over a more extended period and practised, it could still yield interesting results, but this would also require a very specific way of composing the movement required to produce musically exciting results.
 
-Sound spatialisation was achieved by playing the notes through a panner node provided by the audio framework and the WebAudio \ac{API}.
+All handling of harmonic structures such as scales, chords and notes is done using the \ac{JS} library Tonal\footnote{\url{}}, which provides a complete toolset for working with the western harmonic system.
+The audio framework chosen was Tone.js, as it was the most straightforward option focusing on musical applications.
+While Elementary is very promising in its approach to sound generation, it is much more low-level in its approach to constructing an instrument for music generation.
+Sound spatialisation was achieved by playing the notes through a special spatial sound source node placed within a virtual audio scene, provided by the Resonance audio framework based on the WebAudio \ac{API} (see \autoref{subsec:webaudio}).
 Both the audio stream retrieved from the \ac{WebRTC} connection was connected to a panner node, and the sound produced from the synthesiser nodes for the local and remote participants.
 If the participant's head orientation and position were available through motion capture or the head tracking device, this spatial information would also be applied to the listener node and the other spatial audio nodes.
 
@@ -176,16 +179,17 @@ While this module carries the most fundamental functionality, it was created las
 \subsection{Web frontend}
 \label{subsec:web-frontend}
 
-The web frontend provides the main entry point for the users.
-It allows authentication via a local username and password combination and provides objects modelled as virtual \textquote{spaces} that are the central anchor to organise all communications, as defined in \autoref{fig:apiDataModel}.
+The web front end provides the main entry point for the users.
+It allows authentication via a local username and password combination.
+It provides objects modelled as virtual \textquote{spaces} that are the central anchor to organise all communications, as defined in \autoref{fig:apiDataModel}.
 Users can create spaces, name them and then join them, becoming active data producers, or choose to view them as passive spectators.
 
 Depending on the participant\textquotesingle s role, a space is rendered as a different set of components.
 Participants who actively join have access to a LocalProducer and a HeadTracker component.
-These components provide a direct link via WebSockets to the external data-producer utilities and a WebBluetooth connection to the custom head-tracking device built on Arduino.
+These components provide a direct link via WebSockets to the external data-producer utilities, and a WebBluetooth connection to the custom head-tracking device built on Arduino.
 Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
 
-The frontend was designed to coordinate the connections between the WebRTC server, the backend \ac{API} and the local utilities.
+The front end was designed to coordinate the connections between the WebRTC server, the backend \ac{API} and the local utilities.
 It also implements the various web standard \ac{API}s needed for sound, graphics and communication.
 
 \subsection{API backend}

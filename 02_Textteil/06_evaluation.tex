@@ -21,15 +21,15 @@ The test systems were located in a rural area 80~\acp{km} outside Mainz, used th
 \label{listing:speedtestClient}
 \end{listing}
 
-Latency was measured by time stamping each message in the data producer and then logging the arrival time in the local and the remote browser.
-Both computers synchronised their clocks using the same \ac{NTP} server on the local netork.
+Latency was measured by time stamping each message in the data producer and then logging the arrival time in the local and remote browsers.
+Both computers synchronised their clocks using the same \ac{NTP} server on the local network.
 The synchronisation was refreshed every 10 seconds during the data sampling and provided sub-millisecond clock accuracy throughout the measuring process.
-The measurements ran for ten minutes each and always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29~key points at a rate of 25~messages per second.
+The measurements ran for ten minutes each and always used the \ac{BVH} data producer, sending the message type for movement qualities alongside 29~key points at 25~messages per second.
 The payload size was 453~bytes for each message, amounting to a required bandwidth of about 11.3~\ac{KB/s} for each motion capture data stream.
 They were repeated ten times to account for overall network service quality variance.
 The audio streams were published alongside the data packets but were not measured for latency.
-The \ac{CPU}, \ac{RAM} and bandwidth usage for LiveKit on the server was recorded as well.
-The results of the latency analysis are shown in separate graphs for each computer containing an average across all datasets for the local and remote messages on each device.
+The \ac{CPU}, \ac{RAM} and bandwidth usage for LiveKit on the server were also recorded.
+The results of the latency analysis are shown in separate graphs for each computer, containing an average across all datasets for the local and remote messages on each device.
 
 \begin{figure}[!h]
 \centering
@@ -52,7 +52,7 @@ The results gathered on computer B (\autoref{fig:latencyComputerB}) also show an
 Here, the standard deviation is approx.~2.1~\ac{ms} for the remote connection and approx.~0.6~\ac{ms} for the local connection.
 
 On the server, the average overall network consumption for the LiveKit server was at approx.~106~\ac{KB/s} for incoming and approx.~156~KB/s for outgoing traffic, moderately fluctuating with a peak of approx.~122~\ac{KB/s} incoming and approx.~198~\ac{KB/s}, while the isolated packet traffic remained relatively stable at an average of approx.~32~\ac{KB/s} (in) and approx.~33~\ac{KB/s} (out) with respective maxima of approx.~35~\ac{KB/s} and approx.~36~\ac{KB/s} (\autoref{fig:serverNetworkUsage}).
-The server compute resource usage was minimal with only an average of approx.~0.04~\ac{CPU} cores and approx.~81~\ac{MB}~\ac{RAM} usage (\autoref{fig:serverComputeResources}).
+The server compute resource usage was minimal, with only an average of approx.~0.04~\ac{CPU} cores and approx.~81~\ac{MB}~\ac{RAM} usage (\autoref{fig:serverComputeResources}).
 
 \begin{figure*}[!ht]
 \includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/server-bandwidth-average}\hfill
@@ -69,20 +69,21 @@ The server compute resource usage was minimal with only an average of approx.~0.
 \end{figure*}
 
 Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained at around 30~\ac{ms}, which is well below the lower tolerance limit of 160~\ac{ms} proposed in a study by~\cite{audioLatency} on tolerable audio latency for live music creation.
-On the server side, the impact on the computing resources was barely registering, the network throughput left significant headroom for more connections over the server's a gigabit connection and would most likely work as well on a 100~\ac{Mbit} connection and a server with fewer cores than the test setup.
+On the server side, the impact on the computing resources was barely registering; the network throughput left significant headroom for more connections over the server's gigabit connection and would most likely work as well on a 100~\ac{Mbit} connection and a server with fewer cores than the test setup.
 
-Another pairing of test computers was attempted using a local Ethernet connection on campus at Mainz University of Applied Sciences, but was discarded, because latencies were in the single digit to sub-milliseconds range and thus could not be properly measured due lack of a precision clock system.
+Another pairing of test computers was attempted using a local Ethernet connection at the Mainz University of Applied Sciences campus.
+Still, it was discarded because latencies were in the single digit to the sub-millisecond range and thus could not be adequately measured due to the lack of a precision clock system.
 
-\section{Workload}\label{sec:workload-evaluation}
+\section{Workload evaluation}\label{sec:workload-evaluation}
 
-The evaluation of time spent on the development work was based on the timesheets kept during the process.
+The time spent on the development work was evaluated based on the timesheets kept during the process.
 Only the time spent on the actual programming and infrastructure creation was tracked, as the research could not be adequately separated from the work on the study itself.
 All recorded tasks were categorised by the language used (e.g.\ JavaScript versus Python), the component worked on (e.g. \ac{UI} vs. \ac{API}) and the type of work (e.g.\ programming versus administration).
 
 In total, approx.~144 work hours were spent creating the reference implementation and its deployment on the test infrastructure.
 This would amount to approx.~18 workdays or three and a half five-day workweeks, assuming eight hours for each day, which would be in line with §3 of the German law for labour time regulation, known as the \textquote{Arbeitszeitgesetz} (see \parencite{abzgPar3}).
 
-The distribution of time spent on software development versus documentation and setting up the infrastructure (administration) and constructing the head-tracker\textquotesingle s hardware implementation (\autoref{fig:timeSpentWorkareas}) clearly shows that the largest amount of time (approx.~93\%) was spent on programming and the latter two factors were only marginal in the effort needed to be put in.
+The distribution of time spent on software development versus documentation and setting up the infrastructure (administration) and constructing the head-tracker\textquotesingle s hardware implementation (\autoref{fig:timeSpentWorkareas}) clearly shows that the most significant amount of time (approx.~93\%) was spent on programming and the latter two factors were only marginal in the effort needed to be put in.
 
 \begin{figure*}[!ht]
 \centering
@@ -103,9 +104,9 @@ C++ required only a marginal amount of work with approx.~7\% of the time spent.
 \end{figure*}
 
 Time spent on the different components (\autoref{fig:timeSpentComponents}) shows that about half of the time was spent on the user interface (approx.~56\%). The component using the second largest amount of time is the Python data producer (approx.~20\%).
-All other components remained under 10\% and notably, the \ac{SDK} required only 7.3\% of time as it was mostly constructed by refactoring existing code and adding tests.
-Also noteworthy is the time spent on the \ac{API} server, which was only approx.~4\% since it was mainly autogenerated and required only very litte modification.
-Equally minimal is the time spent on the deployment, also with only approx.~4\%.
+All other components remained under 10\%, and notably, the \ac{SDK} required only 7.3\% of time as it was constructed mainly by refactoring existing code and adding tests.
+Also noteworthy is the time spent on the \ac{API} server, which was only approx.~4\% since it was mainly autogenerated and required very little modification.
+The time spent on the deployment is equally minimal, with only approx.~4\%.
 
 \begin{figure*}[!ht]
 \centering
@@ -114,9 +115,9 @@ Equally minimal is the time spent on the deployment, also with only approx.~4\%.
 \label{fig:timeSpentComponents}
 \end{figure*}
 
-The overall time spent of about a month should be seen in the context of an ongoing larger project and on the basis of parts of the application being meant for reuse.
-If the \ac{API} and data producers would be kept largely stable and only the \ac{UI} would be subject for modifications, extensions or even complete replacement, this would affect roughly half of time spent on the initial development.
-While an accurate prediction on the time spent on subsequent modifications cannot be made, it should equally stay under a month and thus be an approprate time investment to support future projects.
+The overall time spent of about a month should be seen in the context of an ongoing larger project and based on at least parts of the application being meant for reuse.
+If the \ac{API} and data producers would be kept largely stable and only the \ac{UI} would be subject to modifications, extensions or even complete replacement, this would affect roughly half of the time spent on the initial development.
+While an accurate prediction on time to be spent on subsequent modifications cannot be made, it should stay under a month and thus be an appropriate time investment to support future projects.
 
 \section{Code quality}
 \label{sec:code-quality}
@@ -124,10 +125,10 @@ While an accurate prediction on the time spent on subsequent modifications canno
 Code quality was analysed using the service SonarCloud\footnote{\url{https://sonarcloud.io}}, which is free for small projects and provides an extensive set of metrics, of which the code weight (files, lines of code) and complexity were of specific interest, as defined in \autoref{ch:methodology}.
 The default recommended limit for cognitive complexity set by the SonarCloud code analysis setup is 15 for \ac{JS} and Python and 25 for C++.
 The maximum cognitive complexity (\autoref{fig:cognitiveComplexity}) shows a significant overhead of 45 for the core \ac{SDK}, 77 for the data producer and 41 for the Captury producer.
-These extremely high maxima were caused by the ruke-based sonification controller class in the \ac{SDK}, which relies heavily on if-clauses and could be subject to further refactoring.
-In the data producer, the extremely high maximum of complexity is caused by a file pulled in from example code being used to build the Oak-D camera integration and the captury producer was quickly put together as a proof of concept.
-Still, the median values all remain under the limit and show a rather moderate cognitive complexity concentrated in the producers and the head tracker.
-Notably, the \ac{API} has a median complexity of zero, which is due to the aspect-oriented design that does not rely on control structures.
+These extremely high maxima were caused by the rule-based sonification controller class in the \ac{SDK}, which relies heavily on if-clauses and could be subject to further refactoring.
+In the data producer, the extremely high maximum of complexity is caused by a file pulled in from example code being used to build the Oak-D camera integration and the Captury producer was quickly put together as a proof of concept.
+Still, the median values remain under the limit and show a relatively moderate cognitive complexity concentrated in the producers and the head tracker.
+Notably, the \ac{API} has a median complexity of zero due to the aspect-oriented design that does not rely on control structures.
 The \ac{UI} shows a very low median complexity of one, with a tolerable maximum of 21, which was the desired outcome to keep this part more easily hackable and easy to grasp.
 
 \begin{figure}[!ht]
@@ -137,12 +138,13 @@ The \ac{UI} shows a very low median complexity of one, with a tolerable maximum 
 \label{fig:cognitiveComplexity}
 \end{figure}
 
-In terms of weight measured by the number of files, the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
-The distribution of weight regarding the total lines of code without comments produced for each component aligns with the number of files for the \ac{UI} but shows a significant overhead for the data producer with almost as many lines of code distributed among a third of the number of files (\autoref{fig:codeWeight}).
+Regarding weight measured by the number of files, most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
+The weight distribution regarding the total lines of code without comments produced for each component aligns with the number of files for the \ac{UI}.
+Still, it shows a significant overhead for the data producer with almost as many lines of code distributed among a third of the number of files (\autoref{fig:codeWeight}).
 It generally shows a relatively moderate weight for the entire application, with a maximum of 34 files created for the \ac{UI} and a total of 83 files across all components.
-However, the data producer presents an outlier in this regard, because with 1261 it uses almost as many lines of code as the  \ac{UI}, while consisting of a little over a third of total code files (13 versus 34).
+However, the data producer presents an outlier in this regard because, with 1261, it uses almost as many lines of code as the  \ac{UI} while comprising a little over a third of total code files (13 versus 34).
 This can be explained by the external code used as a basis for the data producer, which used several files built as more monolithic structures which weren't part of the refactoring cycle.
-Still, when looking at the maximum versus median amount of lines of code per file (\autoref{fig:linesOfCode}), it becomes more apparent, that the concentration of code weight is due to only relatively few files, as all median values remain within the alotted maximum of under 160-200 lines (see \autoref{ch:methodology}).
+Still, when looking at the maximum versus the median amount of lines of code per file (\autoref{fig:linesOfCode}), it becomes more apparent that the concentration of code weight is due to only relatively few files, as all median values remain within the allotted maximum of under 160-200 lines (see \autoref{ch:methodology}).
 Here, it becomes even more apparent that the data producer using the external code presents an outlier to the general coding norms used throughout the project.
 
 \begin{figure*}[!ht]
@@ -165,19 +167,19 @@ The average complexity and weight of the code, along with the documentation and 
 \section{Critical reflection}
 \label{sec:critical-evaluation}
 
-The development process followed the guiding principles defined in the application concept (see \autoref{ch:concept}) and the selected frameworks delivered as anticipated on their promised functionality and ease of use.
+The development process followed the guiding principles defined in the application concept (see \autoref{ch:concept}), and the selected frameworks delivered as anticipated on their promised functionality and ease of use.
 The initial setup was quick and simple due to the ease of setup of the LiveKit \ac{WebRTC} server and the generation of boilerplate code for the \ac{API} and the \ac{UI}.
 A development environment was set up equally quickly, and work immediately started with practical experimentation, providing a motivational boost by quickly establishing tangible results.
-Web standards integration was simple and efficient through directly implemented standards such as WebSockets and WebBluetooth and the other ones integrated through third-party libraries.
-However, the implementation of the web audio standard still leaves a lot to desire, especially the support for customised spatial audio in the browser.
+Web standards integration was simple and efficient through directly implemented standards such as WebSockets and WebBluetooth and the others integrated through third-party libraries.
+However, implementing the web audio standard still leaves much to desire, especially the support for customised spatial audio in the browser.
 Currently, there is no built-in way to load custom \ac{HRTF} data, which would drastically improve the accuracy of spatial positioning for sound.
 There are approaches using a custom build of the Chromium browser~\parencite{chromiumCustomHrtf} or a custom audio node~\parencite{customHrtfAudioNode}, which unfortunately does not work with the \ac{SOFA} file format, and due to the study's time constraints did not make it into the reference implementation.
 
 The selection of appropriate tools and libraries is daunting for many beginners with basic programming knowledge who are not primarily working in web development.
 As the libraries and frameworks that make up the broad spectrum of available web development technologies tend to favour different paradigms that, in turn, are also subject to frequent change due to trends and \textquote{hype cycles}, it can be challenging to keep up and daunting to make an informed choice among the available options.
-This means that there should at best be either someone with current practical experience involved, or a considerable amount of time needs to be invested in surveying and trying out the various available tools.
+This means that there should be either someone with current practical experience involved or a considerable amount of time needs to be invested in surveying and trying out the various available tools.
 Looking at the options evaluated throughout this study, there are a few factors to consider when deciding which framework to prefer for a specific type of project.
-It is vital to decide if a project will be maintained in the long run.
+Deciding if a project will be maintained in the long run is vital.
 If, as in this case, the implementation is transient and does not require long-term maintenance, then the choice should be guided by the provided feature set and the paradigms implemented.
 While it is always a good choice to use a library with a large community and a longstanding presence, a more experimental and niche case might require something newer or less popular.
 However, for beginners, choosing frameworks with a large and active community might be more beneficial than betting on the most experimental newcomers.
@@ -191,4 +193,4 @@ Another benefit of the partitioning design pattern is that components can be dis
 It is important to note, though, that while the \ac{UI} is thought of as transient and unstable, unit testing is still highly recommended for the stable components that should keep being used outside of the specific implementation.
 While it could be beneficial to develop the core \ac{SDK} using test-driven development and, once stable, working on the implementation, it would add a period during which there would be only theoretical planning and development.
 This seems out of place for small creative projects that work interdisciplinary, like a dance production that needs its own remote collaboration tool and that needs to get started as quickly as possible.
-Nonetheless, it is still important to have a finalising phase in which the core functionality is extracted, documented and outfitted with tests to keep the \ac{SDK} as an artefact on which to base further projects.
+Nonetheless, it is still important to have a finalising phase in which the core functionality is extracted, documented and outfitted with tests to keep the \ac{SDK} as an artefact on which to base further projects on.
