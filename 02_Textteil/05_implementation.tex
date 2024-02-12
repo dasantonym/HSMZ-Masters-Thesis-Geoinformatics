@@ -4,7 +4,14 @@
 \section{Project Setup}
 \label{sec:project-setup}
 
-The underlying \emph{server infrastructure} for the reference implementation was an existing server with 16 \ac{CPU}-cores (with multithreading), 64 \ac{GB} \ac{RAM} and a 512 \ac{GB} \ac{SSD} drive, located on the \ac{JGU} campus and connected to the internet via a dedicated one-gigabit network connection.
+The underlying \emph{server infrastructure} for the reference implementation was an existing server with 16 \ac{CPU}-cores (with multithreading), 64 \ac{GB} \ac{RAM} and a 512 \ac{GB} \ac{SSD} drive, located on the \ac{JGU} campus and connected to the internet via a dedicated one-gigabit network connection (see speedtest\footnote{\url{https://www.speedtest.net/}} results in \autoref{listing:speedtestServer}).
+
+\begin{listing}[!ht]
+\inputminted{text}{04_Artefakte/03_Listings/speedtest-server.txt}
+\caption{Speedtest: connection statistics for the server used to deploy the application\protect}
+\label{listing:speedtestServer}
+\end{listing}
+
 The orchestration was deployed first to allow development on a working remote WebRTC infrastructure.
 The basis was a clean, freshly bootstrapped Kubernetes installation running on the bare-metal server.
 LiveKit and its Redis database were installed via the application deployment manager Helm, using an official installation chart published by its maintainers\footnote{\url{https://github.com/livekit/livekit-helm}}.

@@ -1,0 +1,7 @@
+Server: Deutsche Glasfaser - Frankfurt (id: 54504)
+ISP: Johannes Gutenberg-Universitaet Mainz
+Idle Latency:     1.14 ms   (jitter: 0.05ms, low: 1.07ms, high: 1.27ms)
+Download:   925.22 Mbps (data used: 417.1 MB)
+2.78 ms   (jitter: 0.33ms, low: 1.32ms, high: 3.35ms)
+Upload:   923.30 Mbps (data used: 416.7 MB)
+6.59 ms   (jitter: 29.13ms, low: 1.18ms, high: 214.75ms)
