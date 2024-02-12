@@ -38,17 +38,18 @@ The technique is often used in \ac{CGI}, enabling puppeteering of \ac{3D} avatar
 High accuracy is required for these purposes, and the technological and financial entry barriers are relatively high.
 These applications use systems by Vicon\footnote{\url{https://www.vicon.com}} or OptiTrack\footnote{\url{https://www.optitrack.com}}, which work with visual markers to track movement in space and require a studio environment to be deployed.
 An example of a markerless optical system is Captury Live\footnote{\url{https://captury.com}}, which tracks humanoid moving actors with a 360° camera setup.
-In the performance field, the preferred methods are \ac{IMU}-based tracking systems like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of the lighting conditions.
+It also features, as the name implies, real-time analysis, providing low-latency data output, while the high-end solutions primarily target offline workflows where recordings are made and then post-processed for higher accuracy and error correction.
+In the performance field, the preferred real-time methods are \ac{IMU}-based tracking systems like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of the lighting conditions.
 Both visual and inertial methods are available in variants from different manufacturers on a cost spectrum that varies from the low thousands to hundreds of thousands of euros in investment.
 
-The \textquote{grassroots} setup for motion capture is the Kinect, introduced by Microsoft in 2010, featuring an infrared time-of-flight measurement system that produces a depth image from which a pose can then be extracted using \ac{3D} pose estimation~\parencite[see][]{poseEstimationPaper}.
+The \textquote{grassroots} real-time motion capture setup is the Kinect, introduced by Microsoft in 2010, featuring an infrared time-of-flight measurement system that produces a depth image from which a pose can then be extracted using \ac{3D} pose estimation~\parencite[see][]{poseEstimationPaper}.
 The Kinect was frequently used among creative coders, although it was initially developed for games.
 In 2023, Microsoft announced that the Kinect, now called Azure Kinect, would cease production, and its \ac{SDK} would be handed over to Orbbec, another manufacturer of \ac{3D}-cameras~\parencite{kinectDiscontinued}.
 Other low-cost 3D cameras are on the market, like the Oak-D\footnote{\url{https://shop.luxonis.com/collections/oak-cameras-1}} cameras with an integrated processing engine or the Orbbec Femto Bolt\footnote{\url{https://www.orbbec.com/products/tof-camera/femto-bolt/}} supported by Microsoft.
 These systems produce relatively low accuracy but can be used as multi-camera setups or to analyse more general dynamics in the movement data.
 
 Deep learning models for motion capture like PoseNet~\parencite{kendall2016posenet} or BlazePose~\parencite{bazarevsky2020blazepose} have also become available and, while primarily used on \ac{2D} (surveillance) footage, can be extended into \ac{3D} if combined with the proper calibration data (e.g.\ depth images).
-These models are fast and can be run on a regular webcam.
+These models are explicitly designed to be implemented in real-time scenarios and can be run on video coming from a regular webcam.
 However, they also tend to produce relatively coarse movement data and do not generate reliable depth information when used on \ac{2D} information only.
 
 \section{Movement data sonification}
