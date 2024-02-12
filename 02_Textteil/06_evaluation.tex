@@ -121,24 +121,29 @@ While an accurate prediction on the time spent on subsequent modifications canno
 \section{Code quality}
 \label{sec:code-quality}
 
+Code quality was analysed using the service SonarCloud\footnote{\url{https://sonarcloud.io}}, which is free for small projects and provides an extensive set of metrics, of which the code weight (files, lines of code) and complexity were of specific interest, as defined in \autoref{ch:methodology}.
+The default recommended limit for cognitive complexity set by the SonarCloud code analysis setup is 15 for \ac{JS} and Python and 25 for C++.
+The maximum cognitive complexity (\autoref{fig:cognitiveComplexity}) shows a significant overhead of 45 for the core \ac{SDK}, 77 for the data producer and 41 for the Captury producer.
+These extremely high maxima were caused by the ruke-based sonification controller class in the \ac{SDK}, which relies heavily on if-clauses and could be subject to further refactoring.
+In the data producer, the extremely high maximum of complexity is caused by a file pulled in from example code being used to build the Oak-D camera integration and the captury producer was quickly put together as a proof of concept.
+Still, the median values all remain under the limit and show a rather moderate cognitive complexity concentrated in the producers and the head tracker.
+Notably, the \ac{API} has a median complexity of zero, which is due to the aspect-oriented design that does not rely on control structures.
+The \ac{UI} shows a very low median complexity of one, with a tolerable maximum of 21, which was the desired outcome to keep this part more easily hackable and easy to grasp.
+
 \begin{figure}[!ht]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-cognitive_complexity}
+\includesvg[scale=0.6]{04_Artefakte/01_Abbildungen/sonarcloud-cognitive_complexity}
 \caption[Cognitive complexity]{Cognitive complexity per component\protect}
 \label{fig:cognitiveComplexity}
 \end{figure}
 
-Code quality was analysed using the service SonarCloud\footnote{\url{https://sonarcloud.io}}, which is free for small projects and provides an extensive set of metrics, of which the code weight (files, lines of code) and complexity were of specific interest, as defined in \autoref{ch:methodology}.
-The default recommended limit for cognitive complexity set by the SonarCloud code analysis setup is 15 for \ac{JS} and Python and 25 for C++.
-The cognitive complexity (\ref{fig:cognitiveComplexity}) was only calculated for the core \ac{SDK}, the \ac{UI}, \ac{API} and the general data producer.
-The Arduino code does not use any branching, and the C++ code for the Captury producer was deemed a workaround since it should be integrated into the Python structure for proper use.
-The maximum complexity shows a significant overhead exceeding the recommended thresholds (see \autoref{ch:methodology}) on behalf of the core \ac{SDK} with 15 and for the data producer with 19, although the median values show a distinct concentration of complexity with the data producer (6 versus 1 for the \ac{SDK}).
-This shows that the massive complexity value of 15 is an outlier for the \ac{SDK} but seems more intrinsic to the \textquote{DataProducer} class structure.
-However, the \ac{UI} and \ac{API} show a very low overall complexity, which was the desired outcome to keep these parts more hackable and easy to grasp.
-
 In terms of weight measured by the number of files, the most code files were produced for the \ac{UI} and the \ac{API}, which aligns with the distribution of functionality according to the concept.
 The distribution of weight regarding the total lines of code without comments produced for each component aligns with the number of files for the \ac{UI} but shows a significant overhead for the data producer with almost as many lines of code distributed among a third of the number of files (\autoref{fig:codeWeight}).
 It generally shows a relatively moderate weight for the entire application, with a maximum of 34 files created for the \ac{UI} and a total of 83 files across all components.
+However, the data producer presents an outlier in this regard, because with 1261 it uses almost as many lines of code as the  \ac{UI}, while consisting of a little over a third of total code files (13 versus 34).
+This can be explained by the external code used as a basis for the data producer, which used several files built as more monolithic structures which weren't part of the refactoring cycle.
+Still, when looking at the maximum versus median amount of lines of code per file (\autoref{fig:linesOfCode}), it becomes more apparent, that the concentration of code weight is due to only relatively few files, as all median values remain within the alotted maximum of under 160-200 lines (see \autoref{ch:methodology}).
+Here, it becomes even more apparent that the data producer using the external code presents an outlier to the general coding norms used throughout the project.
 
 \begin{figure*}[!ht]
 \includesvg[width=.48\textwidth]{04_Artefakte/01_Abbildungen/sonarcloud-filecount}\hfill
@@ -147,12 +152,9 @@ It generally shows a relatively moderate weight for the entire application, with
 \label{fig:codeWeight}
 \end{figure*}
 
-Median and maximum amounts of lines of code across files for each component (\autoref{fig:linesOfCode}) show a moderate distribution with the median at about half or a third of the maximum value and below the recommended thresholds (see \autoref{ch:methodology}).
-Again, the only exception is the data producer that, while showing a moderate median value, shows a maximum of 424 lines of code.
-
 \begin{figure}[!ht]
 \centering
-\includesvg[scale=0.5]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_files}
+\includesvg[scale=0.6]{04_Artefakte/01_Abbildungen/sonarcloud-ncloc_files}
 \caption[Lines of code]{Maximum and median number of lines of code per application component\protect}
 \label{fig:linesOfCode}
 \end{figure}
