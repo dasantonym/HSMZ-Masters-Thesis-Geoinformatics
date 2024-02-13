@@ -19,7 +19,8 @@ captions=tableheading, % Positioniert Captions über Tabellen
 listof=totoc,
 bibliography=totoc,
 %usegeometry, % Auskommentieren wenn Package geometery verwendet wird
-%overfullrule, % entfernen nach abschluss der bearbeitung
+overfullrule, % entfernen nach abschluss der bearbeitung
+%final,
 % Default Values, die scrreprt nutzt
 oneside, % Einseitige Seitengenerierung
 12pt, % Font size
@@ -66,11 +67,8 @@ a4paper, % paper
 
 \pagestyle{empty}
 \renewcommand*{\chapterpagestyle}{empty}
-% \selectlanguage{ngerman}
 \include{01_Vortext/02_Titelseite}
 \include{01_Vortext/03_Erklaerung}
-
-\selectlanguage{UKenglish}
 \include{01_Vortext/04_Abstract}
 
 \pagenumbering{arabic}
