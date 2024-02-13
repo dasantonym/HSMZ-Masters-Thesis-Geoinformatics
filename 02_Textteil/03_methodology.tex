@@ -44,13 +44,13 @@ It was verified that all message processing worked as expected through unit test
 A practical test that analyses the actual user experience and uses performers and real dance interaction was deemed beyond the scope of this study.
 
 The \emph{code quality} was assessed based on volume (source code files and lines of code without comments) and cognitive complexity, ~\parencite[see][]{sonarSourceCognitiveComplexity}, which is an updated version of the older concept of cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code~\parencite[see][]{mcCabeComplexity}.
-It was published by the Swiss company SonarSource\footnote{\url{https://www.sonarsource.com/}} and \textquote{has been formulated to address modern language structures, and to produce values that are meaningful at the class and application levels.}~\parencite[4]{sonarSourceCognitiveComplexity}
+It was published by the Swiss company SonarSource\footnote{\url{https://www.sonarsource.com/}} and \textquote{has been formulated to address modern language structures, and to produce values that are meaningful at the class and application levels}~\parencite[4]{sonarSourceCognitiveComplexity}.
 It accounts for modern control structures and aims to facilitate legibility by rewarding a code style that benefits general understandability~\parencite[4]{sonarSourceCognitiveComplexity}.
 Both metrics should be kept low for each source code file, as code with many lines makes it harder to read, and high complexity is more challenging to follow and understand.
 The code volume is difficult to reduce to a static maximum, but \textquote{the [\ac{SATC}] has found the most effective evaluation is a combination of size and complexity}~\parencite[6]{softwareMetricsReliability}, so a self-imposed threshold should be set, even if exceptions are made later.
 For \ac{OOP}, limiting a file to a single class is often advised.
 Still, depending on the language used, the file can also contain multiple functions that are better grouped instead of scattered across various files.
-A general rule of thumb proven to be a good measurement from experience is that a single file should be at most 160-200 lines of code (without comments) to skim it and get a general overview quickly.
+A general rule of thumb proven to be a good measurement from experience is that a single file should be at most 160 to 200 lines of code (without comments) to skim it and get a general overview quickly.
 There are exceptions to these rules where a specific function or class exceeds this threshold, but breaking it up would not make it easier to understand.
 In those cases, there can be a discussion about changing the general application design to partition the functionality differently.
 Alternatively, it can be decided to keep this code and improve documentation.

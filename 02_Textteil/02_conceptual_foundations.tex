@@ -15,17 +15,17 @@ The article~\textquote[\cite{surveyOfPresence}]{A Survey of Presence and Related
 There, the authors state that presence \textquote{is most commonly defined as something akin to the feeling of \textquote{being there} in a virtual place}~\parencite[2]{surveyOfPresence} and immersion can be understood as \textquote{an objective characteristic of a [virtual environment] system} that, as the authors are citing Slater, \textquote{provides the boundaries within which [presence] can occur}~\parencite[3]{surveyOfPresence}.
 In this study, the goal is not to transport the participants to a different virtual place but rather to make them experience the virtual presence of the other in the physical location they are in.
 Furthermore, there is no immersion in the usual sense, as the participants can remain aware of the divide between the physical and the virtual.
-The survey presents various definitions for mediated interaction in virtual environments and distinguishes \textquote{\emph{copresence} as the sense of being together with another or others, and \emph{social presence} as the moment-by-moment awareness of the copresence of another sentient being accompanied by a sense of engagement with them.}~\parencite[4]{surveyOfPresence}.
+The survey presents various definitions for mediated interaction in virtual environments and distinguishes \textquote{\emph{copresence} as the sense of being together with another or others, and \emph{social presence} as the moment-by-moment awareness of the copresence of another sentient being accompanied by a sense of engagement with them}~\parencite[4]{surveyOfPresence}.
 These terms are further differentiated as \emph{social presence illusion} referring \textquote{to the feeling of social presence engendered by characters in virtual or mediated environments}~\parencite[4]{surveyOfPresence} and \emph{copresence illusion} as referring \textquote{to the feeling of \textquote{being together} in a virtual or mediated space}~\parencite[5]{surveyOfPresence}.
 The authors also note that the experience of these forms of presence does not necessarily require the environment to be virtual, as can be experienced in a telephone conversation, where \textquote{you are certainly aware of the person on the other end of the line (Copresence Illusion), and you can interact with that other person (Social Presence Illusion).
-However, you do not get the impression that you have been transported to another place.}~\parencite[5]{surveyOfPresence}
+However, you do not get the impression that you have been transported to another place}~\parencite[5]{surveyOfPresence}.
 Both definitions support this study's approach as it attempts to establish a virtual presence in the local physical space using a sonic avatar and provides a mediated form of interaction through verbal communication to develop an illusion of social presence.
 
 As the notion of immersion also rather refers to a framework within a virtual environment, a conceptual definition is required for the relation between the user and the application environment\textquotesingle s mechanics constructed for this implementation.
 Again, the survey presents two concepts of interest for this study.
 The terms \textquote{\emph{Involvement and Engagement}}~\parencite[8]{surveyOfPresence} are introduced as mainly relating to the same concept in games and virtual environments alike~\parencite[8]{surveyOfPresence}.
-They are roughly defined as \textquote{a state of focused attention or interest}~\parencite[8]{surveyOfPresence}, and, citing Witmer and Singer, \textquote{a psychological state experienced as a consequence of focusing one\textquotesingle s energy and attention on a coherent set of stimuli or meaningfully related activities and events.}~\parencite[8]{surveyOfPresence}
-A third related concept is that of \emph{flow}, defined as, citing Csikszentmihalyi, \textquote{an optimal state of concentration, \textquote{the state in which individuals are so involved in an activity that nothing else seems to matter}.}~\parencite[9]{surveyOfPresence}
+They are roughly defined as \textquote{a state of focused attention or interest}~\parencite[8]{surveyOfPresence}, and, citing Witmer and Singer, \textquote{a psychological state experienced as a consequence of focusing one\textquotesingle s energy and attention on a coherent set of stimuli or meaningfully related activities and events}~\parencite[8]{surveyOfPresence}.
+A third related concept is that of \emph{flow}, defined as, citing Csikszentmihalyi, \textquote{an optimal state of concentration, \textquote{the state in which individuals are so involved in an activity that nothing else seems to matter}}~\parencite[9]{surveyOfPresence}.
 Furthermore, they cite Brockmeyer et al.
 in \textquote{argu[ing] that flow, since it involves experiencing an altered state, may be a deeper state of engagement with media than presence}~\parencite[9]{surveyOfPresence}.
 These concepts provide a more nuanced alternative to the idea of immersion, which rather is interpreted as the degree of plausibility of artificial stimuli shaping the experience within a virtual or mediated environment.
@@ -41,7 +41,7 @@ Optimal accuracy is required for these purposes, and the technological and finan
 These applications use systems by Vicon\footnote{\url{https://www.vicon.com}} or OptiTrack\footnote{\url{https://www.optitrack.com}}, which work with visual markers to track movement in space and require a studio environment to be deployed.
 An example of a markerless optical system is Captury Live\footnote{\url{https://captury.com}}, which tracks humanoid moving actors with a 360° camera setup.
 It is explicitly focused on real-time analysis, providing low-latency data output instead of targeting offline workflows where recordings are made and then post-processed for higher accuracy and error correction, which is often the case for movies or games.
-In the performance field, the preferred real-time methods are \ac{IMU}-based tracking systems like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of lighting conditions.
+In the performance field, the preferred real-time tracking systems use \acp{IMU}, like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of lighting conditions.
 Both visual and inertial methods are available in variants from different manufacturers on a cost spectrum that varies from the low thousands to hundreds of thousands of euros in investment.
 
 The \textquote{grassroots} real-time motion capture setup is the Kinect, introduced by Microsoft in 2010, featuring an infrared time-of-flight measurement system that produces a depth image from which a pose can then be extracted using \ac{3D} pose estimation~\parencite[see][]{poseEstimationPaper}.
@@ -77,12 +77,12 @@ The forms of concrete artistic expression made possible by this functional infra
 \section{Embedded computing and open-source hardware}
 \label{sec:embeddedcomputing}
 
-The concept of an embedded system is defined as~\textquote[\cite{embeddedComputingDefinition}]{a combination of computer hardware and software, and perhaps additional mechanical or other parts, designed to perform a dedicated function. In some cases, embedded systems are part of a larger system or product, \ldots .}
+The concept of an embedded system is defined as~\textquote[\cite{embeddedComputingDefinition}]{a combination of computer hardware and software, and perhaps additional mechanical or other parts, designed to perform a dedicated function. In some cases, embedded systems are part of a larger system or product}.
 While this definition applies to most contemporary electronics, it rose to broader awareness through its popularity in the \ac{DIY} electronics community.
-In 2003, Hernando Barragán, a student at the Interaction Design Institute Ivrea (IDII) in Italy, created the Wiring project as his master's thesis, aiming~\textquote[\cite{arduinoHistory}]{to make it easy for artists and designers to work with electronics, by abstracting away the often complicated details of electronics so they can focus on their own objectives.}
+In 2003, Hernando Barragán, a student at the Interaction Design Institute Ivrea (IDII) in Italy, created the Wiring project as his master's thesis, aiming~\textquote[\cite{arduinoHistory}]{to make it easy for artists and designers to work with electronics, by abstracting away the often complicated details of electronics so they can focus on their own objectives}.
 The Wiring project, after successful use in the curriculum at IDII, went on to become the basis for the Arduino project, launched in 2005 by Massimo Banzi and David Mellis as a fork of Wiring and without Barragán's involvement~\parencite{arduinoHistory}.
 The Arduino development board line and its software ecosystem became the most popular framework for experimenting with open-source hardware and microcontrollers outside of the field of electronic engineering.
-At the same time, there are other successful projects like Adafruit Industries, SparkFun, RaspberryPI and more.
+At the same time, there are other successful projects like Adafruit Industries\footnote{\url{https://www.adafruit.com/}}, SparkFun\footnote{\url{https://www.sparkfun.com/}}, RaspberryPI\footnote{\url{https://www.raspberrypi.com/}} and more.
 
 
 \section{Web standards}
@@ -117,7 +117,7 @@ While the software is free and open-source, a paid hosted service is also offere
 There are many examples of integration into existing frameworks, extensions for recording sessions on the server, as well as extended handling of streams.
 
 \emph{Mediasoup}\footnote{\url{https://mediasoup.org}} is different from the other options in that it does not present a standalone server architecture.
-It provides a versatile collection of Node, Rust and C++ libraries that allow for building a custom server application from the ground up.
+It provides a versatile collection of Node.js, Rust and C++ libraries that allow for building a custom server application from the ground up.
 While it takes care of the low-level \ac{RTC} functionality, it provides somewhat granular building blocks to set up the actual implementation.
 This allows for building entirely decentralised peer-to-peer applications as well as server-centric setups.
 It was developed by a small team of contributors around its leading developers, Iñaki Baz Castillo and José Luis Millán.
@@ -149,7 +149,7 @@ It can also be used for generating sound via synthesis nodes, and entirely custo
 Another feature commonly used in games or virtual reality experiences is the possibility of placing sound sources on virtual soundstages rendered as ambisonics for headphones.
 Several frameworks provide a high-level abstraction to the WebAudio \ac{API} and thus enable a speedier development process.
 While the selections of frameworks presented for selection are supposed to be the top three entries based on GitHub Stars, this list adds the relatively new framework \emph{Elementary}, which takes a different approach to development using the declarative definition of sound structures.
-It has roughly half the rating of \emph{Flocking} but has been around only since 2022 (\ref{tab:githubAudioFrameworks}).
+It has roughly half the rating of \emph{Flocking} but has been around only since 2022 (see \ref{tab:githubAudioFrameworks}).
 
 \input{04_Artefakte/02_Tabellen/github_audio_frameworks}
 
@@ -162,8 +162,8 @@ It supports spatialisation using a \ac{3D} panner node and, while not explicitly
 
 \emph{Flocking}\footnote{\url{https://flockingjs.org}} is more of an outsider, being around since 2011 but having gathered only a small amount of star ratings.
 It follows a different approach in that it defines sound objects using \ac{JSON}, making them portable and allowing for generative approaches to sound generation on a meta-level.
-According to its developer,~\textquote[\cite{githubFlocking}]{its goal is to promote a uniquely community-minded approach to instrument design and composition.} Unfortunately, it currently does not support parallelising audio rendering in special workers.
-Thus,~\textquote[\cite{githubFlocking}]{Flocking is not currently well-suited to applications that involve a lot of graphics rendering or user interaction.}
+According to its developer,~\textquote[\cite{githubFlocking}]{its goal is to promote a uniquely community-minded approach to instrument design and composition}. Unfortunately, it currently does not support parallelising audio rendering in special workers.
+Thus,~\textquote[\cite{githubFlocking}]{Flocking is not currently well-suited to applications that involve a lot of graphics rendering or user interaction}.
 
 Another audio framework following a declarative and functional approach is \emph{Elementary}\footnote{\url{https://www.elementary.audio}}, which has only been around since early 2023.
 It separates the declarative \ac{API} for creating instruments and musical structures from the sound rendering, allowing it to use the Web Audio \ac{API} for real-time audio in the browser and an offline renderer for Node.js.
@@ -200,7 +200,7 @@ It is based on Three.js, whose full low-level functionality can be accessed thro
 \label{subsec:webbluetooth}
 
 This relatively simple \ac{API} provides access to the computer\textquotesingle s Bluetooth functionality.
-It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics, sending and receiving messages to and from the browser (see: \autoref{sec:embeddedcomputing}).
+It allows connecting custom Bluetooth senders like Arduinos or other embedded devices with sensors or other \ac{DIY} electronics, sending and receiving messages to and from the browser (see \autoref{sec:embeddedcomputing}).
 
 \section{Programming languages}
 \label{sec:programming-languages}
@@ -214,13 +214,13 @@ The version currently being supported by all browsers (except Internet Explorer 
 It is primarily used in the browser to add extra functionality to web pages.
 The underlying ECMAScript standard does not define any input or output interfaces, which means that this functionality should be provided by the specific environment it is being used in (e.g.\ desktop or mobile browsers), bridged in the browser by the web standards \acp{API}.
 
-\emph{\ac{TS}} was released by Microsoft in 2012~\textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser rather than on the desktop.} It complies with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing.
+\emph{\ac{TS}} was released by Microsoft in 2012~\textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser rather than on the desktop}. It complies with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing.
 As it has to produce regular \ac{JS} code to be executed in the browser, it uses a compiler and also allows for mixed scenarios in which \ac{TS} is used alongside \ac{JS}.
 
 \emph{Node.js} was initially released by developer Ryan Dahl in 2009 as a server-side \ac{JS} environment.
 Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading and native code integration.
 It was initially sponsored by the company Joyent but is now maintained by the OpenJS Foundation after some disputes about stewardship in the developer community.
-Node uses the \ac{NPM} to package code as modules, which can be used as dependencies, which has become the de facto standard for \ac{JS} dependency management both for Node.js and browser-based applications.
+Node.js uses the \ac{NPM} to package code as modules, which can be used as dependencies, which has become the de facto standard for \ac{JS} dependency management both for Node.js and browser-based applications.
 The modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem.
 It can be used to develop \acp{API} or other server-side applications and supports local web development processes like preprocessing, packaging, and deployment.
 
@@ -232,7 +232,7 @@ There is a native code interface that allows extending Python with bindings to n
 
 \emph{C++} originated as an extension to C in 1985.
 It is a multi-paradigm, statically typed and object-oriented programming language.
-It is used to develop code for embedded open-source hardware platforms (see: \autoref{sec:embeddedcomputing}), extend both Node and Python, and, more generally, provide direct interaction with the operating system and its APIs.
+It is used to develop code for embedded open-source hardware platforms (see \autoref{sec:embeddedcomputing}), extend both Node.js and Python and, more generally, provide direct interaction with the operating system and its APIs.
 While it is the oldest of the programming languages mentioned here, it has remained essential to the open-source world, not least because of its prevalence in the Linux ecosystem.
 
 \section{Application design paradigms}
@@ -242,7 +242,7 @@ The idea of the \emph{\ac{SPA}} originated around the beginning of the 2000s wit
 It breaks with the traditional way of moving from one page to another in favour of asynchronous loading and replacing parts of the current web page.
 This allows a website to evoke the look and feel of desktop applications by not reloading the entire page for updates.
 
-The term \ac{PWA} was initially coined in 2015 by two Google employees in an online Article~\parencite{progressiveWebApplications}.
+The term \ac{PWA} was initially coined in 2015 by two Google employees in an online article~\parencite{progressiveWebApplications}.
 At its core, it describes the process of a website \textquote{progressively} evolving into a fully-fledged on-device application by adding offline functionality and blending with the operating system.
 It is often built atop the concept of an \ac{SPA} and can be perceived by the user as an application they installed locally instead of accessing it at a remote location.
 
@@ -318,7 +318,7 @@ There are adapters for a wide range of databases and authentication methods.
 The framework has a dedicated concept of channels that enable real-time functionality and messaging to clients.
 Real-time transports are abstracted and can be deployed using Socket.IO or standards-compliant µWebSockets (see \autoref{sec:webstandards}). It also provides a \ac{CLI} to generate application code in \ac{JS} or \ac{TS}.
 Feathers started as a hobby project by David Luecke and Eric Kryski in 2013~\parencite{feathersFrameworkHistory} and is currently maintained by David Luecke and a community of individual contributors.
-It still ranks in the lower percentages in the State of JS survey~\parencite{mostUsedBackendFrameworks22} but almost doubled that percentage from the previous one in 2021~\parencite{mostUsedBackendFrameworks21}.
+It still ranks in the lower percentages in the State of JS survey~\parencite{mostUsedBackendFrameworks22}, but almost doubled that percentage from the previous one in 2021~\parencite{mostUsedBackendFrameworks21}.
 
 \emph{Meteor}\footnote{\url{https://www.meteor.com}} explicitly focuses on real-time applications using WebSockets.
 The framework is an outlier because while its core is open-source, other parts are proprietary code.
@@ -350,10 +350,10 @@ It was initially released as open-source in 2009, then put under a proprietary l
 \section{Application deployment}
 \label{sec:application-deployment}
 
-\emph{Containerisation}, in the context of computing infrastructure, refers to the~\textquote[\cite{containerisationDefinition}]{packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable—called a container—that runs consistently on any infrastructure.} It was popularised through the release of the Docker Engine\footnote{\url{https://www.docker.com}}, an open-source project devoted to creating an industry standard for application containerisation~\parencite{dockerRelease}.
-The Docker team eventually launched the \ac{OCI} in 2015, which serves as \textquote{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes.} It subsequently received Docker's container runtime as a donation, which was released as runC version 1.0 in 2020~\parencite{openContainerInitiative}.
+\emph{Containerisation}, in the context of computing infrastructure, refers to the~\textquote[\cite{containerisationDefinition}]{packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable—called a container—that runs consistently on any infrastructure}. It was popularised through the release of the Docker Engine\footnote{\url{https://www.docker.com}}, an open-source project devoted to creating an industry standard for application containerisation~\parencite{dockerRelease}.
+The Docker team eventually launched the \ac{OCI} in 2015, which serves as \textquote[\cite{openContainerInitiative}]{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes}. It subsequently received Docker's container runtime as a donation, which was released as runC version 1.0 in 2020~\parencite{openContainerInitiative}.
 It has recently become the de facto standard for packaging and delivering applications in web development and beyond.
-GitHub reports that~\textquote[\cite{stateOfTheOctoverse23}]{in 2023, 4.3 million public and private repositories used Dockerfiles --- and more than 1 million public repositories used Dockerfiles for creating containers.}
+GitHub reports that~\textquote[\cite{stateOfTheOctoverse23}]{in 2023, 4.3 million public and private repositories used Dockerfiles --- and more than 1 million public repositories used Dockerfiles for creating containers}.
 
 \emph{Container orchestration} builds on the concept of containerisation. \textquote[\cite{orchestrationDefinition}]{Container orchestration automates the provisioning, deployment, networking, scaling, availability, and lifecycle management of containers.} The concept first gained popularity as Docker \textquote{swarm mode}, a functionality of the Docker software.
 Still, its most successful instance so far is the software package Kubernetes\footnote{\url{https://kubernetes.io}}, which originated at Google in late 2013~\parencite{kubernetesHistory} and went on to be included in the \ac{CNCF}, a project by the Linux Foundation, that~\textquote[\cite{cloudNativeComputingFoundation}]{aims to advance the state-of-the-art for building cloud-native applications and services}.

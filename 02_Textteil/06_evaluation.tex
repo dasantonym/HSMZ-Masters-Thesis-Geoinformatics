@@ -71,7 +71,7 @@ The server compute resource usage was minimal, with only an average of approx.~0
 \label{fig:serverComputeResources}
 \end{figure*}
 
-Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained at around 30~\ac{ms}, which is well below the lower tolerance limit of 160~\ac{ms} proposed in a study by~\cite{audioLatency} on tolerable audio latency for remote collaboration in music creation.
+Overall, the performance analysis provided a very positive result as even the message latency for the home network connection on a moderately equipped laptop (Computer A) remained at around 30~\ac{ms}, which is well below the lower tolerance limit of 160~\ac{ms} proposed in a study by \textcite{audioLatency} on tolerable audio latency for remote collaboration in music creation.
 On the server side, the impact on the computing resources was barely registering; the network throughput left significant headroom for more connections over the server\textquotesingle s gigabit connection and would most likely work as well on a 100~\ac{Mbit} connection and a server with fewer cores than the test setup.
 
 Another pairing of test computers was attempted using a local Ethernet connection at the Mainz University of Applied Sciences campus.
@@ -150,7 +150,7 @@ Still, it shows a significant overhead for the data producer with almost as many
 It generally shows a relatively moderate weight for the entire application, with a maximum of 34 files created for the \ac{UI} and a total of 83 files across all components.
 However, the data producer presents an outlier in this regard because, with 1261, it uses almost as many lines of code as the  \ac{UI} while comprising a little over a third of total code files (13 versus 34).
 This can be explained by the external code used as a basis for the data producer, which used several files built as more monolithic structures which weren't part of the refactoring cycle.
-Still, when looking at the maximum versus the median amount of lines of code per file (\autoref{fig:linesOfCode}), it becomes more apparent that the concentration of code weight is due to only relatively few files, as all median values remain within the allotted maximum of under 160-200 lines (see \autoref{ch:methodology}).
+Still, when looking at the maximum versus the median amount of lines of code per file (\autoref{fig:linesOfCode}), it becomes more apparent that the concentration of code weight is due to only relatively few files, as all median values remain within the allotted maximum of under 160 to 200 lines (see \autoref{ch:methodology}).
 Here, it becomes even more apparent that the data producer using the external code presents an outlier to the general coding norms used throughout the project.
 
 \begin{figure*}[!ht]

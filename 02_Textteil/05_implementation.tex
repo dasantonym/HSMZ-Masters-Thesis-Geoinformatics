@@ -24,7 +24,7 @@ It was set up to use \ac{TCP} as a transport protocol instead of exposing a rang
 Otherwise, the configuration defined the endpoints for sending webhook requests and custom credentials for making requests to it via the server-side \ac{SDK} and generating valid access tokens for users to connect to rooms.
 The Helm installation chart was used to set up the system along with its Redis database installation in a single command, and the server was immediately ready for connections.
 
-The development process was conducted in a desktop environment, using the suite of tools developed by JetBrains\footnote{\url{https://www.jetbrains.com/}} (WebStorm, PyCharm and CLion), as these are free for educational use and provide a comprehensive environment for development, including debugging, intelligent code completion, versioning, containerisation and deployment.
+The development process was conducted in a desktop environment using the suite of tools developed by JetBrains\footnote{\url{https://www.jetbrains.com/}} (WebStorm, PyCharm and CLion), as these are free for educational use and provide a comprehensive environment for development, including debugging, intelligent code completion, versioning, containerisation and deployment.
 A Docker Desktop installation allowed running services and databases locally to support development before publishing to the production environment.
 Versioning was done via Git\footnote{\url{https://git-scm.com/}} on the GitLab platform provided by the \ac{JGU}\footnote{\url{https://gitlab.rlp.net}}.
 
@@ -71,7 +71,7 @@ The routing configuration and page components were set up according to the sitem
 
 The overview page for the spaces presents a list of the names alongside the currently connected users and buttons to either join as a participant or passively view it as a spectator.
 On joining a space, the user must first activate their microphone to activate the audio context.
-The user is then presented with three basic control panels.
+The user is then presented with three basic control panels (see \autoref{fig:screenshotJoin}).
 The \textquote{Data producer} panel allows setting a URL of a local WebSockets server of a data producer, setting the message type received from it, and optionally enabling a tracing function to log the packet transmission statistics.
 Once connected, the panel shows a preview of the incoming points data, transmission statistics and a button to disconnect.
 Internally, the panel creates a reactive data store that instantiates the \textquote{DataProducer} class from the core \ac{SDK}, watches incoming message events and populates the received data as reactive properties to be used across the \ac{UI} in various other components without the need to create additional class instances.
@@ -79,10 +79,24 @@ The second panel, \textquote{Head tracker}, works similarly but uses the Web Blu
 The third component configures the sonification by setting thresholds on incoming movement quality values.
 It connects to an instance of the \textquote{SonificationController} class from the core \ac{SDK} and allows the configuration of event thresholds, sound selection and harmonic configuration.
 
-When using the page to view a space, there is only one component, the \textquote{SpaceViewer}, that shows a \ac{3D} room in which all incoming points are rendered as small spheres, giving the impression of a human figure.
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{04_Artefakte/01_Abbildungen/screenshot-join}
+\caption[Join space page screenshot]{Page layout when joining a space as a participant\protect}
+\label{fig:screenshotJoin}
+\end{figure}
+
+When using the page to view a space  (see \autoref{fig:screenshotView}), there is only one component, the \textquote{SpaceViewer}, that shows a \ac{3D} room in which all incoming points are rendered as small spheres, giving the impression of a human figure.
 For each participant, there is a differently coloured light source that follows the centre of mass of the points associated with the participant.
 The viewer also renders all sonifications and audio streams at their respective spatial positions.
 This allows the user to view the \ac{3D} scene on screen while listening to binaural audio or to use the built-in \ac{VR} functionality to experience the scene in a visually immersive way.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{04_Artefakte/01_Abbildungen/screenshot-view}
+\caption[View space page screenshot]{Page layout when passively viewing a space\protect}
+\label{fig:screenshotView}
+\end{figure}
 
 \section{Data producers}
 \label{sec:data-producers}
@@ -96,13 +110,20 @@ This way, the disparate sources could be imported into a single central file tha
 Due to the lack of a Python-based client for the Captury Live system, the Captury producer had to be implemented separately as a C++ project using CMake\footnote{\url{https://cmake.org/}} as a build system and based on the \textquote{RemoteCaptury} client library~\parencite{githubRemoteCaptury}, as well as an example project for a WebSockets server implementation in C++~\parencite{githubCppWebSocketsDemo}.
 
 The custom-built head-tracking device was implemented as an Arduino project.
-As such, it was first realised as a hardware setup and then outfitted with custom firmware written in the Arduino-specific flavour of C/C+.
+As such, it was first realised as a hardware setup (\autoref{fig:headTrackerAssembled}) and then outfitted with custom firmware written in the Arduino-specific flavour of C/C+.
 The hardware implementation was created using the \textquote{Arduino Connect RP2040}\footnote{\url{https://docs.arduino.cc/hardware/nano-rp2040-connect/}}, which is based on the Raspberry PI 2040 microcontroller and has an onboard BluetoohLE module.
 The \ac{IMU} module used was the \textquote{9-DOF Absolute Orientation IMU Fusion Breakout}\footnote{\url{https://www.adafruit.com/product/4646}} which uses the BNO055\footnote{\url{https://www.bosch-sensortec.com/products/smart-sensor-systems/bno055/}} chip produced by Bosch.
 This chip already pre-processes the data from the gyroscope, accelerometer and magnetometer into an absolute world position that can be directly read from the breakout board via the \ac{I2C} bus.
 As a third component, a small 3.7V lithium battery was added alongside a charging module\footnote{\url{https://www.adafruit.com/product/1905}}.
 Only six connections needed to be soldered between the three modules (2x charger and 4x \ac{IMU}), and the resulting circuit was ready to function as a custom head tracker (\autoref{fig:headTrackerWiring}).
 For the software implementation, the basic example code for the Adafruit module was used to set up continuous polling of the positioning module, reading the values for position and device calibration status and sending them as byte sequences at a fixed rate of ~25fps over BluetoothLE\@.
+
+\begin{figure}[!ht]
+\centering
+\includegraphics[width=\textwidth]{04_Artefakte/01_Abbildungen/head-tracker-photo}
+\caption[Example assembled head tracker]{Example head tracker assembly\protect}
+\label{fig:headTrackerAssembled}
+\end{figure}
 
 \begin{figure}[!ht]
 \centering

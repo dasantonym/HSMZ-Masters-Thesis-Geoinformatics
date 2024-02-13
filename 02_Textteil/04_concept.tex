@@ -48,7 +48,7 @@ As a remote API was already involved in managing access to shared resources, the
 It was designed as an exclusively real-time application that uses WebSockets for all transmission between app components and uses the WebRTC standard for user communication.
 The project was structured as a monorepo, where all components were developed across different languages in a single repository.
 
-The application\textquotesingle s custom part was partitioned into the user interface, which was deployed as a statically compiled \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which was set up as a single-process Node.js application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
+The application\textquotesingle s custom part was partitioned into the \ac{UI}, which was deployed as a statically compiled \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which was set up as a single-process Node.js application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
 
 The primarily favoured coding paradigm was \ac{OOP}, but this was not strictly enforced for all components.
 As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it was deemed appropriate to refrain from enforcing a singular coding style.
@@ -62,7 +62,7 @@ Using this strategy, it was essential to review and refactor regularly and often
 The core features were extracted into a separate \ac{SDK} module towards the end of the development process, and appropriate unit tests were written.
 The application could now move into practical testing, similar to a production deployment, and thus, the core functionality needed to become more rigid and covered by test cases.
 
-The general user interface and data producers were considered transient because they served only the singular use case and should be subject to frequent future modifications.
+The general \ac{UI} and data producers were considered transient because they served only the singular use case and should be subject to frequent future modifications.
 These application components should be hackable and replaceable, so they were not formally tested, at least in the scope of this study.
 The unit testing focused on the data input and output for the core functionality to provide a stable foundation by keeping all components connected in a unified messaging system.
 By modelling the basic request and response cases and formulating them as tests, potential later users would also have a tangible way of understanding the application\textquotesingle s core mechanics.
@@ -82,7 +82,7 @@ Additionally, two more specialised concepts, developed for expressive movement a
 While the former is easily defined as the velocity calculated for a singular point (the centre of mass with an equal distribution), the latter two have been initially developed to observe pixelated \ac{2D} camera images and needed to be translated to \ac{3D} space.
 To transfer the methods to \ac{3D} space, Open3D\textquotesingle s PointCloud class was used~\parencite{open3DPointCloudReference}.
 In the case of the \emph{quantity of movement}, the original proposed method of difference detection is based on the percentage of changed pixels in a \ac{2D} silhouette.
-This concept was transferred to \ac{3D} by now comparing the points that make up the point cloud or pose provided by the capture hardware by using the function for computing point cloud distance, that \textquote{for each point in the source point cloud, compute[s] the distance to the target point cloud.}~\parencite{open3DPointCloudReference}.
+This concept was transferred to \ac{3D} by now comparing the points that make up the point cloud or pose provided by the capture hardware by using the function for computing point cloud distance, that \textquote{for each point in the source point cloud, compute[s] the distance to the target point cloud}~\parencite{open3DPointCloudReference}.
 This list of distances was then filtered by the entries exceeding a threshold (e.g.\ 0.01~metres), providing the basis to calculate a percentage of changed points (see \autoref{listing:quantityOfMovement3D}).
 
 \begin{listing}[!ht]
@@ -200,10 +200,10 @@ The core functionality was built into a separate module to enable integration in
 The module uses the \ac{NPM} package format and can be utilised in the browser and Node.js.
 While this module carries the most fundamental functionality, it was created last in the development process, as the essential parts only crystallised during the initial development phase.
 
-\subsection{Web frontend}
-\label{subsec:web-frontend}
+\subsection{User interface}
+\label{subsec:user-interface}
 
-The web front end provides the main entry point for the users.
+The user \ac{UI} provides the main entry point for the users.
 It allows authentication via a local username and password combination.
 It provides objects modelled as virtual \textquote{spaces} that are the central anchor to organise all communications, as defined in \autoref{fig:apiDataModel}.
 Users can create spaces, name them and then join them, becoming active data producers, or choose to view them as passive spectators.
@@ -213,13 +213,13 @@ Participants who actively join have access to a local data producer and a head t
 These components provide a direct link via WebSockets to the external data producer utilities, and a WebBluetooth connection to the custom head tracking device built using an Arduino.
 Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
 
-The front end was designed to coordinate the connections between the WebRTC server, the backend \ac{API} and the local utilities.
+The \ac{UI} was designed to coordinate the connections between the WebRTC server, the backend \ac{API} and the local utilities.
 It also implements the various web standard \acp{API} needed for sound, graphics and communication.
 
-\subsection{API backend}
+\subsection{API server}
 \label{subsec:api-backend}
 
-In the backend, the \ac{API} server was tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server.
+The \ac{API} server was tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server.
 Using its real-time channels, it can notify connected clients of changes like other connecting users or updates to data.
 The Feathers framework exports its own client library that is specifically generated for the current server configuration.
 It can be directly integrated into Vue using a client adapter module that handles authentication and basic \ac{CRUD} operations.
