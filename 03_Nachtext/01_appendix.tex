@@ -3,8 +3,8 @@
 % -----------------------------------------------------------------------------------------
 \appendix
 \clearpage
-\pdfbookmark{Appendix}{appendix}
-\chapter{Appendix}
+\chapter{USB medium index}
+\addcontentsline{toc}{chapter}{Appendix A: USB medium index}
 
 % Anhang nachfolgend einfügen ----------------------------------------------------------------------
 
@@ -15,13 +15,20 @@
 %\inputminted{java}{04_Artefakte/03_Listings/Daten.java}
 %\end{longlisting}
 %
-%\chapter{Anhang Auszug PDF}
-%\label{app:auszugPDF}
-%\begin{figure}[h]
-%    \centering
-%    \frame{\includegraphics[width=0.7\linewidth]{04_Artefakte/BeispielPDF.pdf}}
-%    \caption[Beispiel für den Auszug aus einer PDF]{Beispiel für den Auszug aus einer PDF im Anhang}
-%\end{figure}
+
+%\begin{listing}[!ht]
+\label{app:usbIndex}
+\label{listing:usbIndex}
+\inputminted{text}{04_Artefakte/03_Listings/usb-index.txt}
+%\end{listing}
+
+\chapter{Poster}
+\addcontentsline{toc}{chapter}{Appendix B: Poster}
+\label{app:poster}
+\begin{figure}[h]
+    \centering
+    \frame{\includegraphics[width=0.7\linewidth]{04_Artefakte/AKoch-Sensorama_Poster-A4.pdf}}
+\end{figure}
 %
 %\chapter{Anhang Tabelle}
 %\label{app:longtable}
