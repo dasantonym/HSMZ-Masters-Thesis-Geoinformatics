@@ -15,8 +15,8 @@ date: February 14, 2024
 
 ### Ausgangslage
 
-Spezialisierte Telepräsenzanwendungen wie in Telemedizin und Industrie sind für kleinere Projekte in Kunst und Kultur
-eher unerschwinglich und allgemeine Videokonferenzanwendungen erfüllen nicht die Anforderungen einer sich an Körper und
+Spezialisierte Telepräsenzanwendungen wie in Telemedizin und Industrie sind für kleinere Projekte in Kunst und Kultur 
+unerschwinglich und allgemeine Videokonferenzanwendungen erfüllen nicht die Anforderungen einer sich an Körper und
 Raum orientierenden Praxis. Unterschiedliche Formen des Tanzes benötigen jeweils spezielle Ein- und Ausgabemedien, um
 Bewegung und Präsenz adäquat vermitteln zu können.
 
@@ -44,3 +44,6 @@ Dekomposition bezieht und für kleinere kreative Projekte empfohlen wird.
 - Auswertung der abstrakten Funktionalität (Latenz, Last), Code-Qualität, Arbeitszeitinvestition
 - Kritische Reflektion & Ausblick
 
+![](img/screenshot-view.jpg "Passive Ansicht für Zuschauer:innen: Figuren tanzen im virtuellen Raum")
+
+![](img/screenshot-join.jpg "Aktive Teilnehmer:innen: Kontrollelemente für Daten und Sonifikation")
