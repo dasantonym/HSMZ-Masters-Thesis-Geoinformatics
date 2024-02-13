@@ -22,7 +22,7 @@ This development now provides an increased potential for smaller and more task-s
 It opens up new possibilities for niche cases of remote collaboration, such as dance practice, where the collaborative agency could be extended from a composite of video streams to the creation of shared virtual environments that facilitate a more personal form of mediating a sense of shared presence.
 
 The standard for \ac{RTC} in Browsers or \ac{WebRTC}~\parencite{webRtcSpec} was first proposed by Google in 2011 and became an official \ac{W3C} standard in 2021~\parencite{webRtcOfficialWebStandard}.
-It has become the basis for numerous applications, such as some of the conferencing tools mentioned above, media streaming servers such as Wowza or Ant, or real-time frameworks and servers such as Mediasoup, Janus or LiveKit.
+It has become the basis for numerous applications, such as some of the conferencing tools mentioned above, media streaming servers, or real-time frameworks.
 In its most basic form, \ac{WebRTC} establishes peer-to-peer connections between devices, allowing low-latency exchange of media streams and arbitrary messages over data channels.
 However, it can accommodate other more complex and versatile scenarios.
 
@@ -40,14 +40,14 @@ This would allow augmenting the telepresence environment with spatial data, sens
 The data could then be streamed as is but visualised, sonified, or otherwise analysed and processed on the receiving devices as required by the implemented use case.
 In this reference implementation, movement sonification is implemented as an alternative to the visually-centred conferencing paradigms.
 As movement in front of a screen or with headsets can be somewhat limiting, the idea is to use spatial audio for movement sonification and voice communication to provide a sense of positional orientation in relation to the virtual presence in the space.
-Focused on a scenario of two participants moving at remote locations but in virtually overlayed spatial dimensions, this setup could enable exploration of moving together by attempting to achieve some form of acoustic harmony or rhythm to supplant the lack of an actual shared physical presence.
+Focused on a scenario of two participants moving at remote locations but in virtually overlayed spatial dimensions, this setup could enable exploration of moving together by attempting to achieve some form of acoustic harmony or rhythm to supplant an actual shared physical presence.
 This implementation targets only a small audience in that it requires practice and a deep engagement with the sonification method, explained in detail in \autoref{sec:sonification-method-and-sound-spatialisation}, as it would be specifically built to express a specific style of movement that would not be intuitive for every potential user alike.
-It should also be used by dancers with a shared experience of moving together so that verbal communication can support navigating a shared movement vocabulary and connect to the memory of shared physical practice.
-Creative design processes and user experience are deemed outside the scope of this study, as the focus lies on examining the general feasibility and affordability of using open standards and free software to enable the creation of a task-specific real-time application, exemplified by the proposed example and examined in its general functionality instead of usability or user experience.
+It should also be used by dancers with a shared experience of moving together so that verbal communication can support navigating a shared movement vocabulary and connecting to the memory of shared physical practice.
+Creative design processes and user experience are deemed outside the scope of this study, as the focus lies on examining the general feasibility and affordability of using open standards and free software to enable the creation of a task-specific real-time application, exemplified by the proposed reference implementation and examined in its general abstract functionality instead of usability or user experience.
 
 \section{Structural outline}
 \label{sec:outline}
 
-The study starts from a survey of \emph{conceptual foundations} presenting existing paradigms and technologies to support the development of web-based real-time applications (\autoref{ch:conceptualfoundations}), establishes a \emph{methodology} (\autoref{ch:methodology}) and presents an \emph{application concept} (\autoref{ch:concept}) as well as a description of the resulting {reference implementation} (\autoref{ch:implementation}).
+The study starts from a survey of \emph{conceptual foundations} presenting existing paradigms and technologies to support the development of web-based real-time applications (\autoref{ch:conceptualfoundations}), establishes a \emph{research methodology} (\autoref{ch:methodology}) and presents an \emph{application concept} (\autoref{ch:concept}) as well as a description of the resulting {reference implementation} (\autoref{ch:implementation}).
 The reference implementation is the basis for a \emph{discussion} of the reference implementation's general performance, code quality, the amount of time invested in its creation and a critical reflection on the development process (\autoref{ch:discussion}).
 The study \emph{concludes} with a general recommendation on the feasibility of creating such a \textquote{single-use} application for a specific task and an \emph{outlook} for future implications and possibilities resulting from this research (\autoref{ch:conclusion-and-outlook}).

@@ -3,7 +3,7 @@
 
 This feasibility study was based on two essential parts.
 The first was a reference implementation, providing insights into the work necessary for a basic functional implementation.
-Based on this implementation, an analysis of the application's functionality was made, an overview of the time spent on development, a qualitative review of the resulting codebase, and a reflection on the work process.
+Based on this implementation, the application\textquotesingle s abstract performance was measured, an evaluation of the time spent on development was made, a qualitative review of the resulting codebase, and a critical reflection on the work process.
 
 \section{Reference implementation}
 \label{sec:reference-implementation}
@@ -25,25 +25,25 @@ Well-known and easily defined components were built first.
 The particular functionality of the reference implementation was then built on top in constant cycles of adding functionality, reviewing the codebase and refactoring towards abstraction and separation of basics from specifics.
 As only a rough architectural model for the project was defined beforehand, tests and documentation were written later in the process, as the parts stabilised independently and in their relationship with each other.
 This method does not strictly adhere to standard development procedures.
-Still, it borrows loosely from agile development (sprints, reviews, adjustment) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partitioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
+Still, it borrows loosely from agile development (sprints, reviews, adjustments) and simple forms of the ideas put forward in the book \textquote{Pattern-Oriented Software Architecture}, such as application partitioning through layering, separation, and standardised messaging~\parencite{patternOrientedSoftwareArchitecture}.
 A more systemic approach for the development process, like application modelling using \ac{UML} and test-driven development, might be desirable for teams, but the various and disparate \textquote{moving parts} in conjunction with heavy reliance on browser-only \ac{API}s complicate the creation of a well-simulated testing environment using either real or mock-data, especially for a single developer.
 
-The application was implemented in its entirety, documented and packaged.
-Appropriate test coverage was provided for the core functionality in the API and the messaging components, and the overall time spent was logged in timesheets and categorised by the general work areas.
+The application was implemented in its entirety, documented, packaged and deployed.
+Appropriate test coverage was provided for the core functionality, and the overall time spent was logged in timesheets and categorised by the general work areas.
 The application\textquotesingle s server components were deployed early on to university hardware and made available over the internet.
 The client application was then run and tested on exemplary computer systems in and outside the university network.
 
 \section{Analysis and evaluation}
 \label{sec:analysis-evaluation}
 
-A statistical analysis of the timesheets provided insight into the time spent on various aspects of the software.
-It differentiated between basic boilerplate code that can be reused and custom code used for the actual use case to provide insights both into the feasibility of setting up such a system from scratch with only a single developer, as well as the potential cost of just reworking the parts deemed transient and related to the specific use case.
+A statistical analysis of the timesheets provided insight into the \emph{workload} time spent on various aspects of the software.
+It differentiated between languages and application components to provide insights into the feasibility of setting up such a system from scratch with a single developer and the potential cost of just reworking the parts deemed transient and related to the specific use case.
 
-The application\textquotesingle s performance was tested regarding the load put on the \ac{CPU} (server and client) and the network throughput and latency.
-It is verified that all message processing works as expected through unit testing and simple testing tasks performed on the application.
-A practical test that analyses the actual user experience and uses performers and real dance interaction is beyond the scope of this study.
+The application\textquotesingle s \emph{performance} was tested regarding the load put on the \ac{CPU} (server and client) and the network throughput and latency.
+It was verified that all message processing worked as expected through unit testing and simple manual testing tasks performed on the application.
+A practical test that analyses the actual user experience and uses performers and real dance interaction was deemed beyond the scope of this study.
 
-The \emph{code quality} was assessed based on volume (lines of code without comments) and cognitive complexity, ~\parencite[see][]{sonarSourceCognitiveComplexity}, which is an updated version of the older concept of cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code~\parencite[see][]{mcCabeComplexity}.
+The \emph{code quality} was assessed based on volume (source code files and lines of code without comments) and cognitive complexity, ~\parencite[see][]{sonarSourceCognitiveComplexity}, which is an updated version of the older concept of cyclomatic complexity, which counts the number of linearly independent paths throughout a piece of code~\parencite[see][]{mcCabeComplexity}.
 It was published by the Swiss company SonarSource\footnote{\url{https://www.sonarsource.com/}} and \textquote{has been formulated to address modern language structures, and to produce values that are meaningful at the class and application levels.}~\parencite[4]{sonarSourceCognitiveComplexity}
 It accounts for modern control structures and aims to facilitate legibility by rewarding a code style that benefits general understandability~\parencite[4]{sonarSourceCognitiveComplexity}.
 Both metrics should be kept low for each source code file, as code with many lines makes it harder to read, and high complexity is more challenging to follow and understand.
@@ -55,8 +55,8 @@ There are exceptions to these rules where a specific function or class exceeds t
 In those cases, there can be a discussion about changing the general application design to partition the functionality differently.
 Alternatively, it can be decided to keep this code and improve documentation.
 Reducing volume and complexity is especially important if the code should be passed on to others who want to maintain and modify it for further use.
-Here, the general idea is that the transient (hackable) parts (e.g. \ac{UI}) should be as simple as possible, avoiding unnecessary complexity.
-The more static and stable core parts can be where the complex code is moved to (e.g.\ the core \ac{SDK}).
+Here, the general idea was that the transient (hackable) parts (e.g. \ac{UI}) should be kept as simple as possible, avoiding unnecessary complexity.
+The more static and stable core components would then be where the complex code would be moved to (e.g.\ the core \ac{SDK}).
 
 Additionally, a \emph{critical reflection} and analysis of the development process was created to weigh the expectations against the experiences while implementing the decisions made in planning the application.
-It should evaluate general reproducibility and feasibility and discuss the benefits and drawbacks of establishing a task-specific application from scratch.
+It evaluated general reproducibility and feasibility and discussed the benefits and limitations of establishing a task-specific application from scratch using the proposed concept.

@@ -2,9 +2,9 @@
 \label{ch:concept}
 
 The reference implementation was named \emph{Sensorama}, a reference to the early immersive experience patented by filmmaker Morton Heilig in 1962~\parencite{Heilig_1962}.
-It is said to be the first virtual reality systems~\parencite[5][]{vrHistoryGigante} and features stereoscopic video and audio, simulated wind and even olfactory stimuli.
-The name is a nod to the longstanding history of ideas around immersive experiences mediated through machinic technology and the multisensory approach that, in this case, refers to the possible input and output methods.
-Although the reference implementation was not designed to support an actual artistic process, it is informed by past practical experience working with technology in performance, specifically in a dance context.
+It is said to be the first virtual reality system~\parencite[5][]{vrHistoryGigante} and features stereoscopic video and audio, simulated wind and even olfactory stimuli.
+The name is a nod to the longstanding history of ideas around immersive experiences mediated through machinic technology and the multisensory approach that, in this case, refers to the many possible input and output methods.
+Although the reference implementation was not designed to support an actual artistic process, its development was informed by past practical experience working with technology in performance, specifically in a dance context.
 While the application\textquotesingle s base functionality could theoretically be used for any number of participants, only limited by the infrastructure\textquotesingle s resources, it was specifically designed for only two active participants at a time.
 This decision was made because it would already be a challenge to adapt to relating to a mediated presence only by localising it acoustically and at the same time focusing on sound cues to base one\textquotesingle s own movement on.
 However, a passive option of viewing the virtual space was included, allowing the use of \ac{WebXR} functionality to join as a spectator.
@@ -29,7 +29,7 @@ The \ac{UI}, which holds the use-case-specific functionality, could then be fork
 
 While all the frameworks presented in \autoref{fig:mostUsedFrameworks} could be used to build an application as envisioned in this study, Vue was selected due to the relatively high acceptance and the comparably easy learning curve.
 While it might not be the choice for large-scale or enterprise apps, the low entry barrier and the simple structure make it ideal to get an app up and running quickly, experiment with it and pass it on to others for hacking and custom modifications.
-The Quasar framework was used to accelerate and simplify the initial development.
+The Quasar framework was used to accelerate and simplify the initial development (see \autoref{sec:frontend-frameworks}).
 It extends Vue\textquotesingle s basic functionality with a \ac{UI} library complete with layout tools, common interface elements and a comfortable development and deployment environment.
 
 The choice for a backend framework landed on Feathers and, by extension, Koa.
@@ -46,26 +46,26 @@ While Mediasoup might have allowed a more precise implementation and probably a 
 The basic design paradigm chosen for the Sensorama application was that of an \ac{SPA}.
 As a remote API was already involved in managing access to shared resources, the extended \ac{PWA} paradigm was not helpful for this scenario.
 It was designed as an exclusively real-time application that uses WebSockets for all transmission between app components and uses the WebRTC standard for user communication.
-The project was structured as a monorepo, where all components are developed across different languages in a single repository.
+The project was structured as a monorepo, where all components were developed across different languages in a single repository.
 
-The application\textquotesingle s custom part was partitioned into the user interface, which was deployed as a static built \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which was set up as a single-process Node.js application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
+The application\textquotesingle s custom part was partitioned into the user interface, which was deployed as a statically compiled \ac{HTML}/\ac{CSS}/\ac{JS} bundle, the \ac{API}, which was set up as a single-process Node.js application and the so-called \textquote{Data-Producers}, which are external native utilities written in Python and C++ that provide bridges to motion capture hardware.
 
 The primarily favoured coding paradigm was \ac{OOP}, but this was not strictly enforced for all components.
-As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it was deemed beneficial to refrain from enforcing a singular coding style.
+As some frameworks prefer different, more functional paradigms that are also compositional (Vue) or aspect-oriented (Feathers), it was deemed appropriate to refrain from enforcing a singular coding style.
 While this might usually be considered bad practice in terms of maintainability for long-term development, it served the purpose of a modular and somewhat transient \textquote{single-use} application structure.
 
 An essential part of the development concept was the sequence of development phases.
 As there was no explicit definition beforehand, the development started by establishing a functional skeleton first and worked within that to carve out the actual functionality.
-Initially, monolithic large blocks of code were built.
+Initially, monolithic large blocks of code were written with little initial planning.
 Various approaches to desired functionality were quickly tried and discarded or kept and subsequently extracted into separate components grouped by functional association.
-Using this strategy, it was essential to review and refactor regularly and often to solidify the application structure and prevent it from dissolving into \textquote{spaghetti code} and to avoid unnecessary side-effects among the components.
+Using this strategy, it was essential to review and refactor regularly and often to allow the application structure to emerge from what otherwise would dissolve into the colloquially termed \textquote{spaghetti code} and to avoid unnecessary side-effects among the components.
 The core features were extracted into a separate \ac{SDK} module towards the end of the development process, and appropriate unit tests were written.
 The application could now move into practical testing, similar to a production deployment, and thus, the core functionality needed to become more rigid and covered by test cases.
 
 The general user interface and data producers were considered transient because they served only the singular use case and should be subject to frequent future modifications.
 These application components should be hackable and replaceable, so they were not formally tested, at least in the scope of this study.
 The unit testing focused on the data input and output for the core functionality to provide a stable foundation by keeping all components connected in a unified messaging system.
-By modelling the basic request and response cases and formulating them as tests, potential later users would also have a tangible way of understanding the application's core mechanics.
+By modelling the basic request and response cases and formulating them as tests, potential later users would also have a tangible way of understanding the application\textquotesingle s core mechanics.
 
 For \ac{JS}, three popular testing frameworks are Jest, Mocha, and Jasmine (\ref{tab:githubTestingFrameworks}), which can be used for implementing unit testing for the project.
 In this case, the selection skipped the most popular option of Jest in favour of Mocha, which is used by the Feathers \ac{API} framework in its generator for boilerplate code.
@@ -78,7 +78,29 @@ This way, basic tests to base work on were already available and, to keep the pr
 
 One quality chosen was the \textquote{average velocity}, generally defined as the distance travelled over time (e.g.\ m/s).
 Additionally, two more specialised concepts, developed for expressive movement analysis, were selected: \textquote{Quantity of Movement}~\parencite[96-97]{movementQualities}, describing the amount of difference between poses over time, and the \textquote{Contraction Index}~\parencite[97]{movementQualities} which observes the density of space used by a pose.
+
 While the former is easily defined as the velocity calculated for a singular point (the centre of mass with an equal distribution), the latter two have been initially developed to observe pixelated \ac{2D} camera images and needed to be translated to \ac{3D} space.
+To transfer the methods to \ac{3D} space, Open3D\textquotesingle s PointCloud class was used~\parencite{open3DPointCloudReference}.
+In the case of the \emph{quantity of movement}, the original proposed method of difference detection is based on the percentage of changed pixels in a \ac{2D} silhouette.
+This concept was transferred to \ac{3D} by now comparing the points that make up the point cloud or pose provided by the capture hardware by using the function for computing point cloud distance, that \textquote{for each point in the source point cloud, compute[s] the distance to the target point cloud.}~\parencite{open3DPointCloudReference}.
+This list of distances was then filtered by the entries exceeding a threshold (e.g.\ 0.01~metres), providing the basis to calculate a percentage of changed points (see \autoref{listing:quantityOfMovement3D}).
+
+\begin{listing}[!ht]
+\inputminted{python}{04_Artefakte/03_Listings/quantity-of-movement.py}
+\caption{Using Open3D for calculating the quantity of movement in \ac{3D}\protect}
+\label{listing:quantityOfMovement3D}
+\end{listing}
+
+The original \emph{contraction index} is based on the ratio of space within a bounding box covered by the pixels of the silhouette enclosed by the bounding box.
+This was translated to \ac{3D} by using an axis-aligned bounding box and a convex hull instead of a silhouette and then taking the ratio of bounding box volume to convex hull volume to get the percentage of space \textquote{covered}, which is the contraction index (see \autoref{listing:contractionIndex3D}).
+
+\begin{listing}[!ht]
+\inputminted{python}{04_Artefakte/03_Listings/contraction-index.py}
+\caption{Using Open3D for calculating the contraction index in \ac{3D}\protect}
+\label{listing:contractionIndex3D}
+\end{listing}
+
+All three qualities were smoothed using a moving average of five frames to reduce jitter in the values.
 
 \section{Sonification method and sound spatialisation}
 \label{sec:sonification-method-and-sound-spatialisation}
@@ -90,17 +112,19 @@ At the time of an event, the current value of a quality or a combination of them
 
 A simple system of scales, chords, and note selection was introduced to create an example sonification algorithm.
 The system was based on selecting a specific scale (e.g.\ E-minor) for which a list of possible chords could then be produced.
-Each time an event is triggered on one of the qualities (e.g.\ Quantity of Movement), the actual value can be used to decide which chord to select from the list using the normalised value.
-The notes selected from the chord are then transposed using another quality (Contraction Index), selecting the root note for the chord across the octaves.
+Each time an event is triggered on one of the qualities (e.g.\ quantity of movement), the actual value can be used to decide which chord to select from the list using the normalised value.
+The notes selected from the chord are then transposed using another quality (e.g.\ contraction index), selecting the root note for the chord across the octaves.
 The average velocity was used to set the note length, triggering shorter notes when standing relatively still and more extended notes while travelling in space.
 It must be noted that while this is a valid example for a parameter mapping sonification and will produce largely harmonic notes, it falls short of producing an output of a more complex musical quality because it lacks the ability to construct deeper structures and dramaturgic variance.
 However, if engaged over a more extended period and practised, it could still yield interesting results, but this would also require a very specific way of composing the movement required to produce musically exciting results.
 
-All handling of harmonic structures such as scales, chords and notes is done using the \ac{JS} library Tonal\footnote{\url{}}, which provides a complete toolset for working with the western harmonic system.
+All handling of harmonic structures such as scales, chords and notes is done using the \ac{JS} library Tonal\footnote{\url{https://tonaljs.github.io/tonal/docs/}}, which provides a comprehensive library for working with western musical theory.
 The audio framework chosen was Tone.js, as it was the most straightforward option focusing on musical applications.
-While Elementary is very promising in its approach to sound generation, it is much more low-level in its approach to constructing an instrument for music generation.
-Sound spatialisation was achieved by playing the notes through a special spatial sound source node placed within a virtual audio scene, provided by the Resonance audio framework based on the WebAudio \ac{API} (see \autoref{subsec:webaudio}).
-Both the audio stream retrieved from the \ac{WebRTC} connection was connected to a panner node, and the sound produced from the synthesiser nodes for the local and remote participants.
+It allows selecting an audio file added as a static asset in the \ac{UI} set to a specific root note that is then triggered in the correct pitch for the note selected with variable attack and sustain times.
+While Elementary seems very promising in its approach to sound generation, it is much more low-level in its approach to constructing an instrument for music generation.
+
+Sound spatialisation was achieved by playing the notes through a spatial sound source node placed within a virtual audio scene configured with reflecting floor, walls and ceiling, provided by the Resonance audio framework and based on the WebAudio \ac{API} (see \autoref{subsec:webaudio}).
+The audio stream retrieved from the \ac{WebRTC} connection and the sound produced from the synthesiser nodes for the local and remote participants were connected to their respective spatial panner nodes.
 If the participant's head orientation and position were available through motion capture or the head tracking device, this spatial information would also be applied to the listener node and the other spatial audio nodes.
 
 \section{Messaging}
@@ -110,7 +134,7 @@ Standards-compliant protocols enabled streamlined messaging among the disparate 
 Starting on the client side, the motion capture data producer starts a local WebSockets server to which the web application running in the browser can connect and receive live data.
 The browser application can connect to the custom head-tracking device using the WebBluetooth standard and receive data messages using the \ac{GATT}\footnote{\url{https://www.bluetooth.com/bluetooth-resources/intro-to-bluetooth-gap-gatt/}}.
 
-The conferencing functionality implemented in the web application was used to send local microphone audio and to relay the local producer utilities\textquotesingle data to other participants via the LiveKit server using the WebRTC protocol.
+The conferencing functionality implemented in the web application was used to send local microphone audio and to relay the local producer utilities\textquotesingle\ data to other participants via the LiveKit server using the WebRTC protocol.
 In the backend, the LiveKit server can push status updates as \ac{HTTP} webhook calls to the \ac{API} server to notify it about connects and disconnects.
 The \ac{API} server uses the WebSockets protocol to relay updates on persisted data and LiveKit update events to the client browser and receives authentication and general data requests.
 
@@ -127,9 +151,9 @@ The \ac{API} server uses the WebSockets protocol to relay updates on persisted d
 Four core data models were defined for the application (see \autoref{fig:apiDataModel}).
 The two models persisted by the \ac{API} server are \emph{Spaces} and \emph{Users}.
 These were modelled as simple reference objects providing the basis for connecting users to virtual spaces, akin to spatial chat rooms, and each User can own multiple Space objects.
-A Space is a container object representing a shared space populated with multiple participants\textquotesingle sensor readings.
+A Space is a container object representing a shared space populated with multiple participants\textquotesingle\ sensor readings.
 Users can request one or more \emph{Token} objects that allow them to connect to a \textquote{room} on the LiveKit server that maps to a specific ID of a Space.
-Once connected, the LiveKit server notifies the \ac{API} server of the new connection, and now the connected User\textquotesingle s ID can be found in the list retrieved from the virtual \textquote{connected} property of the Space object.
+Once connected, the LiveKit server notifies the \ac{API} server of the new connection, and now the connected participant\textquotesingle s ID can be found in the list retrieved from the virtual \textquote{connected} property of the Space object.
 
 \begin{figure}[!ht]
 \centering
@@ -156,7 +180,7 @@ Shown in \autoref{listing:exampleMessage} is a simple example message schema for
 
 The root object\textquotesingle s property names resolve to the key under which the value could later be accessed.
 The \emph{index} property specifies the byte index in the message, and \emph{count} specifies if the value repeats in sequence or is singular. \emph{dims} defines the dimensions for the value (e.g. \textquote{3} for a \ac{3D} point).
-The \emph{type} could be a \textquote{Uint8}, \textquote{Float32} or a \textquote{BigInt64} and the property \textquote{le} specifies if this value is encoded as \ac{LE}.
+The \emph{type} could be a \textquote{Uint8}, \textquote{Float32} or a \textquote{BigInt64} and the boolean property \emph{le} specifies if this value is encoded as \ac{LE}.
 
 \begin{listing}[!ht]
 \inputminted{json}{04_Artefakte/03_Listings/example-pose-message.json}
@@ -173,7 +197,7 @@ The application comprises several third-party components merely deployed as-is (
 \label{subsec:core-sdk-module}
 
 The core functionality was built into a separate module to enable integration into other setups using different frameworks or architectures.
-The module uses the \ac{NPM}\textquotesingle s package format and can be utilised in the browser and Node.js.
+The module uses the \ac{NPM} package format and can be utilised in the browser and Node.js.
 While this module carries the most fundamental functionality, it was created last in the development process, as the essential parts only crystallised during the initial development phase.
 
 \subsection{Web frontend}
@@ -185,18 +209,18 @@ It provides objects modelled as virtual \textquote{spaces} that are the central 
 Users can create spaces, name them and then join them, becoming active data producers, or choose to view them as passive spectators.
 
 Depending on the participant\textquotesingle s role, a space is rendered as a different set of components.
-Participants who actively join have access to a LocalProducer and a HeadTracker component.
-These components provide a direct link via WebSockets to the external data-producer utilities, and a WebBluetooth connection to the custom head-tracking device built on Arduino.
+Participants who actively join have access to a local data producer and a head tracker control panel.
+These components provide a direct link via WebSockets to the external data producer utilities, and a WebBluetooth connection to the custom head tracking device built using an Arduino.
 Those who only view the space do so via a dedicated scene viewer component that brings together all incoming streams and signals.
 
 The front end was designed to coordinate the connections between the WebRTC server, the backend \ac{API} and the local utilities.
-It also implements the various web standard \ac{API}s needed for sound, graphics and communication.
+It also implements the various web standard \acp{API} needed for sound, graphics and communication.
 
 \subsection{API backend}
 \label{subsec:api-backend}
 
 In the backend, the \ac{API} server was tasked with managing the basic connecting objects (spaces and users), general authentication, and generation of access tokens for the LiveKit server.
-Through its real-time implementation, it can notify connected clients of changes like other connecting users or updates to data.
+Using its real-time channels, it can notify connected clients of changes like other connecting users or updates to data.
 The Feathers framework exports its own client library that is specifically generated for the current server configuration.
 It can be directly integrated into Vue using a client adapter module that handles authentication and basic \ac{CRUD} operations.
 
@@ -205,13 +229,13 @@ It can be directly integrated into Vue using a client adapter module that handle
 
 Three different native utilities were additionally implemented.
 
-The general \emph{data producer} was set up as a \ac{CLI} utility in Python, implementing various Python-specific extensions: the DepthAI framework\footnote{\url{https://github.com/luxonis/depthai}}, used to work with the Luxonis Oak-D line of \ac{3D}-cameras, Intel\textquotesingle s OpenVino\footnote{\url{https://github.com/openvinotoolkit/openvino}} for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D~\parencite{open3DZhou2018} for working with point cloud data and general spatial operations and PyMotion~\parencite{githubPyMotion}, a library for working with recorded \ac{BVH} motion capture data files.
+The general \emph{data producer} was set up as a \ac{CLI} utility in Python, implementing various Python-specific extensions: the DepthAI framework\footnote{\url{https://github.com/luxonis/depthai}}, used to work with the Luxonis Oak-D line of \ac{3D}-cameras, Intel\textquotesingle s OpenVino\footnote{\url{https://github.com/openvinotoolkit/openvino}} for interacting with various \ac{ML} models for pose recognition or point-cloud extraction, Open3D~\parencite{open3DZhou2018} for working with point cloud data and performing general spatial operations and PyMotion~\parencite{githubPyMotion}, a library for working with recorded \ac{BVH} motion capture data files.
 Python also allowed for easy statistical data analysis using NumPy, which was used to perform movement quality extraction.
 
 For real-time streaming of live motion capture data from the Captury Live system, there currently only exists a C++ client library provided by the system's manufacturer.
 Thus, the \emph{Captury data producer} component had to be implemented separately and uses a C++-based WebSockets server streaming the library's received data.
 
-As there was no affordable, open and platform-independent \emph{head-tracking} solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device (Nano RP2040 Connect) and an \ac{IMU} component for absolute orientation measurement by Adafruit (9-DOF Absolute Orientation IMU Fusion Breakout) that can be directly connected to the Arduino using the \ac{I2C} serial bus.
-The data read from the \ac{IMU} device is then posted as binary messages on a simple Bluetooth service.
+As there was no affordable, open and platform-independent \emph{head-tracking} solution, this component was quickly prototyped using a BluetoothLE-ready Arduino device and an \ac{IMU} component for absolute orientation measurement by Adafruit that can be directly connected to the Arduino using the \ac{I2C} serial bus.
+The data read from the \ac{IMU} device was then posted as binary messages on a simple Bluetooth service.
 The device could be directly integrated using the browser\textquotesingle s WebBluetooth web standard.
 

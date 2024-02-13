@@ -5,7 +5,7 @@
 \label{sec:telepresence}
 
 The term \emph{telepresence} first appears in an article by Marvin Minsky, roughly defined as a form of remote robotic operation, that \textquote{emphasises the importance of high‑quality sensory feedback} and the author posits that its realisation's biggest challenge is \textquote{achieving that sense of \textquote{being there.}}~\parencite{minskyTelepresence}.
-Considering the general technological development at that time, Minsky argued from a standpoint concerned primarily with robotic manipulators that perform remote labour, enhancing the operator's physical abilities and safety.
+Considering the general technological development at the time, Minsky argued from a standpoint concerned primarily with robotic manipulators that perform remote labour, enhancing the operator's physical abilities and safety.
 Today, virtual and augmented reality, telepresence, and general presence research present much more diverse application scenarios.
 While there are applications of remote robotic control in retail, industry, telemedicine and police or military, the most common instance has become the teleconferencing application relaying video and audio streams and allowing chat and collaborative whiteboards.
 
@@ -13,34 +13,35 @@ In this study, the term telepresence is used to explicitly describe a virtual or
 The concepts of \emph{presence} and \emph{immersion} require a precise contextualisation for this study.
 The article~\textquote[\cite{surveyOfPresence}]{A Survey of Presence and Related Concepts} presents a wide range of possible variations and specific definitions for these concepts in different contexts and environments.
 There, the authors state that presence \textquote{is most commonly defined as something akin to the feeling of \textquote{being there} in a virtual place}~\parencite[2]{surveyOfPresence} and immersion can be understood as \textquote{an objective characteristic of a [virtual environment] system} that, as the authors are citing Slater, \textquote{provides the boundaries within which [presence] can occur}~\parencite[3]{surveyOfPresence}.
-The goal, in this case, is not to transport the participants to a different virtual place but rather to make them experience the virtual presence of the other in the physical location they are in.
-Furthermore, there is no immersion in the usual sense as the participants can remain aware of the divide between the physical and the virtual, much like in a telephone conversation.
+In this study, the goal is not to transport the participants to a different virtual place but rather to make them experience the virtual presence of the other in the physical location they are in.
+Furthermore, there is no immersion in the usual sense, as the participants can remain aware of the divide between the physical and the virtual.
 The survey presents various definitions for mediated interaction in virtual environments and distinguishes \textquote{\emph{copresence} as the sense of being together with another or others, and \emph{social presence} as the moment-by-moment awareness of the copresence of another sentient being accompanied by a sense of engagement with them.}~\parencite[4]{surveyOfPresence}.
 These terms are further differentiated as \emph{social presence illusion} referring \textquote{to the feeling of social presence engendered by characters in virtual or mediated environments}~\parencite[4]{surveyOfPresence} and \emph{copresence illusion} as referring \textquote{to the feeling of \textquote{being together} in a virtual or mediated space}~\parencite[5]{surveyOfPresence}.
 The authors also note that the experience of these forms of presence does not necessarily require the environment to be virtual, as can be experienced in a telephone conversation, where \textquote{you are certainly aware of the person on the other end of the line (Copresence Illusion), and you can interact with that other person (Social Presence Illusion).
 However, you do not get the impression that you have been transported to another place.}~\parencite[5]{surveyOfPresence}
 Both definitions support this study's approach as it attempts to establish a virtual presence in the local physical space using a sonic avatar and provides a mediated form of interaction through verbal communication to develop an illusion of social presence.
 
-As the notion of immersion also rather refers to a framework within a virtual environment, a conceptual definition is required for the relation between the user and the application environment constructed in this use case.
+As the notion of immersion also rather refers to a framework within a virtual environment, a conceptual definition is required for the relation between the user and the application environment\textquotesingle s mechanics constructed for this implementation.
 Again, the survey presents two concepts of interest for this study.
 The terms \textquote{\emph{Involvement and Engagement}}~\parencite[8]{surveyOfPresence} are introduced as mainly relating to the same concept in games and virtual environments alike~\parencite[8]{surveyOfPresence}.
-They are roughly defined as \textquote{a state of focused attention or interest}~\parencite[8]{surveyOfPresence}, and, citing Witmer and Singer, \textquote{a psychological state experienced as a consequence of focusing one’s energy and attention on a coherent set of stimuli or meaningfully related activities and events.}~\parencite[8]{surveyOfPresence}
+They are roughly defined as \textquote{a state of focused attention or interest}~\parencite[8]{surveyOfPresence}, and, citing Witmer and Singer, \textquote{a psychological state experienced as a consequence of focusing one\textquotesingle s energy and attention on a coherent set of stimuli or meaningfully related activities and events.}~\parencite[8]{surveyOfPresence}
 A third related concept is that of \emph{flow}, defined as, citing Csikszentmihalyi, \textquote{an optimal state of concentration, \textquote{the state in which individuals are so involved in an activity that nothing else seems to matter}.}~\parencite[9]{surveyOfPresence}
 Furthermore, they cite Brockmeyer et al.
 in \textquote{argu[ing] that flow, since it involves experiencing an altered state, may be a deeper state of engagement with media than presence}~\parencite[9]{surveyOfPresence}.
 These concepts provide a more nuanced alternative to the idea of immersion, which rather is interpreted as the degree of plausibility of artificial stimuli shaping the experience within a virtual or mediated environment.
-They are a guiding conceptual basis for the design processes of the modes of expression and interaction within the telepresence application, as a deep involvement and flow would be beneficial to shape a feeling of \textquote{togetherness} in a shared task of creating sound or music.
+They foreground an active role of the participant in shaping their experience by a deep engagement with the environment\textquotesingle s functionality.
+As such, they should be a guiding conceptual basis for the design processes of the modes of expression and interaction within the telepresence application, as a deep involvement and flow can be beneficial to shape a feeling of \textquote{togetherness} in a shared task of creating sound or music.
 
 \section{Motion capture}
 \label{sec:motion-capture}
 
 The positional tracking of specific key points on a moving body over time is commonly referred to as \emph{motion capture}.
 The technique is often used in \ac{CGI}, enabling puppeteering of \ac{3D} avatars for motion picture productions and character animation in games.
-High accuracy is required for these purposes, and the technological and financial entry barriers are relatively high.
+Optimal accuracy is required for these purposes, and the technological and financial entry barriers are relatively high.
 These applications use systems by Vicon\footnote{\url{https://www.vicon.com}} or OptiTrack\footnote{\url{https://www.optitrack.com}}, which work with visual markers to track movement in space and require a studio environment to be deployed.
 An example of a markerless optical system is Captury Live\footnote{\url{https://captury.com}}, which tracks humanoid moving actors with a 360° camera setup.
 It is explicitly focused on real-time analysis, providing low-latency data output instead of targeting offline workflows where recordings are made and then post-processed for higher accuracy and error correction, which is often the case for movies or games.
-In the performance field, the preferred real-time methods are \ac{IMU}-based tracking systems like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of the lighting conditions.
+In the performance field, the preferred real-time methods are \ac{IMU}-based tracking systems like the SmartSuit by Rokoko\footnote{\url{https://www.rokoko.com}} or the Perception Neuron\footnote{\url{https://neuronmocap.com}} sensor kit since they are independent of lighting conditions.
 Both visual and inertial methods are available in variants from different manufacturers on a cost spectrum that varies from the low thousands to hundreds of thousands of euros in investment.
 
 The \textquote{grassroots} real-time motion capture setup is the Kinect, introduced by Microsoft in 2010, featuring an infrared time-of-flight measurement system that produces a depth image from which a pose can then be extracted using \ac{3D} pose estimation~\parencite[see][]{poseEstimationPaper}.
@@ -78,7 +79,7 @@ The forms of concrete artistic expression made possible by this functional infra
 
 The concept of an embedded system is defined as~\textquote[\cite{embeddedComputingDefinition}]{a combination of computer hardware and software, and perhaps additional mechanical or other parts, designed to perform a dedicated function. In some cases, embedded systems are part of a larger system or product, \ldots .}
 While this definition applies to most contemporary electronics, it rose to broader awareness through its popularity in the \ac{DIY} electronics community.
-In 2003, Hernando Barragán, a student at the Interaction Design Institute Ivrea (IDII) in Italy, created the Wiring project as his Master's Thesis, aiming~\textquote[\cite{arduinoHistory}]{to make it easy for artists and designers to work with electronics, by abstracting away the often complicated details of electronics so they can focus on their own objectives.}
+In 2003, Hernando Barragán, a student at the Interaction Design Institute Ivrea (IDII) in Italy, created the Wiring project as his master's thesis, aiming~\textquote[\cite{arduinoHistory}]{to make it easy for artists and designers to work with electronics, by abstracting away the often complicated details of electronics so they can focus on their own objectives.}
 The Wiring project, after successful use in the curriculum at IDII, went on to become the basis for the Arduino project, launched in 2005 by Massimo Banzi and David Mellis as a fork of Wiring and without Barragán's involvement~\parencite{arduinoHistory}.
 The Arduino development board line and its software ecosystem became the most popular framework for experimenting with open-source hardware and microcontrollers outside of the field of electronic engineering.
 At the same time, there are other successful projects like Adafruit Industries, SparkFun, RaspberryPI and more.
@@ -90,7 +91,7 @@ At the same time, there are other successful projects like Adafruit Industries, 
 The idea behind web standards is to provide stable definitions of core technologies that are used to build and present web content.
 Apart from providing a consistent display across different browsers, this is especially important for interacting with particular \ac{OS} or hardware functionality via the browser.
 As \ac{JS} does not define any specific \ac{I/O} functionality, it is the task of the browser environment to supply this.
-As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \ac{API}s was devised and implemented.
+As the browser is the mediator between the \ac{OS} and the web page, the idea of standardised \acp{API} was devised and implemented.
 Several organisations standardise web technologies, with the most prominent of them being the \ac{W3C}, \ac{WHATWG}, Ecma, Khronos and the \ac{IETF}.
 
 \subsection{WebRTC}
@@ -124,7 +125,7 @@ It was developed by a small team of contributors around its leading developers, 
 \subsection{WebSockets}
 \label{subsec:websockets}
 
-The transmission protocol \emph{WebSockets}, which was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011~\parencite{webSocketsProtocolRfc}, allows full-duplex communication between client and server, running on the same ports and transport layer seven as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure.
+The transmission protocol \emph{WebSockets}, which was standardised as \ac{RFC} 6455 by the \ac{IETF} in 2011~\parencite{webSocketsProtocolRfc}, allows full-duplex communication between client and server, running on the same ports and transport layer as the half-duplex \ac{HTTP} protocol, thus being compatible with existing web infrastructure.
 As the \emph{WebSockets} standard was not fully supported across browsers for some time, there have been various approaches to providing real-time functionality to web applications more or less loosely based on the \emph{WebSockets} specification.
 However, the current browser landscape shows much more complete support for the original \emph{WebSockets} protocol~\parencite{canIUseWebSockets}.
 
@@ -135,24 +136,24 @@ While it is a popular choice for real-time communication in the browser, it impl
 As stated in the documentation,~\textquote[\cite{githubSocketIO}]{a WebSocket client will not be able to successfully connect to a \emph{Socket.IO} server, and a \emph{Socket.IO} client will not be able to connect to a WebSocket server}.
 
 \emph{WS}\footnote{\url{https://github.com/websockets/ws}} is a standards-compliant implementation of the WebSockets protocol for use in server-side applications written in Node.js.
-It is written in C++ to provide good performance, and it supports compression via implementation of the standards proposal in \ac{RFC} RFC 7692~\textquote[\cite{webSocketsExtensionCompression}]{Compression Extensions for WebSocket [sic]}.
+It is written in C++ for performance reasons and supports compression via implementation of the standards proposal in \ac{RFC} RFC 7692~\textquote[\cite{webSocketsExtensionCompression}]{Compression Extensions for WebSocket [sic]}.
 
-\emph{µWebSockets}\footnote{\url{https://github.com/uNetworking/uWebSockets}} is focused on robustness and performance while exclusively communicating via standards-compliant WebSockets protocol.
-Like WS, it is implemented in C++, used via Node.js on the server side, and does not require a specific client library.
+\emph{µWebSockets}\footnote{\url{https://github.com/uNetworking/uWebSockets}} is focused on robustness and performance while exclusively communicating via a standards-compliant WebSockets protocol implementation.
+Like WS, it is written in C++, used via Node.js on the server side, and does not require a specific client library.
 
 \subsection{WebAudio}
 \label{subsec:webaudio}
 
-\emph{WebAudio}, the standard for handling audio in the browser, takes care of basic mixing of channels and different sources (e.g.\ media streams, audio files).
+\emph{WebAudio}, the standard for handling audio in the browser, takes care of basic mixing of different sources (e.g.\ media streams, audio files).
 It can also be used for generating sound via synthesis nodes, and entirely custom audio nodes can also be developed.
-Another feature commonly used in games or virtual reality experiences is the possibility of placing sound sources on virtual soundstages rendered as ambisonics for psychoacoustics in headphones.
+Another feature commonly used in games or virtual reality experiences is the possibility of placing sound sources on virtual soundstages rendered as ambisonics for headphones.
 Several frameworks provide a high-level abstraction to the WebAudio \ac{API} and thus enable a speedier development process.
 While the selections of frameworks presented for selection are supposed to be the top three entries based on GitHub Stars, this list adds the relatively new framework \emph{Elementary}, which takes a different approach to development using the declarative definition of sound structures.
 It has roughly half the rating of \emph{Flocking} but has been around only since 2022 (\ref{tab:githubAudioFrameworks}).
 
 \input{04_Artefakte/02_Tabellen/github_audio_frameworks}
 
-\emph{Howler.js}\footnote{\url{https://howlerjs.com}} is a complete audio framework that builds on the \emph{WebAudio} \ac{API} and provides easy access to audio functionality, focusing primarily on interactive audio for web applications or games.
+\emph{Howler.js}\footnote{\url{https://howlerjs.com}} is a complete audio framework that provides easy access to audio functionality, focusing primarily on interactive audio for web applications or games.
 It offers various modes of sound playback, mixing, and spatial audio as a plugin.
 Still, at the time of writing, it only supports connecting live audio sources through a yet unmerged pull request on GitHub~\parencite{githubHowlerPullRequest}.
 
@@ -179,7 +180,7 @@ The library hooks into any existing audio context, thus allowing a combination w
 \label{subsec:webxr}
 
 The various virtual and augmented reality devices available are accessible via the \ac{WebXR} \ac{API}, with the browser bridging the communication with the headset and controllers.
-A \ac{3D} scene created in a web-based graphics framework like THREE.js or A-Frame can be instantly experienced on a \ac{VR} headset like the HTC Vive or Oculus Quest.
+A \ac{3D} scene created in a web-based graphics framework supporting the standard can thus be instantly experienced on a \ac{VR} headset like the HTC Vive or Oculus Quest.
 
 \input{04_Artefakte/02_Tabellen/github_3d_frameworks}
 
@@ -187,10 +188,10 @@ A \ac{3D} scene created in a web-based graphics framework like THREE.js or A-Fra
 It was initially developed for the ActionScript language used in Macromedia and later Adobe Flash (another Ecma standard-compliant language, see \autoref{sec:programming-languages}).
 It features an extensive toolset for graphics generation, rendering and effects and relies on the WebGL standard to allow performant rendering via local graphics hardware.
 
-\emph{Babylon.js}\footnote{\url{https://www.babylonjs.com}} is another fully-fledged \ac{3D} framework with a strong focus on games and realistic, high-quality rendering, which was initially developed by Microsoft employees in 2013.
+\emph{Babylon.js}\footnote{\url{https://www.babylonjs.com}} is another fully-fledged \ac{3D} framework with a focus on games and realistic, high-quality rendering, which was initially developed by Microsoft employees in 2013.
 The framework features an extensive collection of tools for interaction and animation and supports integrating the \ac{WebXR} standard to use \ac{VR} equipment in the browser.
 
-\emph{A-frame}\footnote{\url{https://aframe.io}} is a framework that allows the developer to create \ac{3D} scenes by composing custom \ac{HTML} elements that provide geometric primitives, lights, cameras, etc.
+\emph{A-Frame}\footnote{\url{https://aframe.io}} is a framework that allows the developer to create \ac{3D} scenes by composing custom \ac{HTML} elements that provide geometric primitives, lights, cameras, etc.
 This way, it has a comparably low entry barrier for people with limited scripting experience.
 It explicitly focuses on mixed reality applications, implements the WebXR standard and has preset control objects for various headsets and controllers.
 It is based on Three.js, whose full low-level functionality can be accessed through A-Frame if a more complex functionality or custom behaviour is required.
@@ -211,7 +212,7 @@ This standard became the basis for JScript by Microsoft and ActionScript as part
 The version currently being supported by all browsers (except Internet Explorer 11) is \ac{ES6}~\parencite{javascriptHistory}.
 \ac{JS} is an object-oriented, weakly-typed programming language that allows multiple programming paradigms.
 It is primarily used in the browser to add extra functionality to web pages.
-The underlying ECMAScript standard does not define any input or output methods, which means that this functionality should be provided by the specific environment it is being used in (e.g.\ desktop or mobile browsers), bridged by the web standards \ac{API}s.
+The underlying ECMAScript standard does not define any input or output interfaces, which means that this functionality should be provided by the specific environment it is being used in (e.g.\ desktop or mobile browsers), bridged in the browser by the web standards \acp{API}.
 
 \emph{\ac{TS}} was released by Microsoft in 2012~\textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser rather than on the desktop.} It complies with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing.
 As it has to produce regular \ac{JS} code to be executed in the browser, it uses a compiler and also allows for mixed scenarios in which \ac{TS} is used alongside \ac{JS}.
@@ -221,7 +222,7 @@ Node.js runs standard ECMAScript in Google's V8 engine, allowing multithreading 
 It was initially sponsored by the company Joyent but is now maintained by the OpenJS Foundation after some disputes about stewardship in the developer community.
 Node uses the \ac{NPM} to package code as modules, which can be used as dependencies, which has become the de facto standard for \ac{JS} dependency management both for Node.js and browser-based applications.
 The modules can also integrate native C++ code, enabling bindings to most open-source libraries in the Linux ecosystem.
-It can be used to develop \ac{API}s or other server-side applications and supports local web development processes like preprocessing, packaging, and deployment.
+It can be used to develop \acp{API} or other server-side applications and supports local web development processes like preprocessing, packaging, and deployment.
 
 The \emph{Python} programming language was created by Guido van Rossum in 1990~\parencite{pythonHistory}.
 It is a multi-paradigm language that is both dynamically and strongly typed~\parencite{pythonTyping}.
@@ -253,7 +254,7 @@ Instantaneous updates are commonly realised using WebSockets, allowing updates t
 \section{Frontend frameworks}
 \label{sec:frontend-frameworks}
 
-There is a broad range of available \ac{JS} frameworks to build dynamic frontends for \ac{SPA}s and \ac{PWA}s. The three libraries currently dominating the landscape are React, developed by Facebook in 2013, and Vue, created by Evan You in 2014.
+There is a broad range of available \ac{JS} frameworks to build dynamic frontends for \acp{SPA} and \acp{PWA}. The three libraries currently dominating the landscape are React, developed by Facebook in 2013, and Vue, created by Evan You in 2014.
 These libraries can be used with frameworks to offer complete routing and state management solutions.
 Another popular framework is Angular, initially released by Google in 2010 and re-released in 2016.
 
@@ -264,13 +265,13 @@ Another popular framework is Angular, initially released by Google in 2010 and r
     \label{fig:mostUsedFrameworks}
 \end{figure}
 
-\emph{React}\footnote{\url{https://react.dev}}, developed by Facebook and maintained by its successor Meta, has become the most widely used tool for building \ac{SPA}s.
+\emph{React}\footnote{\url{https://react.dev}}, developed by Facebook in 2011 and maintained by its successor Meta, has become the most widely used tool for building \acp{SPA}.
 It is steadily leading the rankings for most used frontend frameworks both in the Stack Overflow~\parencite{stackOverflowPollWebFrameworks23} and the State Of JS~\parencite{mostUsedFrontendFrameworks22} polls.
 By definition, it is not a framework but a \ac{UI} library that relies on other extensions to support state management, routing and deployment functionality.
 Although it is not a framework itself, there are existing frameworks like Next.js\footnote{\url{https://nextjs.org/}} for the web and ReactNative\footnote{\url{https://reactnative.dev/}} for building mobile apps using native functionality.
 React makes use of \ac{JSX}, which allows directly mixing inline \ac{HTML} with the \ac{JS} or \ac{TS} source code.
 
-\emph{Vue}\footnote{\url{https://vuejs.org/}} was developed by Evan You and is maintained by an international team of individuals.
+\emph{Vue}\footnote{\url{https://vuejs.org/}} was developed by Evan You in 2013 and is maintained by an international team of individuals.
 It had a relatively marginal presence in the US and Europe in the first years after its inception.
 This can be partially attributed to its origin in China, as most of its supporting modules were localised in Chinese.
 Over the years, it grew in popularity and received more international support, eventually overcoming the language barrier.
@@ -280,7 +281,7 @@ However, it also supports using \ac{JSX} for specifying inline \ac{HTML} within 
 As with React, there are extensions and frameworks like Quasar\footnote{\url{https://quasar.dev}} and Nuxt\footnote{\url{https://nuxt.com}} that enable more sophisticated workflows for application development and deployment.
 
 \emph{Angular}\footnote{\url{https://angular.io/}} was initially released by Google in 2010 as AngularJS and officially discontinued in 2022.
-A completely overhauled version 2 was released in 2016 and is maintained by Google.
+A completely overhauled version 2 was released in 2016 and has since been maintained by Google.
 It differs from React and Vue in that it is a complete framework containing everything required to build and deploy an application, and it explicitly recommends \ac{TS} as a programming language.
 The framework is also less flexible because it is more opinionated and has its own set of best practices baked into the framework\textquotesingle s structure.
 
@@ -291,8 +292,8 @@ The \emph{Express}\footnote{\url{https://expressjs.com}} framework provides the 
 TJ Holowaychuk developed it in 2010 and sold it to StrongLoop~\parencite{expressJsStrongLoop}, which IBM subsequently acquired~\parencite{expressJsStrongLoopIbm}.
 It is currently under the stewardship of the OpenJS Foundation~\parencite{expressJsNodeFoundation}.
 Express has become the de facto standard for building web services in JS, leading the ranking in the State of JS survey~\parencite{mostUsedBackendFrameworks22}.
-Although it contains the necessary parts to create a web service, it does not enforce a specific architecture, which can be problematic for maintaining a robust application structure.
-For developers who prefer a more explicit structure, various other frameworks that add more opinionated structures or extensions are built on top of it.
+Although it contains the necessary parts to create a web service, it does not enforce a specific architecture.
+For developers who prefer a more explicitly defined structure, various other frameworks that add more opinionated structures or extensions are built on top of it.
 
 Billed as a successor to Express, \emph{Koa}\footnote{\url{https://koajs.com}} is developed by the team behind Express.
 It aims to provide a more robust and minimalistic iteration of the middleware-based architecture of Express.
@@ -319,12 +320,12 @@ Real-time transports are abstracted and can be deployed using Socket.IO or stand
 Feathers started as a hobby project by David Luecke and Eric Kryski in 2013~\parencite{feathersFrameworkHistory} and is currently maintained by David Luecke and a community of individual contributors.
 It still ranks in the lower percentages in the State of JS survey~\parencite{mostUsedBackendFrameworks22} but almost doubled that percentage from the previous one in 2021~\parencite{mostUsedBackendFrameworks21}.
 
-\emph{Meteor}\footnote{\url{https://www.meteor.com}} focuses explicitly on real-time applications using WebSockets.
+\emph{Meteor}\footnote{\url{https://www.meteor.com}} explicitly focuses on real-time applications using WebSockets.
 The framework is an outlier because while its core is open-source, other parts are proprietary code.
 Nonetheless, it should be mentioned because it has been around for over ten years and uses WebSockets exclusively.
 It was released in 2012 by a startup company, immediately received venture capital funding from Andreessen Horowitz and was eventually sold to Tiny Capital in 2019~\parencite{meteorSaleTinyCapital}.
-The framework primarily uses MongoDB as a database system and initially provided its own package manager and ecosystem, build system, and template system based on Mustache.
-Meanwhile, this exclusive strategy has been abandoned in favour of adopting the Node Package Manager.
+The framework primarily uses MongoDB as a database system and initially provided its own package manager and ecosystem, build system, and template system based on Mustache\footnote{\url{https://mustache.github.io/}}.
+Meanwhile, this exclusive strategy has been abandoned in favour of adopting the \ac{NPM}.
 Still, it seems to be subject to debate regarding its ease of use versus its \textquote{growing pains} and related trouble with wide adoption~\parencite{meteorDiscussionYCombinator}.
 
 \section{Databases}
@@ -344,13 +345,13 @@ It is still a popular choice, especially for smaller web projects that don\textq
 \emph{MongoDB}\footnote{\url{https://www.mongodb.com}} is a document store database that is designed to hold large amounts of unstructured data.
 It has its own query language and features aggregation functionality that allows map/reduce and transformation operations or resolving of relations on the data before being sent to the client.
 Although it uses the \ac{NoSQL} paradigm and allows storing documents of any kind in a collection, it eventually added the option of using schemas for validation.
-It was initially released as open-source in 2009, then was put under a proprietary license in 2018, but remains available to be used for free with limited support.
+It was initially released as open-source in 2009, then put under a proprietary license in 2018, but remains available for free usage with limited support \parencite{mongodbProprietaryLicense}.
 
 \section{Application deployment}
 \label{sec:application-deployment}
 
 \emph{Containerisation}, in the context of computing infrastructure, refers to the~\textquote[\cite{containerisationDefinition}]{packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable—called a container—that runs consistently on any infrastructure.} It was popularised through the release of the Docker Engine\footnote{\url{https://www.docker.com}}, an open-source project devoted to creating an industry standard for application containerisation~\parencite{dockerRelease}.
-The Docker team eventually launched the \ac{OCI} in 2015, which serves as \textquote{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes.} It subsequently received Docker's container runtime and format as a donation, which was released as runC version 1.0 in 2020~\parencite{openContainerInitiative}.
+The Docker team eventually launched the \ac{OCI} in 2015, which serves as \textquote{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes.} It subsequently received Docker's container runtime as a donation, which was released as runC version 1.0 in 2020~\parencite{openContainerInitiative}.
 It has recently become the de facto standard for packaging and delivering applications in web development and beyond.
 GitHub reports that~\textquote[\cite{stateOfTheOctoverse23}]{in 2023, 4.3 million public and private repositories used Dockerfiles --- and more than 1 million public repositories used Dockerfiles for creating containers.}
 
