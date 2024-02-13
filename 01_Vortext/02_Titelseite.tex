@@ -6,41 +6,49 @@
 \begin{titlepage}
 
 \begin{minipage}{\textwidth}
-		\noindent \hfill \includegraphics{\logo}
+		\noindent \hfill \includesvg{\logo}
 \end{minipage}
-\vspace{6em}
+\vspace{4em}
 
 \begin{center}
     {\huge \art}
-    
+
     {\Large zur Erlangung des akademischen Grades \akadGrad}\\
     {\Large im Studiengang \studiengang}
-    
-    \vspace{2.5em}
-    
+
+    \vspace{4em}
+
     \textbf{{\Large \titel}}
-    
-    \vspace{2.5em}
-    
+
+    \vspace{4em}
+
     \hochschule \\
     Fachbereich \fachbereich \\
     Fachrichtung \fachrichtung
-    
-    \vspace{3em}
 
+    \vspace{10em}
+
+	\begin{multicols}{2}
 	\begin{minipage}{\textwidth}
 		\begin{tabbing}
-		
-		Vorgelegt von:  \hspace*{2em}\= \autor \\
+
+		Vorgelegt von:  \hspace*{0.5em}\= \autor \\
 		\> \strasseAutor \\
         \> \stadtAutor \\
-        \> Matrikel-Nr. \matrikelnr \\
-        Betreut von: \> \betreuer \\
+        Matrikel-Nr.: \> \matrikelnr
+        \end{tabbing}
+    \end{minipage}
+        
+	\begin{minipage}{\textwidth}
+		\begin{tabbing}
+		 
+        Betreut von: \hspace*{1.5em}\= \betreuer \\
         Eingereicht am: \> \datumAbgabe \\
         Studienort: \> \ort \\
         Standnummer: \> \standnummer
 		\end{tabbing}
 
 	\end{minipage}
+	\end{multicols}
 \end{center}
 \end{titlepage}
