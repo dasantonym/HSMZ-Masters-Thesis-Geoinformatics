@@ -149,7 +149,7 @@ It can also be used for generating sound via synthesis nodes, and entirely custo
 Another feature commonly used in games or virtual reality experiences is the possibility of placing sound sources on virtual soundstages rendered as ambisonics for headphones.
 Several frameworks provide a high-level abstraction to the WebAudio \ac{API} and thus enable a speedier development process.
 While the selections of frameworks presented for selection are supposed to be the top three entries based on GitHub Stars, this list adds the relatively new framework \emph{Elementary}, which takes a different approach to development using the declarative definition of sound structures.
-It has roughly half the rating of \emph{Flocking} but has been around only since 2022 (see \ref{tab:githubAudioFrameworks}).
+It has roughly half the rating of \emph{Flocking} but has been around only since 2022 (see~\ref{tab:githubAudioFrameworks}).
 
 \input{04_Artefakte/02_Tabellen/github_audio_frameworks}
 
@@ -162,7 +162,8 @@ It supports spatialisation using a \ac{3D} panner node and, while not explicitly
 
 \emph{Flocking}\footnote{\url{https://flockingjs.org}} is more of an outsider, being around since 2011 but having gathered only a small amount of star ratings.
 It follows a different approach in that it defines sound objects using \ac{JSON}, making them portable and allowing for generative approaches to sound generation on a meta-level.
-According to its developer,~\textquote[\cite{githubFlocking}]{its goal is to promote a uniquely community-minded approach to instrument design and composition}. Unfortunately, it currently does not support parallelising audio rendering in special workers.
+According to its developer,~\textquote[\cite{githubFlocking}]{its goal is to promote a uniquely community-minded approach to instrument design and composition}.
+Unfortunately, it currently does not support parallelising audio rendering in special workers.
 Thus,~\textquote[\cite{githubFlocking}]{Flocking is not currently well-suited to applications that involve a lot of graphics rendering or user interaction}.
 
 Another audio framework following a declarative and functional approach is \emph{Elementary}\footnote{\url{https://www.elementary.audio}}, which has only been around since early 2023.
@@ -214,7 +215,8 @@ The version currently being supported by all browsers (except Internet Explorer 
 It is primarily used in the browser to add extra functionality to web pages.
 The underlying ECMAScript standard does not define any input or output interfaces, which means that this functionality should be provided by the specific environment it is being used in (e.g.\ desktop or mobile browsers), bridged in the browser by the web standards \acp{API}.
 
-\emph{\ac{TS}} was released by Microsoft in 2012~\textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser rather than on the desktop}. It complies with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing.
+\emph{\ac{TS}} was released by Microsoft in 2012~\textquote[\cite{typescriptRelease}]{to accommodate an increasing number of developers who are interested in using JavaScript to build large-scale Web applications to run in a browser rather than on the desktop}.
+It complies with the underlying Ecma scripting standard and is designed as a superset of \ac{JS}, adding static typing.
 As it has to produce regular \ac{JS} code to be executed in the browser, it uses a compiler and also allows for mixed scenarios in which \ac{TS} is used alongside \ac{JS}.
 
 \emph{Node.js} was initially released by developer Ryan Dahl in 2009 as a server-side \ac{JS} environment.
@@ -254,7 +256,8 @@ Instantaneous updates are commonly realised using WebSockets, allowing updates t
 \section{Frontend frameworks}
 \label{sec:frontend-frameworks}
 
-There is a broad range of available \ac{JS} frameworks to build dynamic frontends for \acp{SPA} and \acp{PWA}. The three libraries currently dominating the landscape are React, developed by Facebook in 2013, and Vue, created by Evan You in 2014.
+There is a broad range of available \ac{JS} frameworks to build dynamic frontends for \acp{SPA} and \acp{PWA}.
+The three libraries currently dominating the landscape are React, developed by Facebook in 2013, and Vue, created by Evan You in 2014.
 These libraries can be used with frameworks to offer complete routing and state management solutions.
 Another popular framework is Angular, initially released by Google in 2010 and re-released in 2016.
 
@@ -345,13 +348,15 @@ It is still a popular choice, especially for smaller web projects that don\textq
 \emph{MongoDB}\footnote{\url{https://www.mongodb.com}} is a document store database that is designed to hold large amounts of unstructured data.
 It has its own query language and features aggregation functionality that allows map/reduce and transformation operations or resolving of relations on the data before being sent to the client.
 Although it uses the \ac{NoSQL} paradigm and allows storing documents of any kind in a collection, it eventually added the option of using schemas for validation.
-It was initially released as open-source in 2009, then put under a proprietary license in 2018, but remains available for free usage with limited support \parencite{mongodbProprietaryLicense}.
+It was initially released as open-source in 2009, then put under a proprietary license in 2018, but remains available for free usage with limited support~\parencite{mongodbProprietaryLicense}.
 
 \section{Application deployment}
 \label{sec:application-deployment}
 
-\emph{Containerisation}, in the context of computing infrastructure, refers to the~\textquote[\cite{containerisationDefinition}]{packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable—called a container—that runs consistently on any infrastructure}. It was popularised through the release of the Docker Engine\footnote{\url{https://www.docker.com}}, an open-source project devoted to creating an industry standard for application containerisation~\parencite{dockerRelease}.
-The Docker team eventually launched the \ac{OCI} in 2015, which serves as \textquote[\cite{openContainerInitiative}]{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes}. It subsequently received Docker's container runtime as a donation, which was released as runC version 1.0 in 2020~\parencite{openContainerInitiative}.
+\emph{Containerisation}, in the context of computing infrastructure, refers to the~\textquote[\cite{containerisationDefinition}]{packaging of software code with just the operating system (OS) libraries and dependencies required to run the code to create a single lightweight executable—called a container—that runs consistently on any infrastructure}.
+It was popularised through the release of the Docker Engine\footnote{\url{https://www.docker.com}}, an open-source project devoted to creating an industry standard for application containerisation~\parencite{dockerRelease}.
+The Docker team eventually launched the \ac{OCI} in 2015, which serves as~\textquote[\cite{openContainerInitiative}]{a lightweight, open governance structure (project), formed under the auspices of the Linux Foundation, for the express purpose of creating open industry standards around container formats and runtimes}.
+It subsequently received Docker's container runtime as a donation, which was released as runC version 1.0 in 2020~\parencite{openContainerInitiative}.
 It has recently become the de facto standard for packaging and delivering applications in web development and beyond.
 GitHub reports that~\textquote[\cite{stateOfTheOctoverse23}]{in 2023, 4.3 million public and private repositories used Dockerfiles --- and more than 1 million public repositories used Dockerfiles for creating containers}.
 
