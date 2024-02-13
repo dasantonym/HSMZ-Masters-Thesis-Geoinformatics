@@ -1,42 +1,45 @@
-AKoch-Sensorama.pdf                 Thesis PDF
-AKoch-Sensorama-Erfassungsbogen.pdf Thesis registration
+AKoch-Sensorama.pdf                     Thesis PDF
+AKoch-Sensorama-Erfassungsbogen.pdf     Thesis registration
+AKoch-Sensorama_Poster-A1.pdf           A1 format poster
+AKoch-Sensorama_Poster-A4.pdf           A4 format poster
 
-AKoch-Sensorama_Poster-A1.pdf       A1 format poster
-AKoch-Sensorama_Poster-A4.pdf       A4 format poster
+webpage/
+  sensorama.html                        Thesis web page
+  img/                                  Images for web page
 
-sensorama/                          Main code repository
-  api/                              API source code (Node.js)
-    README.md                       API information
+sensorama/                              Main code repository
+  api/                                  API source code (Node.js)
+    README.md                           API information
     ...
-  arduino/                          Arduino project files
-    README.md                       Arduino information
-    HeadTracker/                    Custom head-tracker project files (C/C++)
+  arduino/                              Arduino project files
+    README.md                           Arduino information
+    HeadTracker/                        Custom head-tracker project files (C/C++)
       ...
-  captury-producer/                 Captury producer source code (C++)
-    README.md                       Captury producer information
+  captury-producer/                     Captury producer source code (C++)
+    README.md                           Captury producer information
     ...
-  data-producer/                    Data producer source code (Python)
-    README.md                       Data producer information
+  data-producer/                        Data producer source code (Python)
+    README.md                           Data producer information
     ...
-  kubernetes/                       Kubernetes deployment configuration
-    README.md                       Kubernetes deployment information
+  kubernetes/                           Kubernetes deployment configuration
+    README.md                           Kubernetes deployment information
     ...
-  sdk/                              Core SDK source code (JavaScript)
-    README.md                       Core SDK information
+  sdk/                                  Core SDK source code (JavaScript)
+    README.md                           Core SDK information
     ...
-  ui/                               UI source code (JavaScript)
-    README.md                       UI information
+  ui/                                   UI source code (JavaScript)
+    README.md                           UI information
     ...
 
-sensorama.tar.gz                    Archived final code repository
-sensorama.tar.gz.md5                MD5 hash for final code archive
+sensorama.tar.gz                        Archived final code repository
+sensorama.tar.gz.md5                    MD5 hash for final code archive
 
-statistics-data/                    Data used to generate statistics
-  livekit-server-usage/             LiveKit resource usage data
-  speedtest/                        Speedtest results
-  trace-logs/                       Separate latency trace logs
-  sonarcloud-measures.json          SonarCloud quality metrics
-  timesheet-data.csv                Workload time tracking data
+statistics-data/                        Data used to generate statistics
+  livekit-server-usage/                 LiveKit resource usage data
+  speedtest/                            Speedtest results
+  trace-logs/                           Separate latency trace logs
+  sonarcloud-measures.json              SonarCloud quality metrics
+  timesheet-data.csv                    Workload time tracking data
 
-statistics-data.tar.gz              Archived statistics data
-statistics-data.tar.gz.md5          MD5 hash for archived statistics data
+statistics-data.tar.gz                  Archived statistics data
+statistics-data.tar.gz.md5              MD5 hash for archived statistics data
