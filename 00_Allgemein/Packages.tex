@@ -36,7 +36,7 @@
 \usepackage{xcolor}
 %\usepackage{chngcntr} % fortlaufende Nummerierung von Fußnoten
 
-\usepackage[colorinlistoftodos]{todonotes} % to disable todos use option disable, alternatively use obeyDraft or obeyFinal
+\usepackage[disable]{todonotes} % to disable todos use option disable, alternatively use obeyDraft or obeyFinal
 \usepackage{blindtext}
 
 \usepackage{microtype} % auskommentieren moeglich, wenn Typografie nicht zufriedenstellend
@@ -45,7 +45,8 @@
 % Verlinkung und PDF Bookmarks https://tex.stackexchange.com/a/83051
 \usepackage[nospace]{varioref}
 % extensions keep all links black, only urls are blue: https://tex.stackexchange.com/a/401885/220502
-\usepackage[hidelinks, colorlinks, allcolors=., urlcolor=blue]{hyperref}
+\usepackage[hidelinks, colorlinks, allcolors=., urlcolor=blue]{hyperref} % Für digitale version
+% \usepackage[hidelinks, colorlinks, allcolors=.]{hyperref} % Für print version
 \usepackage{bookmark}
 \hypersetup{
     pdftitle={\titel},
@@ -218,7 +219,7 @@
 \makeatletter
 \AtBeginDocument{
 \newlength{\mylen}
-\setlength{\mylen}{\widthof{XVIII}} %TODO hier Text eintragen, der der breitesten Seitennummer im Inhaltsverzeichnis oder einem der anderne Verzeichnisse entspricht
+\setlength{\mylen}{\widthof{100}} %TODO hier Text eintragen, der der breitesten Seitennummer im Inhaltsverzeichnis oder einem der anderne Verzeichnisse entspricht
 \renewcommand*\@pnumwidth{\the\mylen}
 }
 \makeatother
